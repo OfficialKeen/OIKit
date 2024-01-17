@@ -15,34 +15,8 @@
 		EC0AA3982B57A8E9007B59C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC0AA3962B57A8E9007B59C5 /* Main.storyboard */; };
 		EC0AA39A2B57A8EB007B59C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0AA3992B57A8EB007B59C5 /* Assets.xcassets */; };
 		EC0AA39D2B57A8EB007B59C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC0AA39B2B57A8EB007B59C5 /* LaunchScreen.storyboard */; };
-		EC0AA3A32B57ADBC007B59C5 /* OIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC0AA37E2B57A544007B59C5 /* OIKit.framework */; };
-		EC0AA3A42B57ADBC007B59C5 /* OIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC0AA37E2B57A544007B59C5 /* OIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC0AA3A92B57B419007B59C5 /* Extention-View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* Extention-View.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EC0AA3A52B57ADBC007B59C5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EC0AA3752B57A544007B59C5 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EC0AA37D2B57A544007B59C5;
-			remoteInfo = OIKit;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		EC0AA3A72B57ADBC007B59C5 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EC0AA3A42B57ADBC007B59C5 /* OIKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EC0AA37E2B57A544007B59C5 /* OIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,7 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC0AA3A32B57ADBC007B59C5 /* OIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,12 +140,10 @@
 				EC0AA38A2B57A8E9007B59C5 /* Sources */,
 				EC0AA38B2B57A8E9007B59C5 /* Frameworks */,
 				EC0AA38C2B57A8E9007B59C5 /* Resources */,
-				EC0AA3A72B57ADBC007B59C5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EC0AA3A62B57ADBC007B59C5 /* PBXTargetDependency */,
 			);
 			name = OIKitPattern;
 			productName = OIKitPattern;
@@ -258,14 +229,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EC0AA3A62B57ADBC007B59C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EC0AA37D2B57A544007B59C5 /* OIKit */;
-			targetProxy = EC0AA3A52B57ADBC007B59C5 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EC0AA3962B57A8E9007B59C5 /* Main.storyboard */ = {

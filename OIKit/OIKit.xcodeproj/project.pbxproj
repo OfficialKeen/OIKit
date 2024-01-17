@@ -8,40 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		EC0AA3822B57A544007B59C5 /* OIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0AA3812B57A544007B59C5 /* OIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EC0AA3892B57A79C007B59C5 /* Extention-StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3882B57A79C007B59C5 /* Extention-StackView.swift */; };
-		EC0AA3912B57A8E9007B59C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3902B57A8E9007B59C5 /* AppDelegate.swift */; };
-		EC0AA3932B57A8E9007B59C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3922B57A8E9007B59C5 /* SceneDelegate.swift */; };
-		EC0AA3952B57A8E9007B59C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3942B57A8E9007B59C5 /* ViewController.swift */; };
-		EC0AA3982B57A8E9007B59C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC0AA3962B57A8E9007B59C5 /* Main.storyboard */; };
-		EC0AA39A2B57A8EB007B59C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC0AA3992B57A8EB007B59C5 /* Assets.xcassets */; };
-		EC0AA39D2B57A8EB007B59C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC0AA39B2B57A8EB007B59C5 /* LaunchScreen.storyboard */; };
-		EC0AA3A92B57B419007B59C5 /* Extention-View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* Extention-View.swift */; };
+		EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3882B57A79C007B59C5 /* StackView.swift */; };
+		EC0AA3A92B57B419007B59C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EC0AA37E2B57A544007B59C5 /* OIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AA3812B57A544007B59C5 /* OIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OIKit.h; sourceTree = "<group>"; };
-		EC0AA3882B57A79C007B59C5 /* Extention-StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention-StackView.swift"; sourceTree = "<group>"; };
-		EC0AA38E2B57A8E9007B59C5 /* OIKitPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OIKitPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC0AA3902B57A8E9007B59C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC0AA3922B57A8E9007B59C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EC0AA3942B57A8E9007B59C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EC0AA3972B57A8E9007B59C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EC0AA3992B57A8EB007B59C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EC0AA39C2B57A8EB007B59C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EC0AA39E2B57A8EB007B59C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC0AA3A82B57B419007B59C5 /* Extention-View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention-View.swift"; sourceTree = "<group>"; };
+		EC0AA3882B57A79C007B59C5 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		EC0AA3A82B57B419007B59C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EC0AA37B2B57A544007B59C5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EC0AA38B2B57A8E9007B59C5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -55,7 +34,6 @@
 			isa = PBXGroup;
 			children = (
 				EC0AA3802B57A544007B59C5 /* OIKit */,
-				EC0AA38F2B57A8E9007B59C5 /* OIKitPattern */,
 				EC0AA37F2B57A544007B59C5 /* Products */,
 				EC0AA3A22B57ADBC007B59C5 /* Frameworks */,
 			);
@@ -65,7 +43,6 @@
 			isa = PBXGroup;
 			children = (
 				EC0AA37E2B57A544007B59C5 /* OIKit.framework */,
-				EC0AA38E2B57A8E9007B59C5 /* OIKitPattern.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,24 +51,10 @@
 			isa = PBXGroup;
 			children = (
 				EC0AA3812B57A544007B59C5 /* OIKit.h */,
-				EC0AA3882B57A79C007B59C5 /* Extention-StackView.swift */,
-				EC0AA3A82B57B419007B59C5 /* Extention-View.swift */,
+				EC0AA3882B57A79C007B59C5 /* StackView.swift */,
+				EC0AA3A82B57B419007B59C5 /* View.swift */,
 			);
 			path = OIKit;
-			sourceTree = "<group>";
-		};
-		EC0AA38F2B57A8E9007B59C5 /* OIKitPattern */ = {
-			isa = PBXGroup;
-			children = (
-				EC0AA3902B57A8E9007B59C5 /* AppDelegate.swift */,
-				EC0AA3922B57A8E9007B59C5 /* SceneDelegate.swift */,
-				EC0AA3942B57A8E9007B59C5 /* ViewController.swift */,
-				EC0AA3962B57A8E9007B59C5 /* Main.storyboard */,
-				EC0AA3992B57A8EB007B59C5 /* Assets.xcassets */,
-				EC0AA39B2B57A8EB007B59C5 /* LaunchScreen.storyboard */,
-				EC0AA39E2B57A8EB007B59C5 /* Info.plist */,
-			);
-			path = OIKitPattern;
 			sourceTree = "<group>";
 		};
 		EC0AA3A22B57ADBC007B59C5 /* Frameworks */ = {
@@ -133,23 +96,6 @@
 			productReference = EC0AA37E2B57A544007B59C5 /* OIKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EC0AA38D2B57A8E9007B59C5 /* OIKitPattern */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EC0AA39F2B57A8EB007B59C5 /* Build configuration list for PBXNativeTarget "OIKitPattern" */;
-			buildPhases = (
-				EC0AA38A2B57A8E9007B59C5 /* Sources */,
-				EC0AA38B2B57A8E9007B59C5 /* Frameworks */,
-				EC0AA38C2B57A8E9007B59C5 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OIKitPattern;
-			productName = OIKitPattern;
-			productReference = EC0AA38E2B57A8E9007B59C5 /* OIKitPattern.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -163,9 +109,6 @@
 					EC0AA37D2B57A544007B59C5 = {
 						CreatedOnToolsVersion = 14.3.1;
 						LastSwiftMigration = 1430;
-					};
-					EC0AA38D2B57A8E9007B59C5 = {
-						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -183,7 +126,6 @@
 			projectRoot = "";
 			targets = (
 				EC0AA37D2B57A544007B59C5 /* OIKit */,
-				EC0AA38D2B57A8E9007B59C5 /* OIKitPattern */,
 			);
 		};
 /* End PBXProject section */
@@ -196,16 +138,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EC0AA38C2B57A8E9007B59C5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC0AA39D2B57A8EB007B59C5 /* LaunchScreen.storyboard in Resources */,
-				EC0AA39A2B57A8EB007B59C5 /* Assets.xcassets in Resources */,
-				EC0AA3982B57A8E9007B59C5 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -213,41 +145,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC0AA3892B57A79C007B59C5 /* Extention-StackView.swift in Sources */,
-				EC0AA3A92B57B419007B59C5 /* Extention-View.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EC0AA38A2B57A8E9007B59C5 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC0AA3952B57A8E9007B59C5 /* ViewController.swift in Sources */,
-				EC0AA3912B57A8E9007B59C5 /* AppDelegate.swift in Sources */,
-				EC0AA3932B57A8E9007B59C5 /* SceneDelegate.swift in Sources */,
+				EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */,
+				EC0AA3A92B57B419007B59C5 /* View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		EC0AA3962B57A8E9007B59C5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC0AA3972B57A8E9007B59C5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EC0AA39B2B57A8EB007B59C5 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EC0AA39C2B57A8EB007B59C5 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EC0AA3832B57A544007B59C5 /* Debug */ = {
@@ -435,62 +338,6 @@
 			};
 			name = Release;
 		};
-		EC0AA3A02B57A8EB007B59C5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OIKitPattern/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gletser.OIKitPattern;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		EC0AA3A12B57A8EB007B59C5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OIKitPattern/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gletser.OIKitPattern;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -508,15 +355,6 @@
 			buildConfigurations = (
 				EC0AA3862B57A544007B59C5 /* Debug */,
 				EC0AA3872B57A544007B59C5 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EC0AA39F2B57A8EB007B59C5 /* Build configuration list for PBXNativeTarget "OIKitPattern" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EC0AA3A02B57A8EB007B59C5 /* Debug */,
-				EC0AA3A12B57A8EB007B59C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

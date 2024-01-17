@@ -1,5 +1,5 @@
 //
-//  Extention-StackView.swift
+//  StackView.swift
 //  OIKit
 //
 //  Created by keenoi on 17/01/24.

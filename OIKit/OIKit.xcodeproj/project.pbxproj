@@ -10,6 +10,17 @@
 		EC0AA3822B57A544007B59C5 /* OIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0AA3812B57A544007B59C5 /* OIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3882B57A79C007B59C5 /* StackView.swift */; };
 		EC0AA3A92B57B419007B59C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* View.swift */; };
+		EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085D2B5EB45B006584A6 /* Color.swift */; };
+		EC7E08602B5EB48A006584A6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085F2B5EB48A006584A6 /* Button.swift */; };
+		EC7E08622B5ECB77006584A6 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08612B5ECB77006584A6 /* Padding.swift */; };
+		EC7E08642B5ECBC1006584A6 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08632B5ECBC1006584A6 /* Label.swift */; };
+		EC7E08662B5ECC07006584A6 /* Spacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08652B5ECC07006584A6 /* Spacer.swift */; };
+		EC7E08682B5ECC1B006584A6 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08672B5ECC1B006584A6 /* Image.swift */; };
+		EC7E086A2B5ECC49006584A6 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08692B5ECC49006584A6 /* Anchor.swift */; };
+		EC7E086C2B5ECC59006584A6 /* Rectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E086B2B5ECC59006584A6 /* Rectangle.swift */; };
+		EC7E086E2B5ECC72006584A6 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E086D2B5ECC72006584A6 /* Circle.swift */; };
+		EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */; };
+		EC7E08722B5ECD2A006584A6 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08712B5ECD2A006584A6 /* ScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +28,17 @@
 		EC0AA3812B57A544007B59C5 /* OIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OIKit.h; sourceTree = "<group>"; };
 		EC0AA3882B57A79C007B59C5 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		EC0AA3A82B57B419007B59C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		EC7E085D2B5EB45B006584A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		EC7E085F2B5EB48A006584A6 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		EC7E08612B5ECB77006584A6 /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
+		EC7E08632B5ECBC1006584A6 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		EC7E08652B5ECC07006584A6 /* Spacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacer.swift; sourceTree = "<group>"; };
+		EC7E08672B5ECC1B006584A6 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		EC7E08692B5ECC49006584A6 /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
+		EC7E086B2B5ECC59006584A6 /* Rectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangle.swift; sourceTree = "<group>"; };
+		EC7E086D2B5ECC72006584A6 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLink.swift; sourceTree = "<group>"; };
+		EC7E08712B5ECD2A006584A6 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +75,17 @@
 				EC0AA3812B57A544007B59C5 /* OIKit.h */,
 				EC0AA3882B57A79C007B59C5 /* StackView.swift */,
 				EC0AA3A82B57B419007B59C5 /* View.swift */,
+				EC7E085D2B5EB45B006584A6 /* Color.swift */,
+				EC7E085F2B5EB48A006584A6 /* Button.swift */,
+				EC7E08612B5ECB77006584A6 /* Padding.swift */,
+				EC7E08632B5ECBC1006584A6 /* Label.swift */,
+				EC7E08652B5ECC07006584A6 /* Spacer.swift */,
+				EC7E08672B5ECC1B006584A6 /* Image.swift */,
+				EC7E08692B5ECC49006584A6 /* Anchor.swift */,
+				EC7E086B2B5ECC59006584A6 /* Rectangle.swift */,
+				EC7E086D2B5ECC72006584A6 /* Circle.swift */,
+				EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */,
+				EC7E08712B5ECD2A006584A6 /* ScrollView.swift */,
 			);
 			path = OIKit;
 			sourceTree = "<group>";
@@ -146,7 +179,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */,
+				EC7E08682B5ECC1B006584A6 /* Image.swift in Sources */,
+				EC7E08622B5ECB77006584A6 /* Padding.swift in Sources */,
+				EC7E08662B5ECC07006584A6 /* Spacer.swift in Sources */,
+				EC7E08642B5ECBC1006584A6 /* Label.swift in Sources */,
+				EC7E086C2B5ECC59006584A6 /* Rectangle.swift in Sources */,
+				EC7E086E2B5ECC72006584A6 /* Circle.swift in Sources */,
+				EC7E08722B5ECD2A006584A6 /* ScrollView.swift in Sources */,
 				EC0AA3A92B57B419007B59C5 /* View.swift in Sources */,
+				EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */,
+				EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */,
+				EC7E086A2B5ECC49006584A6 /* Anchor.swift in Sources */,
+				EC7E08602B5EB48A006584A6 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

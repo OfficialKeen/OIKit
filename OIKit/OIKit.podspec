@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "OIKit"
-  spec.version      = "1.3.1"
+  spec.version      = "1.4.0"
   spec.summary      = "OIKit DSL (Domain Specific Language)"
   spec.description  = "Easy coding with UIKit"
 
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "13.0"
   spec.source       = { :git => "https://github.com/OfficialKeen/OIKit.git", :tag => spec.version.to_s }
   spec.source_files  = "OIKit/**/*.{swift}"
-  spec.swift_versions = "5.0"
+  spec.swift_versions = "4.*"
   
   # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"

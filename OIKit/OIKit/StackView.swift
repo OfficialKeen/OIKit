@@ -183,7 +183,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func HStack(spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill, @UIStackViewBuilder content: () -> [UIView]) -> UIStackView {
+    func HStack(spacing: CGFloat = 0, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fill, @UIStackViewBuilder content: () -> [UIView]) -> UIStackView {
         let views = content()
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .horizontal
@@ -205,7 +205,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func HStack(centerXY: Bool = false, spacing: CGFloat = 0, alignment: UIStackView.Alignment = .center, distribution: UIStackView.Distribution = .fill, @UIStackViewBuilder content: () -> [UIView]) -> UIStackView {
+    func HStack(centerXY: Bool = false, spacing: CGFloat = 0, alignment: UIStackView.Alignment = .center, distribution: UIStackView.Distribution = .fill, @UIStackViewBuilder content: () -> [UIView]) -> UIStackView {
         let views = content()
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .horizontal
@@ -328,75 +328,5 @@ extension UIView {
         }
 
         return overlayContainer
-    }
-
-    @discardableResult
-    public func VStack(centerXY: Bool = false, spacing: CGFloat = 0, alignment: UIStackView.Alignment = .center, distribution: UIStackView.Distribution = .fill, @UIStackViewBuilder content: () -> [UIView?]) -> UIStackView {
-        let views = content().compactMap { $0 }
-
-        let stackView = UIStackView(arrangedSubviews: views)
-        stackView.axis = .vertical
-        stackView.spacing = spacing
-        stackView.alignment = alignment
-        stackView.distribution = distribution
-
-        addSubview(stackView)
-
-        // Adjust stackView constraints or layout if needed
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        if centerXY {
-            NSLayoutConstraint.activate([
-                stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-                stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                stackView.topAnchor.constraint(equalTo: topAnchor),
-                stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            ])
-        }
-
-        return stackView
-    }
-
-    @discardableResult
-    public func VStack(centerXY: Bool = false, spacing: CGFloat = 0, alignment: UIStackView.Alignment = .center, distribution: UIStackView.Distribution = .fill, @UIStackViewBuilder content: () -> UIViewController?) -> UIStackView {
-        if let viewController = content() {
-            let stackView = UIStackView(arrangedSubviews: [viewController.view])
-            stackView.axis = .vertical
-            stackView.spacing = spacing
-            stackView.alignment = alignment
-            stackView.distribution = distribution
-
-            addSubview(stackView)
-
-            // Adjust stackView constraints or layout if needed
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-
-            if centerXY {
-                NSLayoutConstraint.activate([
-                    stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                    stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                    stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-                    stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
-                ])
-            } else {
-                NSLayoutConstraint.activate([
-                    stackView.topAnchor.constraint(equalTo: topAnchor),
-                    stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                    stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                    stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-                ])
-            }
-
-            return stackView
-        } else {
-            return UIStackView()
-        }
     }
 }

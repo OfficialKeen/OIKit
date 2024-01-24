@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum FontDesign {
+public enum FontDesign {
     case `default`
     case monospaced
     case serif
@@ -29,13 +29,13 @@ enum FontDesign {
 
 extension UILabel {
     @discardableResult
-    func text(_ text: String) -> Self {
+    public func text(_ text: String) -> Self {
         self.text = text
         return self
     }
 
     @discardableResult
-    func font(_ size: CGFloat, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
+    public func font(_ size: CGFloat, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
         let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: weight]
 
         let fontDescriptor = UIFontDescriptor(fontAttributes: [
@@ -48,31 +48,31 @@ extension UILabel {
     }
 
     @discardableResult
-    func font(_ style: UIFont.TextStyle) -> Self {
+    public func font(_ style: UIFont.TextStyle) -> Self {
         self.font = UIFont.preferredFont(forTextStyle: style)
         return self
     }
 
     @discardableResult
-    func fontDesign(_ design: FontDesign) -> Self {
+    public func fontDesign(_ design: FontDesign) -> Self {
         return self.font(self.font?.pointSize ?? UIFont.systemFontSize, weight: .regular, design: design)
     }
 
 
     @discardableResult
-    func fontWeight(_ weight: UIFont.Weight) -> Self {
+    public func fontWeight(_ weight: UIFont.Weight) -> Self {
         let existingFont = self.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
         self.font = UIFont.systemFont(ofSize: existingFont.pointSize, weight: weight)
         return self
     }
 
     @discardableResult
-    func bold() -> Self {
+    public func bold() -> Self {
         return fontWeight(.bold)
     }
 
     @discardableResult
-    func underline(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
+    public func underline(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
         if isActive {
             addUnderline(color: color)
         }
@@ -80,13 +80,13 @@ extension UILabel {
     }
 
     @discardableResult
-    func italic() -> Self {
+    public func italic() -> Self {
         apply(style: .font, value: UIFont.italicSystemFont(ofSize: self.font?.pointSize ?? UIFont.systemFontSize))
         return self
     }
 
     @discardableResult
-    func strikethrough(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
+    public func strikethrough(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
         if isActive {
             apply(style: .strikethroughStyle, value: NSUnderlineStyle.single.rawValue, color: color)
         }
@@ -94,13 +94,13 @@ extension UILabel {
     }
 
     @discardableResult
-    func foregroundColor(_ color: UIColor) -> Self {
+    public func foregroundColor(_ color: UIColor) -> Self {
         self.textColor = color
         return self
     }
 
     @discardableResult
-    func alignment(_ textAlignment: NSTextAlignment) -> Self {
+    public func alignment(_ textAlignment: NSTextAlignment) -> Self {
         let container = UIView()
         container.addSubview(self)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -126,14 +126,14 @@ extension UILabel {
     }
 
     @discardableResult
-    func multilineTextAlignment(_ alignment: NSTextAlignment = .center) -> Self {
+    public func multilineTextAlignment(_ alignment: NSTextAlignment = .center) -> Self {
         self.textAlignment = alignment
         self.numberOfLines = 0
         return self
     }
     
     @discardableResult
-    func baselineOffset(_ baselineOffset: CGFloat) -> Self {
+    public func baselineOffset(_ baselineOffset: CGFloat) -> Self {
         let attributedString = NSMutableAttributedString(string: self.text ?? "")
         attributedString.addAttribute(.baselineOffset, value: baselineOffset, range: NSRange(location: 0, length: attributedString.length))
         self.attributedText = attributedString
@@ -141,7 +141,7 @@ extension UILabel {
     }
     
     @discardableResult
-    func kerning(_ kerning: CGFloat) -> Self {
+    public func kerning(_ kerning: CGFloat) -> Self {
         let attributedString = NSMutableAttributedString(string: self.text ?? "")
         attributedString.addAttribute(.kern, value: kerning, range: NSRange(location: 0, length: attributedString.length))
         self.attributedText = attributedString

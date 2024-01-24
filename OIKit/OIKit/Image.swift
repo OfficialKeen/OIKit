@@ -9,13 +9,13 @@ import UIKit
 
 extension UIImageView {
     @discardableResult
-    func image(_ name: String) -> Self {
+    public func image(_ name: String) -> Self {
         self.image = UIImage(named: name)
         return self
     }
     
     @discardableResult
-    func image(systemName: String) -> Self {
+    public func image(systemName: String) -> Self {
         if #available(iOS 13.0, *) {
             self.image = UIImage(systemName: systemName)
         } else {
@@ -25,18 +25,18 @@ extension UIImageView {
     }
     
     @discardableResult
-    func renderingMode(_ renderingMode: UIImage.RenderingMode) -> Self {
+    public func renderingMode(_ renderingMode: UIImage.RenderingMode) -> Self {
         self.image = self.image?.withRenderingMode(renderingMode)
         return self
     }
     
     @discardableResult
-    func foregroundColor(_ color: UIColor) -> Self {
+    public func foregroundColor(_ color: UIColor) -> Self {
         self.tintColor = color
         return self
     }
     
-    func foregroundColor(_ hex: UInt32) -> Self {
+    public func foregroundColor(_ hex: UInt32) -> Self {
         let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
         let blue = CGFloat(hex & 0x0000FF) / 255.0
@@ -47,35 +47,35 @@ extension UIImageView {
     }
     
     @discardableResult
-    func resizable() -> Self {
+    public func resizable() -> Self {
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
         return self
     }
     
     @discardableResult
-    func scaledToFill() -> Self {
+    public func scaledToFill() -> Self {
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
         return self
     }
     
     @discardableResult
-    func scaledToFit() -> Self {
+    public func scaledToFit() -> Self {
         self.contentMode = .scaleAspectFit
         self.clipsToBounds = true
         return self
     }
     
     @discardableResult
-    func clipped() -> Self {
+    public func clipped() -> Self {
         self.clipsToBounds = true
         self.layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    func aspectRatio(aspectRatio: CGSize? = nil, contentMode: UIView.ContentMode) -> Self {
+    public func aspectRatio(aspectRatio: CGSize? = nil, contentMode: UIView.ContentMode) -> Self {
         self.contentMode = contentMode
         self.clipsToBounds = true
         
@@ -88,14 +88,14 @@ extension UIImageView {
         return self
     }
     
-    enum Alignment {
+    public enum Alignment {
         case center
         case leading
         case trailing
     }
     
     @discardableResult
-    func frame(width: CGFloat?, height: CGFloat?, alignment: Alignment? = nil) -> Self {
+    public func frame(width: CGFloat?, height: CGFloat?, alignment: Alignment? = nil) -> Self {
         if let width = width {
             self.widthAnchor.constraint(equalToConstant: width).isActive = true
         }
@@ -121,7 +121,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    func frame(
+    public func frame(
         width: CGFloat? = nil,
         height: CGFloat? = nil,
         minWidth: CGFloat? = nil,

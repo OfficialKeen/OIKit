@@ -15,7 +15,7 @@ class NavigationLinkView: UIView {
     private var action: Action?
 
     @discardableResult
-    func content(_ action: @escaping Action, setup block: () -> Void) -> NavigationLinkView {
+    public func content(_ action: @escaping Action, setup block: () -> Void) -> NavigationLinkView {
         block()
         self.action = action
 
@@ -29,7 +29,7 @@ class NavigationLinkView: UIView {
         action?()
     }
 
-    func frame(width: CGFloat, height: CGFloat) {
+    public func frame(width: CGFloat, height: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         widthAnchor.constraint(equalToConstant: width).isActive = true
         heightAnchor.constraint(equalToConstant: height).isActive = true

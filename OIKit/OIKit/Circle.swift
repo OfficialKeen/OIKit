@@ -45,13 +45,13 @@ class CircleView: UIView {
 
 extension CircleView {
     @discardableResult
-    func fill(_ color: UIColor) -> CircleView {
+    public func fill(_ color: UIColor) -> CircleView {
         fillColor = color
         return self
     }
     
     @discardableResult
-    func shadow(color: UIColor, radius: CGFloat, opacity: Float, offset: CGSize) -> CircleView {
+    public func shadow(color: UIColor, radius: CGFloat, opacity: Float, offset: CGSize) -> CircleView {
         layer.shadowColor = color.cgColor
         layer.shadowRadius = radius
         layer.shadowOpacity = opacity
@@ -65,7 +65,7 @@ extension CircleView {
     }
     
     @discardableResult
-    func stroke(_ color: UIColor? = .black, style: StrokeStyle) -> CircleView {
+    public func stroke(_ color: UIColor? = .black, style: StrokeStyle) -> CircleView {
         let borderStyle = BorderStyle(style)
         layer.borderColor = color?.cgColor
         layer.borderWidth = style.lineWidth

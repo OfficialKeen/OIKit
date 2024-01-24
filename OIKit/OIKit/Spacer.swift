@@ -7,10 +7,10 @@
 
 import UIKit
 
-class Spacer: UIView {
+public class Spacer: UIView {
     let minLength: CGFloat?
 
-    init(minLength: CGFloat? = nil) {
+    public init(minLength: CGFloat? = nil) {
         self.minLength = minLength
         super.init(frame: .zero)
         setContentHuggingPriority(.defaultLow, for: .vertical)

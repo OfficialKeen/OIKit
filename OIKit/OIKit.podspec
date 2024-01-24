@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "13.0"
   spec.source       = { :git => "https://github.com/OfficialKeen/OIKit.git", :tag => spec.version.to_s }
   spec.source_files  = "OIKit/**/*.{swift}"
-  spec.swift_versions = "4.*"
+  spec.swift_versions = "4"
   
   # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"

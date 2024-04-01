@@ -10,6 +10,7 @@
 		EC0AA3822B57A544007B59C5 /* OIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0AA3812B57A544007B59C5 /* OIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3882B57A79C007B59C5 /* StackView.swift */; };
 		EC0AA3A92B57B419007B59C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* View.swift */; };
+		EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A1EA02BBAFB250050D2C9 /* TextView.swift */; };
 		EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085D2B5EB45B006584A6 /* Color.swift */; };
 		EC7E08602B5EB48A006584A6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085F2B5EB48A006584A6 /* Button.swift */; };
 		EC7E08622B5ECB77006584A6 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08612B5ECB77006584A6 /* Padding.swift */; };
@@ -32,6 +33,7 @@
 		EC0AA3812B57A544007B59C5 /* OIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OIKit.h; sourceTree = "<group>"; };
 		EC0AA3882B57A79C007B59C5 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		EC0AA3A82B57B419007B59C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		EC3A1EA02BBAFB250050D2C9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EC7E085D2B5EB45B006584A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EC7E085F2B5EB48A006584A6 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		EC7E08612B5ECB77006584A6 /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				ECA8BD2C2BB9B10700EBB673 /* CollectionView.swift */,
 				ECA8BD2E2BB9B22A00EBB673 /* Segmented.swift */,
 				ECA8BD302BB9B2D900EBB673 /* SearchBar.swift */,
+				EC3A1EA02BBAFB250050D2C9 /* TextView.swift */,
 			);
 			path = OIKit;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */,
 				EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */,
 				EC7E086A2B5ECC49006584A6 /* Anchor.swift in Sources */,
+				EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */,
 				ECA8BD312BB9B2D900EBB673 /* SearchBar.swift in Sources */,
 				EC7E08602B5EB48A006584A6 /* Button.swift in Sources */,
 			);

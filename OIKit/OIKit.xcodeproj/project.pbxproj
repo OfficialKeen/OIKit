@@ -21,6 +21,10 @@
 		EC7E086E2B5ECC72006584A6 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E086D2B5ECC72006584A6 /* Circle.swift */; };
 		EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */; };
 		EC7E08722B5ECD2A006584A6 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08712B5ECD2A006584A6 /* ScrollView.swift */; };
+		ECA8BD2B2BB9AE7D00EBB673 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD2A2BB9AE7D00EBB673 /* TextField.swift */; };
+		ECA8BD2D2BB9B10700EBB673 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD2C2BB9B10700EBB673 /* CollectionView.swift */; };
+		ECA8BD2F2BB9B22A00EBB673 /* Segmented.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD2E2BB9B22A00EBB673 /* Segmented.swift */; };
+		ECA8BD312BB9B2D900EBB673 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD302BB9B2D900EBB673 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		EC7E086D2B5ECC72006584A6 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLink.swift; sourceTree = "<group>"; };
 		EC7E08712B5ECD2A006584A6 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		ECA8BD2A2BB9AE7D00EBB673 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		ECA8BD2C2BB9B10700EBB673 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		ECA8BD2E2BB9B22A00EBB673 /* Segmented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segmented.swift; sourceTree = "<group>"; };
+		ECA8BD302BB9B2D900EBB673 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,10 @@
 				EC7E086D2B5ECC72006584A6 /* Circle.swift */,
 				EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */,
 				EC7E08712B5ECD2A006584A6 /* ScrollView.swift */,
+				ECA8BD2A2BB9AE7D00EBB673 /* TextField.swift */,
+				ECA8BD2C2BB9B10700EBB673 /* CollectionView.swift */,
+				ECA8BD2E2BB9B22A00EBB673 /* Segmented.swift */,
+				ECA8BD302BB9B2D900EBB673 /* SearchBar.swift */,
 			);
 			path = OIKit;
 			sourceTree = "<group>";
@@ -135,7 +147,7 @@
 		EC0AA3752B57A544007B59C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
@@ -181,8 +193,11 @@
 				EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */,
 				EC7E08682B5ECC1B006584A6 /* Image.swift in Sources */,
 				EC7E08622B5ECB77006584A6 /* Padding.swift in Sources */,
+				ECA8BD2B2BB9AE7D00EBB673 /* TextField.swift in Sources */,
 				EC7E08662B5ECC07006584A6 /* Spacer.swift in Sources */,
 				EC7E08642B5ECBC1006584A6 /* Label.swift in Sources */,
+				ECA8BD2F2BB9B22A00EBB673 /* Segmented.swift in Sources */,
+				ECA8BD2D2BB9B10700EBB673 /* CollectionView.swift in Sources */,
 				EC7E086C2B5ECC59006584A6 /* Rectangle.swift in Sources */,
 				EC7E086E2B5ECC72006584A6 /* Circle.swift in Sources */,
 				EC7E08722B5ECD2A006584A6 /* ScrollView.swift in Sources */,
@@ -190,6 +205,7 @@
 				EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */,
 				EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */,
 				EC7E086A2B5ECC49006584A6 /* Anchor.swift in Sources */,
+				ECA8BD312BB9B2D900EBB673 /* SearchBar.swift in Sources */,
 				EC7E08602B5EB48A006584A6 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

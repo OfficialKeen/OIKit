@@ -15,6 +15,12 @@ extension UIView {
     }
     
     @discardableResult
+    public func isHidden(_ bool: Bool = true) -> Self {
+        self.isHidden = bool
+        return self
+    }
+    
+    @discardableResult
     public func background(_ hex: UInt32) -> Self {
         let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0

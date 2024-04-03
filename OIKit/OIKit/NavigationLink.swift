@@ -8,9 +8,9 @@
 import UIKit
 
 
-class NavigationLinkView: UIView {
+public class NavigationLinkView: UIView {
 
-    typealias Action = () -> Void
+    public typealias Action = () -> Void
 
     private var action: Action?
 

@@ -136,6 +136,13 @@ extension UIView {
 }
 
 public struct Shadow {
+    public init(color: UIColor, radius: CGFloat, opacity: Float, offset: CGSize) {
+        self.color = color
+        self.radius = radius
+        self.opacity = opacity
+        self.offset = offset
+    }
+
     var color: UIColor
     var radius: CGFloat
     var opacity: Float

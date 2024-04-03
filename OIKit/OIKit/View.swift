@@ -141,3 +141,50 @@ public struct Shadow {
     var opacity: Float
     var offset: CGSize
 }
+
+extension UIView {
+    @discardableResult
+    private func addView(paddingTop: CGFloat = 0, paddingLeft: CGFloat = 0, paddingBottom: CGFloat = 0, paddingRight: CGFloat = 0, @UIStackViewBuilder content: () -> [UIView]) -> UIView {
+        let container = UIView()
+        addSubview(container)
+        container.translatesAutoresizingMaskIntoConstraints = false
+        
+        let guide = self.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            container.topAnchor.constraint(equalTo: guide.topAnchor, constant: paddingTop),
+            container.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: paddingLeft),
+            container.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -paddingRight),
+            container.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -paddingBottom)
+        ])
+        
+        let views = content()
+        for view in views {
+            container.addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                view.topAnchor.constraint(equalTo: container.topAnchor),
+                view.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+                view.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+                view.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+            ])
+        }
+        
+        return container
+    }
+    
+    @discardableResult
+    public func addView(top: CGFloat = 0, left: CGFloat = 0, bottom: CGFloat = 0, right: CGFloat = 0, @UIStackViewBuilder content: () -> [UIView]) -> UIView {
+        return addView(paddingTop: top, paddingLeft: left, paddingBottom: bottom, paddingRight: right, content: content)
+    }
+    
+    @discardableResult
+    public func addView(padding: CGFloat = 0, @UIStackViewBuilder content: () -> [UIView]) -> UIView {
+        return addView(paddingTop: padding, paddingLeft: padding, paddingBottom: padding, paddingRight: padding, content: content)
+    }
+    
+    @discardableResult
+    public func addView(padding: CGFloat = 0, verticalPadding: CGFloat = 0, horizontalPadding: CGFloat = 0, @UIStackViewBuilder content: () -> [UIView]) -> UIView {
+        return addView(paddingTop: padding + verticalPadding, paddingLeft: padding + horizontalPadding, paddingBottom: padding + verticalPadding, paddingRight: padding + horizontalPadding, content: content)
+    }
+}

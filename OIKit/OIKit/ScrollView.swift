@@ -14,6 +14,46 @@ struct OIContentViewBuilder {
     }
 }
 
+extension UIScrollView {
+    @discardableResult
+    public func content(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, @OIContentViewBuilder content: (UIView) -> UIView) -> UIScrollView {
+        let contentView = content(UIView())
+        
+        self.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        if showIndicatorScroll {
+            self.showsVerticalScrollIndicator = true
+            self.showsHorizontalScrollIndicator = true
+        } else {
+            self.showsVerticalScrollIndicator = false
+            self.showsHorizontalScrollIndicator = false
+        }
+        
+        self.isPagingEnabled = isPaging
+        
+        if let multiplier = multiplier {
+            NSLayoutConstraint.activate([
+                contentView.topAnchor.constraint(equalTo: self.topAnchor),
+                contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+                contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                contentView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: multiplier)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                contentView.topAnchor.constraint(equalTo: self.topAnchor),
+                contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+                contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                contentView.widthAnchor.constraint(equalTo: self.widthAnchor)
+            ])
+        }
+        
+        return self
+    }
+}
+
 extension UIView {
     @discardableResult
     public func scrollViewContent(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, @OIContentViewBuilder content: (UIView) -> UIView) -> UIScrollView {

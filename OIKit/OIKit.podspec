@@ -8,9 +8,9 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "OIKit"
-  spec.version      = "1.8.11"
+  spec.version      = "1.8.12"
   spec.summary      = "OIKit DSL (Domain Specific Language)"
-  spec.description  = "Easy coding with UIKit"
+  spec.description  = "Easy coding with OIKit"
 
   spec.homepage     = "https://github.com/OfficialKeen/OIKit"
   spec.license      = "MIT"

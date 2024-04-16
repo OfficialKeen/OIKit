@@ -8,15 +8,6 @@
 import UIKit
 
 @resultBuilder
-struct OIScrollViewBuilder {
-    static func buildBlock(_ content: UIView) -> UIView {
-        return content
-    }
-}
-
-import UIKit
-
-@resultBuilder
 struct OIContentViewBuilder {
     static func buildBlock(_ content: UIView) -> UIView {
         return content
@@ -25,7 +16,7 @@ struct OIContentViewBuilder {
 
 extension UIView {
     @discardableResult
-    func scrollViewContent(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, @OIContentViewBuilder content: (UIView) -> UIView) -> UIScrollView {
+    public func scrollViewContent(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, @OIContentViewBuilder content: (UIView) -> UIView) -> UIScrollView {
         let scrollView = UIScrollView()
         let contentView = content(UIView())
         

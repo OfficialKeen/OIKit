@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Rectangle: UIView {
+public class Rectangle: UIView {
     
     init() {
         super.init(frame: .zero)

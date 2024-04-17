@@ -12,15 +12,22 @@ struct OIContentViewBuilder {
     static func buildBlock(_ content: UIView) -> UIView {
         return content
     }
+    
+    static func buildBlock(_ components: UIView?...) -> [UIView] {
+        return components.compactMap { $0 }
+    }
 }
 
 extension UIScrollView {
     @discardableResult
-    public func content(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, @OIContentViewBuilder content: (UIView) -> UIView) -> UIScrollView {
-        let contentView = content(UIView())
+    public func content(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, @OIContentViewBuilder content: () -> [UIView?]) -> UIScrollView {
+        let contentViewArray = content()
+        let compactedContentViews = contentViewArray.compactMap { $0 }
         
-        self.addSubview(contentView)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        for contentView in compactedContentViews {
+            self.addSubview(contentView)
+            contentView.translatesAutoresizingMaskIntoConstraints = false
+        }
         
         if showIndicatorScroll {
             self.showsVerticalScrollIndicator = true
@@ -32,21 +39,15 @@ extension UIScrollView {
         
         self.isPagingEnabled = isPaging
         
-        if let multiplier = multiplier {
+        // Multiplier hanya digunakan untuk contentView pertama
+        if let firstContentView = compactedContentViews.first {
+            let widthMultiplier = multiplier ?? 1.0
             NSLayoutConstraint.activate([
-                contentView.topAnchor.constraint(equalTo: self.topAnchor),
-                contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-                contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                contentView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: multiplier)
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                contentView.topAnchor.constraint(equalTo: self.topAnchor),
-                contentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-                contentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                contentView.widthAnchor.constraint(equalTo: self.widthAnchor)
+                firstContentView.topAnchor.constraint(equalTo: self.topAnchor),
+                firstContentView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                firstContentView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+                firstContentView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                firstContentView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: widthMultiplier)
             ])
         }
         

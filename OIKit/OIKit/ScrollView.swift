@@ -50,7 +50,29 @@ extension UIScrollView {
             ])
         }
         
+        // Panggil observer untuk menangani notifikasi keyboard
+        self.adjustForKeyboard()
+        
         return self
+    }
+    
+    func adjustForKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func handleKeyboardWillShow(notification: Notification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        self.contentInset = contentInsets
+        self.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func handleKeyboardWillHide(notification: Notification) {
+        let contentInsets = UIEdgeInsets.zero
+        self.contentInset = contentInsets
+        self.scrollIndicatorInsets = contentInsets
     }
 }
 

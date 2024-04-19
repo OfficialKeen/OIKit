@@ -51,6 +51,12 @@ extension UIButton {
     }
     
     @discardableResult
+    public func alignment(_ alignment: NSTextAlignment) -> UIButton {
+        titleLabel?.textAlignment = alignment
+        return self
+    }
+    
+    @discardableResult
     public func foregroundColor(_ color: UIColor, for state: UIControl.State = .normal) -> UIButton {
         setTitleColor(color, for: state)
         return self

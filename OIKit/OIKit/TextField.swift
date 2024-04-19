@@ -88,6 +88,12 @@ extension UITextField {
     }
     
     @discardableResult
+    public func keyboardType(_ type: UIKeyboardType) -> UITextField {
+        self.keyboardType = type
+        return self
+    }
+    
+    @discardableResult
     public func padding(left: CGFloat? = nil, top: CGFloat? = nil, right: CGFloat? = nil, bottom: CGFloat? = nil) -> UITextField {
         let leftPadding = left ?? 0
         let topPadding = top ?? 0

@@ -31,7 +31,7 @@ extension UISegmentedControl {
     }
     
     @discardableResult
-    public func selectedColor(hex: UInt) -> UISegmentedControl {
+    public func selectedColor(_ hex: UInt) -> UISegmentedControl {
         if #available(iOS 13.0, *) {
             selectedSegmentTintColor = UIColor(hex: UInt32(hex))
         } else {
@@ -51,8 +51,20 @@ extension UISegmentedControl {
     }
     
     @discardableResult
+    public func titleSelectColor(_ hex: UInt) -> UISegmentedControl {
+        setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hex: UInt32(hex))], for: .selected)
+        return self
+    }
+    
+    @discardableResult
     public func titleSelectColor(_ color: UIColor) -> UISegmentedControl {
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: color], for: .selected)
+        return self
+    }
+    
+    @discardableResult
+    public func titleUnselectColor(_ hex: UInt) -> UISegmentedControl {
+        setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hex: UInt32(hex))], for: .normal)
         return self
     }
     
@@ -63,8 +75,29 @@ extension UISegmentedControl {
     }
     
     @discardableResult
+    public func foregroundColor(_ hex: UInt) -> UISegmentedControl {
+        tintColor = UIColor(hex: UInt32(hex))
+        return self
+    }
+    
+    @discardableResult
     public func foregroundColor(_ color: UIColor) -> UISegmentedControl {
         tintColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func fontSize(_ size: CGFloat) -> UISegmentedControl {
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)]
+        setTitleTextAttributes(attributes, for: .normal)
+        return self
+    }
+    
+    @discardableResult
+    public func fontSize(_ size: CGFloat, weight: UIFont.Weight) -> UISegmentedControl {
+        let font = UIFont.systemFont(ofSize: size, weight: weight)
+        let attributes = [NSAttributedString.Key.font: font]
+        setTitleTextAttributes(attributes, for: .normal)
         return self
     }
     

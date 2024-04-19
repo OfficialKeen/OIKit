@@ -7,34 +7,34 @@
 
 import UIKit
 
-class CircleView: UIView {
-    var fillColor: UIColor = .clear {
+public class CircleView: UIView {
+    public var fillColor: UIColor = .clear {
         didSet {
             setNeedsDisplay()
         }
     }
     private var overlayView: UIView?
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .clear
         layer.masksToBounds = true
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         backgroundColor = .clear
         layer.masksToBounds = true
     }
 
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         guard let context = UIGraphicsGetCurrentContext() else { return }
 
         context.setFillColor(fillColor.cgColor)
         context.fillEllipse(in: rect)
     }
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.width / 2.0
 
@@ -43,15 +43,15 @@ class CircleView: UIView {
     }
 }
 
-extension CircleView {
+public extension CircleView {
     @discardableResult
-    public func fill(_ color: UIColor) -> CircleView {
+    func fill(_ color: UIColor) -> CircleView {
         fillColor = color
         return self
     }
     
     @discardableResult
-    public func shadow(color: UIColor, radius: CGFloat, opacity: Float, offset: CGSize) -> CircleView {
+    func shadow(color: UIColor, radius: CGFloat, opacity: Float, offset: CGSize) -> CircleView {
         layer.shadowColor = color.cgColor
         layer.shadowRadius = radius
         layer.shadowOpacity = opacity
@@ -65,7 +65,7 @@ extension CircleView {
     }
     
     @discardableResult
-    public func stroke(_ color: UIColor? = .black, style: StrokeStyle) -> CircleView {
+    func stroke(_ color: UIColor? = .black, style: StrokeStyle) -> CircleView {
         let borderStyle = BorderStyle(style)
         layer.borderColor = color?.cgColor
         layer.borderWidth = style.lineWidth
@@ -80,24 +80,24 @@ extension CircleView {
     }
 }
 
-struct StrokeStyle {
-    var lineWidth: CGFloat = 1.0
-    var lineDashPattern: [NSNumber]? = nil
-    var lineCap: CAShapeLayerLineCap = .butt
-    var lineJoin: CAShapeLayerLineJoin = .miter
+public struct StrokeStyle {
+    public var lineWidth: CGFloat = 1.0
+    public var lineDashPattern: [NSNumber]? = nil
+    public var lineCap: CAShapeLayerLineCap = .butt
+    public var lineJoin: CAShapeLayerLineJoin = .miter
 
-    init(_ builder: (inout StrokeStyle) -> Void) {
+    public init(_ builder: (inout StrokeStyle) -> Void) {
         builder(&self)
     }
 }
 
-struct BorderStyle {
+public struct BorderStyle {
     let lineWidth: CGFloat
     let lineDashPattern: [NSNumber]?
     let lineCap: CAShapeLayerLineCap
     let lineJoin: CAShapeLayerLineJoin
 
-    init(_ style: StrokeStyle) {
+    public init(_ style: StrokeStyle) {
         self.lineWidth = style.lineWidth
         self.lineDashPattern = style.lineDashPattern
         self.lineCap = style.lineCap

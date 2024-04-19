@@ -20,6 +20,32 @@ extension UITextView {
         return self
     }
     
+    public func foregroundColor(_ hex: UInt32) -> Self {
+        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(hex & 0x0000FF) / 255.0
+        
+        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        self.textColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func tintColor(_ color: UIColor) -> Self {
+        self.tintColor = color
+        return self
+    }
+    
+    public func tintColor(_ hex: UInt32) -> Self {
+        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(hex & 0x0000FF) / 255.0
+        
+        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        self.tintColor = color
+        return self
+    }
+    
     @discardableResult
     public func font(_ font: UIFont) -> Self {
         self.font = font

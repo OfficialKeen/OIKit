@@ -9,11 +9,11 @@ import UIKit
 
 extension UIButton {
     public typealias Action = () -> Void
-
+    
     private struct AssociatedKeys {
         static var actionKey: UInt8 = 0
     }
-
+    
     private var action: Action? {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.actionKey) as? Action
@@ -22,20 +22,33 @@ extension UIButton {
             objc_setAssociatedObject(self, &AssociatedKeys.actionKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
-
-    convenience init(_ action: @escaping Action, label block: (UIButton) -> Void) {
+    
+    convenience init(_ action: @escaping Action, setup: (UIButton) -> Void) {
         self.init(type: .system)
-        content(action, label: block)
+        content(action, setup: setup)
     }
-
+    
     @discardableResult
-    public func content(_ action: @escaping Action, label block: (UIButton) -> Void) -> UIButton {
-        block(self)
+    public func content(_ action: @escaping Action, setup: (UIButton) -> Void) -> UIButton {
+        setup(self)
         self.action = action
         addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         return self
     }
-
+    
+    convenience init(_ action: @escaping Action, setup: () -> Void) {
+        self.init(type: .system)
+        content(action, setup: setup)
+    }
+    
+    @discardableResult
+    public func content(_ action: @escaping Action, setup: () -> Void) -> UIButton {
+        setup()
+        self.action = action
+        addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        return self
+    }
+    
     @objc private func buttonTapped() {
         action?()
     }
@@ -51,8 +64,32 @@ extension UIButton {
     }
     
     @discardableResult
-    public func alignment(_ alignment: NSTextAlignment) -> UIButton {
-        titleLabel?.textAlignment = alignment
+    public func textAlignment(_ alignment: UIControl.ContentHorizontalAlignment) -> UIButton {
+        contentHorizontalAlignment = alignment
+        return self
+    }
+    
+    @discardableResult
+    public func textAlignment(_ alignment: UIControl.ContentVerticalAlignment) -> UIButton {
+        contentVerticalAlignment = alignment
+        return self
+    }
+    
+    @discardableResult
+    public func textAlignment(horizontal: UIControl.ContentHorizontalAlignment, vertical: UIControl.ContentVerticalAlignment) -> UIButton {
+        contentHorizontalAlignment = horizontal
+        contentVerticalAlignment = vertical
+        return self
+    }
+    
+    @discardableResult
+    public func textAlignment(horizontal: UIControl.ContentHorizontalAlignment? = nil, vertical: UIControl.ContentVerticalAlignment? = nil) -> UIButton {
+        if let horizontal = horizontal {
+            contentHorizontalAlignment = horizontal
+        }
+        if let vertical = vertical {
+            contentVerticalAlignment = vertical
+        }
         return self
     }
     

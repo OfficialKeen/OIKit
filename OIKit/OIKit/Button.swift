@@ -64,31 +64,53 @@ extension UIButton {
     }
     
     @discardableResult
-    public func textAlignment(_ alignment: UIControl.ContentHorizontalAlignment) -> UIButton {
-        contentHorizontalAlignment = alignment
-        return self
-    }
-    
-    @discardableResult
-    public func textAlignment(_ alignment: UIControl.ContentVerticalAlignment) -> UIButton {
-        contentVerticalAlignment = alignment
-        return self
-    }
-    
-    @discardableResult
-    public func textAlignment(horizontal: UIControl.ContentHorizontalAlignment, vertical: UIControl.ContentVerticalAlignment) -> UIButton {
-        contentHorizontalAlignment = horizontal
-        contentVerticalAlignment = vertical
-        return self
-    }
-    
-    @discardableResult
-    public func textAlignment(horizontal: UIControl.ContentHorizontalAlignment? = nil, vertical: UIControl.ContentVerticalAlignment? = nil) -> UIButton {
+    public func textAlignment(horizontal: UIControl.ContentHorizontalAlignment? = nil, vertical: UIControl.ContentVerticalAlignment? = nil, padding: CGFloat? = nil) -> UIButton {
         if let horizontal = horizontal {
             contentHorizontalAlignment = horizontal
         }
         if let vertical = vertical {
             contentVerticalAlignment = vertical
+        }
+        if let padding = padding {
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: -padding)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func textAlignment(_ vertical: UIControl.ContentVerticalAlignment, _ padding: CGFloat? = nil) -> UIButton {
+        contentVerticalAlignment = vertical
+        if let padding = padding {
+            switch vertical {
+            case .top:
+                titleEdgeInsets.top = padding
+            case .bottom:
+                titleEdgeInsets.bottom = padding
+            case .center, .fill:
+                titleEdgeInsets.top = padding / 2
+                titleEdgeInsets.bottom = padding / 2
+            @unknown default:
+                break
+            }
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func textAlignment(_ horizontal: UIControl.ContentHorizontalAlignment, _ padding: CGFloat? = nil) -> UIButton {
+        contentHorizontalAlignment = horizontal
+        if let padding = padding {
+            switch horizontal {
+            case .left:
+                titleEdgeInsets.left = padding
+            case .right:
+                titleEdgeInsets.right = padding
+            case .center, .fill, .leading, .trailing:
+                titleEdgeInsets.left = padding / 2
+                titleEdgeInsets.right = padding / 2
+            @unknown default:
+                break
+            }
         }
         return self
     }

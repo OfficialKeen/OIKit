@@ -99,12 +99,8 @@ extension UILabel {
         return self
     }
     
-    public func foregroundColor(_ hex: UInt32) -> Self {
-        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(hex & 0x0000FF) / 255.0
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    public func foregroundColor(_ hex: UInt) -> Self {
+        let color = UIColor(hex: UInt32(hex))
         self.textColor = color
         return self
     }
@@ -115,12 +111,8 @@ extension UILabel {
         return self
     }
     
-    public func tintColor(_ hex: UInt32) -> Self {
-        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(hex & 0x0000FF) / 255.0
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    public func tintColor(_ hex: UInt) -> Self {
+        let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
         return self
     }
@@ -208,3 +200,191 @@ extension UILabel {
     }
 }
 
+extension UILabel {
+    @discardableResult
+    public func multilineTextAlignment(_ alignment: NSTextAlignment = .center, _ lines: Int) -> Self {
+        self.textAlignment = alignment
+        self.numberOfLines = lines
+        return self
+    }
+    
+    @discardableResult
+    public func multilineTextAlignment(_ state: OIState<NSTextAlignment>) -> Self {
+        self.textAlignment = state.wrappedValue
+        self.numberOfLines = 0
+        
+        state.didSet = { [weak self] newText in
+            self?.textAlignment = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func text(_ state: OIState<String>) -> Self {
+        self.text = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.text = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func tintColor(_ state: OIState<UIColor>) -> Self {
+        self.tintColor = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.tintColor = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: OIState<UIColor?>) -> Self {
+        self.textColor = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.textColor = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: OIState<UIColor>) -> Self {
+        self.textColor = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.textColor = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    func foregroundColor(_ hex: OIState<UInt>) -> Self {
+        hex.didSet = { [weak self] newHex in
+            let color = UIColor(hex: UInt32(newHex))
+            self?.textColor = color
+        }
+        hex.didSet?(hex.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    func foregroundColor(_ hex: OIState<UInt?>) -> Self {
+        hex.didSet = { [weak self] newHex in
+            guard let hexValue = newHex else { return }
+            let color = UIColor(hex: UInt32(hexValue))
+            self?.textColor = color
+        }
+        hex.didSet?(hex.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func font(_ state: OIState<UIFont?>) -> Self {
+        self.font = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.font = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func font(_ state: OIState<UIFont>) -> Self {
+        self.font = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.font = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func fontWeight(_ state: OIState<UIFont.Weight>) -> Self {
+        let existingFont = self.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        self.font = UIFont.systemFont(ofSize: existingFont.pointSize, weight: state.wrappedValue)
+        state.didSet = { [weak self] newWeight in
+            let updatedFont = UIFont.systemFont(ofSize: existingFont.pointSize, weight: newWeight)
+            self?.font = updatedFont
+        }
+        
+        return self
+    }
+    
+    @discardableResult
+    public func fontDesign(_ state: OIState<FontDesign>) -> Self {
+        let newFont = UIFont(name: state.wrappedValue.fontName, size: self.font?.pointSize ?? UIFont.systemFontSize) ?? UIFont.systemFont(ofSize: 12)
+        
+        self.setFont(newFont)
+        
+        state.didSet = { [weak self] newDesign in
+            let updatedFont = UIFont(name: newDesign.fontName, size: self?.font?.pointSize ?? UIFont.systemFontSize) ?? UIFont.systemFont(ofSize: 12)
+            self?.setFont(updatedFont)
+        }
+        
+        return self
+    }
+    
+    @discardableResult
+    public func baselineOffset(_ state: OIState<CGFloat>, _ isActive: Bool = true) -> Self {
+        if isActive {
+            let attributedString = NSMutableAttributedString(string: self.text ?? "")
+            attributedString.addAttribute(.baselineOffset, value: state.wrappedValue, range: NSRange(location: 0, length: attributedString.length))
+            self.attributedText = attributedString
+            
+            state.didSet = { [weak self] newBaselineOffset in
+                let newAttributedString = NSMutableAttributedString(string: self?.text ?? "")
+                newAttributedString.addAttribute(.baselineOffset, value: newBaselineOffset, range: NSRange(location: 0, length: newAttributedString.length))
+                self?.attributedText = newAttributedString
+            }
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func kerning(_ state: OIState<CGFloat>, _ isActive: Bool = true) -> Self {
+        if isActive {
+            let attributedString = NSMutableAttributedString(string: self.text ?? "")
+            attributedString.addAttribute(.kern, value: state.wrappedValue, range: NSRange(location: 0, length: attributedString.length))
+            self.attributedText = attributedString
+            
+            state.didSet = { [weak self] newKerning in
+                let newAttributedString = NSMutableAttributedString(string: self?.text ?? "")
+                newAttributedString.addAttribute(.kern, value: newKerning, range: NSRange(location: 0, length: newAttributedString.length))
+                self?.attributedText = newAttributedString
+            }
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func strikethrough(_ state: OIState<Bool>, color: UIColor? = nil) -> Self {
+        apply(style: .strikethroughStyle, value: state.wrappedValue ? NSUnderlineStyle.single.rawValue : 0, color: color)
+        
+        state.didSet = { [weak self] isActive in
+            self?.apply(style: .strikethroughStyle, value: isActive ? NSUnderlineStyle.single.rawValue : 0, color: color)
+        }
+        
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: Bool = true) -> Self {
+        self.isEnabled = isEnabled
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+        isEnabled.didSet = { [weak self] newIsEnabled in
+            self?.isEnabled = newIsEnabled
+        }
+        isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
+    }
+}
+
+private extension UIView {
+    func setFont(_ font: UIFont) {
+        if let label = self as? UILabel {
+            label.font = font
+        } else if let button = self as? UIButton {
+            button.titleLabel?.font = font
+        }
+    }
+}

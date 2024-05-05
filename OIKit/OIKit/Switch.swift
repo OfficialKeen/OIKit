@@ -101,3 +101,60 @@ public extension UISwitch {
         valueChangedHandler?(sender)
     }
 }
+
+extension UISwitch {
+    // Method untuk mengatur isOn dengan @UIState
+    func isOn(_ isOn: OIState<Bool>) -> Self {
+        self.isOn = isOn.wrappedValue
+        isOn.didSet = { [weak self] newValue in
+            self?.isOn = newValue
+        }
+        return self
+    }
+    
+    @discardableResult
+    func onTintColor(_ color: OIState<UIColor>) -> Self {
+        color.didSet = { [weak self] newColor in
+            self?.onTintColor = newColor
+        }
+        color.didSet?(color.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    func onTintColor(_ hex: OIState<Int>) -> Self {
+        hex.didSet = { [weak self] newHex in
+            let color = UIColor(hex: UInt32(newHex))
+            self?.onTintColor = color
+        }
+        hex.didSet?(hex.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+        isEnabled.didSet = { [weak self] newIsEnabled in
+            self?.isEnabled = newIsEnabled
+        }
+        isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
+    }
+}
+
+extension UISwitch {
+    // Method untuk menambahkan closure valueChange
+    func valueChange(_ handler: @escaping (Bool) -> Void) -> Self {
+        addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)
+        valueChangedHandlers = handler
+        return self
+    }
+    
+    @objc private func valueChanged(_ sender: UISwitch) {
+        valueChangedHandlers?(sender.isOn)
+    }
+    
+    private var valueChangedHandlers: ((Bool) -> Void)? {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.valueChangedHandler) as? (Bool) -> Void }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.valueChangedHandler, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+}

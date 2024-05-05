@@ -36,12 +36,8 @@ extension UIImageView {
         return self
     }
     
-    public func foregroundColor(_ hex: UInt32) -> Self {
-        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(hex & 0x0000FF) / 255.0
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    public func foregroundColor(_ hex: UInt) -> Self {
+        let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
         return self
     }
@@ -177,6 +173,129 @@ extension UIImageView {
             }
         }
         
+        return self
+    }
+}
+
+extension UIImageView {
+    @discardableResult
+    public func image(_ state: OIState<UIImage?>) -> Self {
+        state.didSet = { [weak self] newImage in
+            self?.image = newImage
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ state: OIState<String?>) -> Self {
+        state.didSet = { [weak self] newImageName in
+            guard let imageName = newImageName else { return }
+            self?.image = UIImage(named: imageName)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(systemName: OIState<String?>) -> Self {
+        if #available(iOS 13.0, *) {
+            systemName.didSet = { [weak self] newImageName in
+                guard let imageName = newImageName else { return }
+                self?.image = UIImage(systemName: imageName)
+            }
+        } else {
+            guard let defaultImageName = systemName.wrappedValue else {
+                return self
+            }
+            let image = UIImage(named: defaultImageName)
+            systemName.didSet = { [weak self] _ in
+                self?.image = image
+            }
+        }
+        
+        systemName.didSet?(systemName.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(systemName: OIState<UIImage?>) -> Self {
+        systemName.didSet = { [weak self] newImage in
+            self?.image = newImage
+        }
+        systemName.didSet?(systemName.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func renderingMode(_ renderingMode: OIState<UIImage.RenderingMode>) -> Self {
+        renderingMode.didSet = { [weak self] newRenderingMode in
+            self?.image = self?.image?.withRenderingMode(newRenderingMode)
+        }
+        renderingMode.didSet?(renderingMode.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ color: OIState<UIColor>) -> Self {
+        color.didSet = { [weak self] newColor in
+            self?.tintColor = newColor
+        }
+        color.didSet?(color.wrappedValue)
+        return self
+    }
+    
+    public func foregroundColor(_ hex: OIState<UInt>) -> Self {
+        hex.didSet = { [weak self] newHex in
+            let color = UIColor(hex: UInt32(newHex))
+            self?.tintColor = color
+        }
+        hex.didSet?(hex.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ state: OIState<UIImage?>, renderingModeState: OIState<UIImage.RenderingMode?> = OIState<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
+        state.didSet = { [weak self] newImage in
+            self?.image = newImage
+        }
+        state.didSet?(state.wrappedValue)
+        
+        renderingModeState.didSet = { [weak self] newRenderingMode in
+            guard let renderingMode = newRenderingMode else { return }
+            self?.image = self?.image?.withRenderingMode(renderingMode)
+        }
+        renderingModeState.didSet?(renderingModeState.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ state: OIState<String?>, renderingModeState: OIState<UIImage.RenderingMode?> = OIState<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
+        state.didSet = { [weak self] newImageName in
+            guard let imageName = newImageName else { return }
+            self?.image = UIImage(named: imageName)
+        }
+        state.didSet?(state.wrappedValue)
+        
+        renderingModeState.didSet = { [weak self] newRenderingMode in
+            guard let renderingMode = newRenderingMode else { return }
+            self?.image = self?.image?.withRenderingMode(renderingMode)
+        }
+        renderingModeState.didSet?(renderingModeState.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ name: String, _ renderingMode: UIImage.RenderingMode = .alwaysTemplate) -> Self {
+        self.image = UIImage(named: name)
+        self.image = self.image?.withRenderingMode(renderingMode)
+        return self
+    }
+    
+    @discardableResult
+    public func image(systemName: String, _ renderingMode: UIImage.RenderingMode = .alwaysTemplate) -> Self {
+        self.image = UIImage(named: systemName)
+        self.image = self.image?.withRenderingMode(renderingMode)
         return self
     }
 }

@@ -10,6 +10,8 @@
 		EC0AA3822B57A544007B59C5 /* OIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0AA3812B57A544007B59C5 /* OIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3882B57A79C007B59C5 /* StackView.swift */; };
 		EC0AA3A92B57B419007B59C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* View.swift */; };
+		EC0C7C2F2BE7359B00B93E95 /* OIState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C7C2E2BE7359B00B93E95 /* OIState.swift */; };
+		EC0C7C312BE76FBF00B93E95 /* UICheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C7C302BE76FBF00B93E95 /* UICheckBox.swift */; };
 		EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A1EA02BBAFB250050D2C9 /* TextView.swift */; };
 		EC7012012BBCED590068F457 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7012002BBCED590068F457 /* Controller.swift */; };
 		EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085D2B5EB45B006584A6 /* Color.swift */; };
@@ -36,6 +38,8 @@
 		EC0AA3812B57A544007B59C5 /* OIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OIKit.h; sourceTree = "<group>"; };
 		EC0AA3882B57A79C007B59C5 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		EC0AA3A82B57B419007B59C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		EC0C7C2E2BE7359B00B93E95 /* OIState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OIState.swift; sourceTree = "<group>"; };
+		EC0C7C302BE76FBF00B93E95 /* UICheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckBox.swift; sourceTree = "<group>"; };
 		EC3A1EA02BBAFB250050D2C9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EC7012002BBCED590068F457 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		EC7E085D2B5EB45B006584A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				ECA77A962BBC19C600E6421C /* TableView.swift */,
 				EC7012002BBCED590068F457 /* Controller.swift */,
 				EC99CB742BCE5C6500738B9A /* Switch.swift */,
+				EC0C7C2E2BE7359B00B93E95 /* OIState.swift */,
+				EC0C7C302BE76FBF00B93E95 /* UICheckBox.swift */,
 			);
 			path = OIKit;
 			sourceTree = "<group>";
@@ -205,6 +211,7 @@
 				EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */,
 				EC7E08682B5ECC1B006584A6 /* Image.swift in Sources */,
 				EC7E08622B5ECB77006584A6 /* Padding.swift in Sources */,
+				EC0C7C2F2BE7359B00B93E95 /* OIState.swift in Sources */,
 				ECA8BD2B2BB9AE7D00EBB673 /* TextField.swift in Sources */,
 				EC7E08662B5ECC07006584A6 /* Spacer.swift in Sources */,
 				EC7E08642B5ECBC1006584A6 /* Label.swift in Sources */,
@@ -214,6 +221,7 @@
 				EC7E086C2B5ECC59006584A6 /* Rectangle.swift in Sources */,
 				EC7E086E2B5ECC72006584A6 /* Circle.swift in Sources */,
 				EC7E08722B5ECD2A006584A6 /* ScrollView.swift in Sources */,
+				EC0C7C312BE76FBF00B93E95 /* UICheckBox.swift in Sources */,
 				EC0AA3A92B57B419007B59C5 /* View.swift in Sources */,
 				EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */,
 				EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */,

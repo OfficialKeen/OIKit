@@ -36,12 +36,8 @@ extension UITextField {
         return self
     }
     
-    public func foregroundColor(_ hex: UInt32) -> Self {
-        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(hex & 0x0000FF) / 255.0
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    public func foregroundColor(_ hex: UInt) -> Self {
+        let color = UIColor(hex: UInt32(hex))
         self.textColor = color
         return self
     }
@@ -52,12 +48,8 @@ extension UITextField {
         return self
     }
     
-    public func tintColor(_ hex: UInt32) -> Self {
-        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(hex & 0x0000FF) / 255.0
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    public func tintColor(_ hex: UInt) -> Self {
+        let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
         return self
     }
@@ -427,5 +419,96 @@ extension UITextField {
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Memanggil shouldChangeCharactersAction jika ada
         return textField.shouldChangeCharactersAction?(textField, range, string) ?? true
+    }
+}
+
+extension UITextField {
+    @discardableResult
+    public func placeholder(_ placeholder: String) -> UITextField {
+        self.placeholder = placeholder
+        return self
+    }
+    
+    @discardableResult
+    public func placeholder(_ placeholder: OIState<String>) -> UITextField {
+        placeholder.didSet = { [weak self] newPlaceholder in
+            self?.placeholder = newPlaceholder
+        }
+        placeholder.didSet?(placeholder.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func text(_ state: OIState<String>) -> UITextField {
+        self.text = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.text = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: OIState<UIColor?>) -> UITextField {
+        self.textColor = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.textColor = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: OIState<UIColor>) -> UITextField {
+        self.textColor = state.wrappedValue
+        state.didSet = { [weak self] newText in
+            self?.textColor = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func font(_ font: OIState<UIFont?>) -> Self {
+        font.didSet = { [weak self] newFont in
+            self?.font = newFont
+        }
+        font.didSet?(font.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func font(_ style: OIState<UIFont.TextStyle>) -> Self {
+        style.didSet = { [weak self] newStyle in
+            self?.font = UIFont.preferredFont(forTextStyle: newStyle)
+        }
+        style.didSet?(style.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func font(_ size: OIState<CGFloat>, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> UITextField {
+        size.didSet = { [weak self] newSize in
+            let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: weight]
+            let fontDescriptor = UIFontDescriptor(fontAttributes: [
+                .family: design.fontName,
+                .traits: traits
+            ])
+            self?.font = UIFont(descriptor: fontDescriptor, size: newSize)
+        }
+        size.didSet?(size.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: Bool = true) -> Self {
+        self.isEnabled = isEnabled
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+        isEnabled.didSet = { [weak self] newIsEnabled in
+            self?.isEnabled = newIsEnabled
+        }
+        isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
     }
 }

@@ -124,12 +124,8 @@ extension UIButton {
     }
     
     @discardableResult
-    public func foregroundColor(_ hex: UInt32, for state: UIControl.State = .normal) -> UIButton {
-        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(hex & 0x0000FF) / 255.0
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    public func foregroundColor(_ hex: UInt, for state: UIControl.State = .normal) -> UIButton {
+        let color = UIColor(hex: UInt32(hex))
         setTitleColor(color, for: state)
         return self
     }
@@ -282,4 +278,312 @@ extension UIButton {
 public enum ImagePosition {
     case left
     case right
+}
+
+extension UIButton {
+    @discardableResult
+    public func title(_ state: OIState<String?>, for controlState: UIControl.State = .normal) -> UIButton {
+        setTitle(state.wrappedValue, for: controlState)
+        
+        state.didSet = { [weak self] newTitle in
+            self?.setTitle(newTitle, for: controlState)
+        }
+        
+        return self
+    }
+    
+    @discardableResult
+    public func title(_ state: OIState<String>, for controlState: UIControl.State = .normal) -> UIButton {
+        setTitle(state.wrappedValue, for: controlState)
+        
+        state.didSet = { [weak self] newTitle in
+            self?.setTitle(newTitle, for: controlState)
+        }
+        
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: OIState<UIColor?>, for controlState: UIControl.State = .normal) -> UIButton {
+        state.didSet = { [weak self] newColor in
+            self?.setTitleColor(newColor, for: controlState)
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: OIState<UIColor>, for controlState: UIControl.State = .normal) -> UIButton {
+        state.didSet = { [weak self] newColor in
+            self?.setTitleColor(newColor, for: controlState)
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+
+    @discardableResult
+    public func foregroundColor(_ state: OIState<UInt?>, for controlState: UIControl.State = .normal) -> UIButton {
+        state.didSet = { [weak self] hexValue in
+            guard let hex = hexValue else { return }
+            let color = UIColor(hex: UInt32(hex))
+            self?.setTitleColor(color, for: controlState)
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: OIState<UInt>, for controlState: UIControl.State = .normal) -> UIButton {
+        state.didSet = { [weak self] hex in
+            let color = UIColor(hex: UInt32(hex))
+            self?.setTitleColor(color, for: controlState)
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func cornerRadius(_ cornerRadius: CGFloat) -> UIButton {
+        self.layer.cornerRadius = cornerRadius
+        self.clipsToBounds = true
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ state: OIState<UIImage?>, for controlState: UIControl.State = .normal) -> UIButton {
+        state.didSet = { [weak self] newImage in
+            self?.setImage(newImage, for: controlState)
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ state: OIState<UIImage>, for controlState: UIControl.State = .normal) -> UIButton {
+        state.didSet = { [weak self] newImage in
+            self?.setImage(newImage, for: controlState)
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(systemName state: OIState<String?>, defaultImageName: String? = nil, for controlState: UIControl.State = .normal) -> UIButton {
+        if #available(iOS 13.0, *) {
+            state.didSet = { [weak self] newSystemName in
+                if let systemName = newSystemName, let image = UIImage(systemName: systemName) {
+                    self?.setImage(image, for: controlState)
+                }
+            }
+        } else {
+            guard let defaultImageName = defaultImageName, let image = UIImage(named: defaultImageName) else {
+                return self
+            }
+            state.didSet = { [weak self] _ in
+                self?.setImage(image, for: controlState)
+            }
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ name: OIState<String?>, tintColor: OIState<UIColor>, for controlState: UIControl.State = .normal) -> UIButton {
+        name.didSet = { [weak self] newName in
+            guard let imageName = newName, let image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate) else {
+                return
+            }
+            self?.setImage(image, for: controlState)
+        }
+        
+        tintColor.didSet = { [weak self] newTintColor in
+            self?.tintColor = newTintColor
+        }
+        
+        name.didSet?(name.wrappedValue)
+        tintColor.didSet?(tintColor.wrappedValue)
+        
+        return self
+    }
+    
+    @discardableResult
+    public func image(systemName state: OIState<String?>, defaultImageName: String? = nil, tintColor: OIState<UIColor>, for controlState: UIControl.State = .normal) -> UIButton {
+        if #available(iOS 13.0, *) {
+            state.didSet = { [weak self] newSystemName in
+                guard let systemName = newSystemName, let image = UIImage(systemName: systemName)?.withRenderingMode(.alwaysTemplate) else {
+                    return
+                }
+                self?.setImage(image, for: controlState)
+            }
+        } else {
+            guard let defaultImageName = defaultImageName, let image = UIImage(named: defaultImageName)?.withRenderingMode(.alwaysTemplate) else {
+                return self
+            }
+            state.didSet = { [weak self] _ in
+                self?.setImage(image, for: controlState)
+            }
+        }
+        
+        tintColor.didSet = { [weak self] newTintColor in
+            self?.tintColor = newTintColor
+        }
+        
+        state.didSet?(state.wrappedValue)
+        tintColor.didSet?(tintColor.wrappedValue)
+        
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ name: OIState<String?>, at position: ImagePosition, spacing: CGFloat = 0, for controlState: UIControl.State = .normal) -> UIButton {
+        name.didSet = { [weak self] newName in
+            guard let imageName = newName, let image = UIImage(named: imageName) else {
+                return
+            }
+            self?.setImage(image, for: controlState)
+            self?.positionImage(imagePosition: position, spacing: spacing)
+        }
+        
+        name.didSet?(name.wrappedValue)
+        
+        return self
+    }
+
+    @discardableResult
+    public func image(_ image: OIState<UIImage?>, at position: ImagePosition, spacing: CGFloat = 0, for controlState: UIControl.State = .normal) -> UIButton {
+        image.didSet = { [weak self] newImage in
+            guard let image = newImage else {
+                return
+            }
+            self?.setImage(image, for: controlState)
+            self?.positionImage(imagePosition: position, spacing: spacing)
+        }
+        
+        image.didSet?(image.wrappedValue)
+        
+        return self
+    }
+    
+    @discardableResult
+    public func image(systemName name: OIState<String?>, at position: ImagePosition, spacing: CGFloat = 0, for controlState: UIControl.State = .normal) -> UIButton {
+        if #available(iOS 13.0, *) {
+            name.didSet = { [weak self] newName in
+                guard let systemName = newName, let image = UIImage(systemName: systemName) else {
+                    return
+                }
+                self?.setImage(image, for: controlState)
+                self?.positionImage(imagePosition: position, spacing: spacing)
+            }
+        } else {
+            guard let defaultImageName = name.wrappedValue, let image = UIImage(named: defaultImageName) else {
+                return self
+            }
+            name.didSet = { [weak self] _ in
+                self?.setImage(image, for: controlState)
+                self?.positionImage(imagePosition: position, spacing: spacing)
+            }
+        }
+        
+        name.didSet?(name.wrappedValue)
+        
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ name: OIState<String?>, at position: ImagePosition, spacing: CGFloat = 0, tintColor: OIState<UIColor>, for controlState: UIControl.State = .normal) -> UIButton {
+        name.didSet = { [weak self] newName in
+            guard let imageName = newName, let image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate) else {
+                return
+            }
+            self?.setImage(image, for: controlState)
+            self?.positionImage(imagePosition: position, spacing: spacing)
+        }
+        
+        tintColor.didSet = { [weak self] newTintColor in
+            self?.tintColor = newTintColor
+        }
+        
+        name.didSet?(name.wrappedValue)
+        tintColor.didSet?(tintColor.wrappedValue)
+        
+        return self
+    }
+    
+    @discardableResult
+    public func image(systemName name: OIState<String?>, at position: ImagePosition, spacing: CGFloat = 0, tintColor: OIState<UIColor>, for controlState: UIControl.State = .normal) -> UIButton {
+        if #available(iOS 13.0, *) {
+            name.didSet = { [weak self] newName in
+                guard let systemName = newName, let image = UIImage(systemName: systemName)?.withRenderingMode(.alwaysTemplate) else {
+                    return
+                }
+                self?.setImage(image, for: controlState)
+                self?.positionImage(imagePosition: position, spacing: spacing)
+            }
+        } else {
+            guard let defaultImageName = name.wrappedValue, let image = UIImage(named: defaultImageName)?.withRenderingMode(.alwaysTemplate) else {
+                return self
+            }
+            name.didSet = { [weak self] _ in
+                self?.setImage(image, for: controlState)
+                self?.positionImage(imagePosition: position, spacing: spacing)
+            }
+        }
+        
+        tintColor.didSet = { [weak self] newTintColor in
+            self?.tintColor = newTintColor
+        }
+        
+        name.didSet?(name.wrappedValue)
+        tintColor.didSet?(tintColor.wrappedValue)
+        
+        return self
+    }
+    
+    @discardableResult
+    public func font(size: CGFloat, weight: UIFont.Weight = .regular) -> UIButton {
+        self.titleLabel?.font = UIFont.systemFont(ofSize: size, weight: weight)
+        return self
+    }
+    
+    @discardableResult
+    public func font(size: OIState<CGFloat?>, weight: OIState<UIFont.Weight?> = OIState(wrappedValue: .regular)) -> UIButton {
+        size.didSet = { [weak self] newSize in
+            guard let newSize = newSize else { return }
+            let currentWeight = weight.wrappedValue ?? .regular
+            self?.titleLabel?.font = UIFont.systemFont(ofSize: newSize, weight: currentWeight)
+        }
+
+        weight.didSet = { [weak self] newWeight in
+            guard let newWeight = newWeight else { return }
+            let currentSize = size.wrappedValue ?? UIFont.systemFontSize
+            self?.titleLabel?.font = UIFont.systemFont(ofSize: currentSize, weight: newWeight)
+        }
+
+        size.didSet?(size.wrappedValue)
+        weight.didSet?(weight.wrappedValue)
+
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: Bool = true) -> Self {
+        self.isEnabled = isEnabled
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+        isEnabled.didSet = { [weak self] newIsEnabled in
+            self?.isEnabled = newIsEnabled
+        }
+        isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
+    }
 }

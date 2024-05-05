@@ -163,3 +163,40 @@ private struct AssociatedKeys {
     static var valueChangedClosure: UInt8 = 0
 }
 
+extension UISegmentedControl {
+    @discardableResult
+    public func items(_ items: OIState<[String]>) -> UISegmentedControl {
+        items.didSet = { [weak self] newItems in
+            self?.removeAllSegments()
+            for (index, title) in newItems.enumerated() {
+                self?.insertSegment(withTitle: title, at: index, animated: false)
+            }
+        }
+        items.didSet?(items.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func setDefaultIndex(_ index: OIState<Int>) -> UISegmentedControl {
+        index.didSet = { [weak self] newIndex in
+            self?.selectedSegmentIndex = newIndex
+        }
+        index.didSet?(index.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: Bool = true) -> Self {
+        self.isEnabled = isEnabled
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+        isEnabled.didSet = { [weak self] newIsEnabled in
+            self?.isEnabled = newIsEnabled
+        }
+        isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
+    }
+}

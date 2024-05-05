@@ -21,12 +21,8 @@ extension UIView {
     }
     
     @discardableResult
-    public func background(_ hex: UInt32) -> Self {
-        let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(hex & 0x0000FF) / 255.0
-        
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    public func background(_ hex: UInt) -> Self {
+        let color = UIColor(hex: UInt32(hex))
         return background(color)
     }
     
@@ -112,8 +108,8 @@ extension UIView {
         return self
     }
     
-    public func stroke(_ hexColor: UInt32, lineWidth: CGFloat? = 1) -> Self {
-        let color = UIColor(hex: hexColor)
+    public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
+        let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
     }
     
@@ -193,5 +189,92 @@ extension UIView {
     @discardableResult
     public func addView(padding: CGFloat = 0, verticalPadding: CGFloat = 0, horizontalPadding: CGFloat = 0, @UIStackViewBuilder content: () -> [UIView]) -> UIView {
         return addView(paddingTop: padding + verticalPadding, paddingLeft: padding + horizontalPadding, paddingBottom: padding + verticalPadding, paddingRight: padding + horizontalPadding, content: content)
+    }
+}
+
+extension UIView {
+    @discardableResult
+    public func width(_ state: OIState<CGFloat>) -> Self {
+        state.didSet = { [weak self] newWidth in
+            self?.widthAnchor.constraint(equalToConstant: newWidth).isActive = true
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func height(_ state: OIState<CGFloat>) -> Self {
+        state.didSet = { [weak self] newHeight in
+            self?.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func background(_ state: OIState<UIColor>, opacity: CGFloat = 1.0) -> Self {
+        state.didSet = { [weak self] newColor in
+            self?.backgroundColor = newColor.withAlphaComponent(opacity)
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func background(_ state: OIState<UInt>, opacity: CGFloat = 1.0) -> Self {
+        state.didSet = { [weak self] hexValue in
+            let color = UIColor(hex: UInt32(hexValue))
+            self?.backgroundColor = color
+        }
+        
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func cornerRadius(_ radius: OIState<CGFloat?>) -> Self {
+        radius.didSet = { [weak self] newRadius in
+            self?.layer.cornerRadius = newRadius ?? 0
+            self?.layer.masksToBounds = true
+        }
+        radius.didSet?(radius.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func cornerRadius(_ radiusState: OIState<CGFloat>) -> Self {
+        radiusState.didSet = { [weak self] newRadius in
+            self?.layer.cornerRadius = newRadius
+            self?.layer.masksToBounds = true
+        }
+        radiusState.didSet?(radiusState.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func isHidden(_ state: OIState<Bool>) -> Self {
+        self.isHidden = state.wrappedValue
+        state.didSet = { [weak self] newValue in
+            self?.isHidden = newValue
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func isUserEnabled(_ isEnabled: Bool = true) -> Self {
+        self.isUserInteractionEnabled = isEnabled
+        return self
+    }
+    
+    @discardableResult
+    public func isUserEnabled(_ isEnabled: OIState<Bool>) -> Self {
+        isEnabled.didSet = { [weak self] newIsEnabled in
+            self?.isUserInteractionEnabled = newIsEnabled
+        }
+        isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
     }
 }

@@ -292,3 +292,38 @@ extension UISearchBar { //selectedScopeButtonIndexDidChange
         selectedScopeButtonIndexDidChangeAction?(searchBar, selectedScope)
     }
 }
+
+extension UISearchBar {
+    @discardableResult
+    public func placeholder(_ placeholder: OIState<String>) -> Self {
+        self.placeholder = placeholder.wrappedValue
+        placeholder.didSet = { [weak self] newValue in
+            self?.placeholder = newValue
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: Bool = true) -> Self {
+        if #available(iOS 16.4, *) {
+            self.isEnabled = isEnabled
+        } else {
+            self.isUserInteractionEnabled = isEnabled
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+        isEnabled.didSet = { [weak self] newIsEnabled in
+            if #available(iOS 16.4, *) {
+                self?.isEnabled = newIsEnabled
+            } else {
+                self?.isUserInteractionEnabled = newIsEnabled
+                // Fallback on earlier versions
+            }
+        }
+        isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
+    }
+}

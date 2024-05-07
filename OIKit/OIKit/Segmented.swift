@@ -165,7 +165,7 @@ private struct AssociatedKeys {
 
 extension UISegmentedControl {
     @discardableResult
-    public func items(_ items: OIState<[String]>) -> UISegmentedControl {
+    public func items(_ items: SBinding<[String]>) -> UISegmentedControl {
         items.didSet = { [weak self] newItems in
             self?.removeAllSegments()
             for (index, title) in newItems.enumerated() {
@@ -177,7 +177,7 @@ extension UISegmentedControl {
     }
     
     @discardableResult
-    public func setDefaultIndex(_ index: OIState<Int>) -> UISegmentedControl {
+    public func setDefaultIndex(_ index: SBinding<Int>) -> UISegmentedControl {
         index.didSet = { [weak self] newIndex in
             self?.selectedSegmentIndex = newIndex
         }
@@ -192,7 +192,7 @@ extension UISegmentedControl {
     }
     
     @discardableResult
-    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isEnabled = newIsEnabled
         }

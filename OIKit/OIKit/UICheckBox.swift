@@ -152,7 +152,7 @@ open class UICheckBox: UIControl {
     }
     
     @discardableResult
-    public func isChecked(_ state: OIState<Bool>) -> Self {
+    public func isChecked(_ state: SBinding<Bool>) -> Self {
         self.isChecked = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isChecked = newValue
@@ -281,7 +281,7 @@ extension UICheckBox {
     }
     
     @discardableResult
-    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isEnabled = newIsEnabled
         }

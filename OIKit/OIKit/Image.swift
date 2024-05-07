@@ -179,7 +179,7 @@ extension UIImageView {
 
 extension UIImageView {
     @discardableResult
-    public func image(_ state: OIState<UIImage?>) -> Self {
+    public func image(_ state: SBinding<UIImage?>) -> Self {
         state.didSet = { [weak self] newImage in
             self?.image = newImage
         }
@@ -188,7 +188,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    public func image(_ state: OIState<String?>) -> Self {
+    public func image(_ state: SBinding<String?>) -> Self {
         state.didSet = { [weak self] newImageName in
             guard let imageName = newImageName else { return }
             self?.image = UIImage(named: imageName)
@@ -198,7 +198,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    public func image(systemName: OIState<String?>) -> Self {
+    public func image(systemName: SBinding<String?>) -> Self {
         if #available(iOS 13.0, *) {
             systemName.didSet = { [weak self] newImageName in
                 guard let imageName = newImageName else { return }
@@ -219,7 +219,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    public func image(systemName: OIState<UIImage?>) -> Self {
+    public func image(systemName: SBinding<UIImage?>) -> Self {
         systemName.didSet = { [weak self] newImage in
             self?.image = newImage
         }
@@ -228,7 +228,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    public func renderingMode(_ renderingMode: OIState<UIImage.RenderingMode>) -> Self {
+    public func renderingMode(_ renderingMode: SBinding<UIImage.RenderingMode>) -> Self {
         renderingMode.didSet = { [weak self] newRenderingMode in
             self?.image = self?.image?.withRenderingMode(newRenderingMode)
         }
@@ -237,7 +237,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    public func foregroundColor(_ color: OIState<UIColor>) -> Self {
+    public func foregroundColor(_ color: SBinding<UIColor>) -> Self {
         color.didSet = { [weak self] newColor in
             self?.tintColor = newColor
         }
@@ -245,7 +245,7 @@ extension UIImageView {
         return self
     }
     
-    public func foregroundColor(_ hex: OIState<UInt>) -> Self {
+    public func foregroundColor(_ hex: SBinding<UInt>) -> Self {
         hex.didSet = { [weak self] newHex in
             let color = UIColor(hex: UInt32(newHex))
             self?.tintColor = color
@@ -255,7 +255,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    public func image(_ state: OIState<UIImage?>, renderingModeState: OIState<UIImage.RenderingMode?> = OIState<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
+    public func image(_ state: SBinding<UIImage?>, renderingModeState: SBinding<UIImage.RenderingMode?> = SBinding<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
         state.didSet = { [weak self] newImage in
             self?.image = newImage
         }
@@ -270,7 +270,7 @@ extension UIImageView {
     }
     
     @discardableResult
-    public func image(_ state: OIState<String?>, renderingModeState: OIState<UIImage.RenderingMode?> = OIState<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
+    public func image(_ state: SBinding<String?>, renderingModeState: SBinding<UIImage.RenderingMode?> = SBinding<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
         state.didSet = { [weak self] newImageName in
             guard let imageName = newImageName else { return }
             self?.image = UIImage(named: imageName)

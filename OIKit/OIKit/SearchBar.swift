@@ -295,7 +295,7 @@ extension UISearchBar { //selectedScopeButtonIndexDidChange
 
 extension UISearchBar {
     @discardableResult
-    public func placeholder(_ placeholder: OIState<String>) -> Self {
+    public func placeholder(_ placeholder: SBinding<String>) -> Self {
         self.placeholder = placeholder.wrappedValue
         placeholder.didSet = { [weak self] newValue in
             self?.placeholder = newValue
@@ -314,7 +314,7 @@ extension UISearchBar {
     }
     
     @discardableResult
-    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             if #available(iOS 16.4, *) {
                 self?.isEnabled = newIsEnabled

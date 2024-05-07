@@ -430,7 +430,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func placeholder(_ placeholder: OIState<String>) -> UITextField {
+    public func placeholder(_ placeholder: SBinding<String>) -> UITextField {
         placeholder.didSet = { [weak self] newPlaceholder in
             self?.placeholder = newPlaceholder
         }
@@ -439,7 +439,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func text(_ state: OIState<String>) -> UITextField {
+    public func text(_ state: SBinding<String>) -> UITextField {
         self.text = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.text = newText
@@ -448,7 +448,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func foregroundColor(_ state: OIState<UIColor?>) -> UITextField {
+    public func foregroundColor(_ state: SBinding<UIColor?>) -> UITextField {
         self.textColor = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.textColor = newText
@@ -457,7 +457,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func foregroundColor(_ state: OIState<UIColor>) -> UITextField {
+    public func foregroundColor(_ state: SBinding<UIColor>) -> UITextField {
         self.textColor = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.textColor = newText
@@ -466,7 +466,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func font(_ font: OIState<UIFont?>) -> Self {
+    public func font(_ font: SBinding<UIFont?>) -> Self {
         font.didSet = { [weak self] newFont in
             self?.font = newFont
         }
@@ -475,7 +475,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func font(_ style: OIState<UIFont.TextStyle>) -> Self {
+    public func font(_ style: SBinding<UIFont.TextStyle>) -> Self {
         style.didSet = { [weak self] newStyle in
             self?.font = UIFont.preferredFont(forTextStyle: newStyle)
         }
@@ -484,7 +484,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func font(_ size: OIState<CGFloat>, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> UITextField {
+    public func font(_ size: SBinding<CGFloat>, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> UITextField {
         size.didSet = { [weak self] newSize in
             let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: weight]
             let fontDescriptor = UIFontDescriptor(fontAttributes: [
@@ -504,7 +504,7 @@ extension UITextField {
     }
     
     @discardableResult
-    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isEnabled = newIsEnabled
         }

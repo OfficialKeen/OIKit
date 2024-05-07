@@ -209,7 +209,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func multilineTextAlignment(_ state: OIState<NSTextAlignment>) -> Self {
+    public func multilineTextAlignment(_ state: SBinding<NSTextAlignment>) -> Self {
         self.textAlignment = state.wrappedValue
         self.numberOfLines = 0
         
@@ -220,7 +220,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func text(_ state: OIState<String>) -> Self {
+    public func text(_ state: SBinding<String>) -> Self {
         self.text = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.text = newText
@@ -229,7 +229,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func tintColor(_ state: OIState<UIColor>) -> Self {
+    public func tintColor(_ state: SBinding<UIColor>) -> Self {
         self.tintColor = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.tintColor = newText
@@ -238,7 +238,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func foregroundColor(_ state: OIState<UIColor?>) -> Self {
+    public func foregroundColor(_ state: SBinding<UIColor?>) -> Self {
         self.textColor = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.textColor = newText
@@ -247,7 +247,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func foregroundColor(_ state: OIState<UIColor>) -> Self {
+    public func foregroundColor(_ state: SBinding<UIColor>) -> Self {
         self.textColor = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.textColor = newText
@@ -256,7 +256,7 @@ extension UILabel {
     }
     
     @discardableResult
-    func foregroundColor(_ hex: OIState<UInt>) -> Self {
+    func foregroundColor(_ hex: SBinding<UInt>) -> Self {
         hex.didSet = { [weak self] newHex in
             let color = UIColor(hex: UInt32(newHex))
             self?.textColor = color
@@ -266,7 +266,7 @@ extension UILabel {
     }
     
     @discardableResult
-    func foregroundColor(_ hex: OIState<UInt?>) -> Self {
+    func foregroundColor(_ hex: SBinding<UInt?>) -> Self {
         hex.didSet = { [weak self] newHex in
             guard let hexValue = newHex else { return }
             let color = UIColor(hex: UInt32(hexValue))
@@ -277,7 +277,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func font(_ state: OIState<UIFont?>) -> Self {
+    public func font(_ state: SBinding<UIFont?>) -> Self {
         self.font = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.font = newText
@@ -286,7 +286,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func font(_ state: OIState<UIFont>) -> Self {
+    public func font(_ state: SBinding<UIFont>) -> Self {
         self.font = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.font = newText
@@ -295,7 +295,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func fontWeight(_ state: OIState<UIFont.Weight>) -> Self {
+    public func fontWeight(_ state: SBinding<UIFont.Weight>) -> Self {
         let existingFont = self.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
         self.font = UIFont.systemFont(ofSize: existingFont.pointSize, weight: state.wrappedValue)
         state.didSet = { [weak self] newWeight in
@@ -307,7 +307,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func fontDesign(_ state: OIState<FontDesign>) -> Self {
+    public func fontDesign(_ state: SBinding<FontDesign>) -> Self {
         let newFont = UIFont(name: state.wrappedValue.fontName, size: self.font?.pointSize ?? UIFont.systemFontSize) ?? UIFont.systemFont(ofSize: 12)
         
         self.setFont(newFont)
@@ -321,7 +321,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func baselineOffset(_ state: OIState<CGFloat>, _ isActive: Bool = true) -> Self {
+    public func baselineOffset(_ state: SBinding<CGFloat>, _ isActive: Bool = true) -> Self {
         if isActive {
             let attributedString = NSMutableAttributedString(string: self.text ?? "")
             attributedString.addAttribute(.baselineOffset, value: state.wrappedValue, range: NSRange(location: 0, length: attributedString.length))
@@ -337,7 +337,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func kerning(_ state: OIState<CGFloat>, _ isActive: Bool = true) -> Self {
+    public func kerning(_ state: SBinding<CGFloat>, _ isActive: Bool = true) -> Self {
         if isActive {
             let attributedString = NSMutableAttributedString(string: self.text ?? "")
             attributedString.addAttribute(.kern, value: state.wrappedValue, range: NSRange(location: 0, length: attributedString.length))
@@ -353,7 +353,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func strikethrough(_ state: OIState<Bool>, color: UIColor? = nil) -> Self {
+    public func strikethrough(_ state: SBinding<Bool>, color: UIColor? = nil) -> Self {
         apply(style: .strikethroughStyle, value: state.wrappedValue ? NSUnderlineStyle.single.rawValue : 0, color: color)
         
         state.didSet = { [weak self] isActive in
@@ -370,7 +370,7 @@ extension UILabel {
     }
     
     @discardableResult
-    public func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isEnabled = newIsEnabled
         }

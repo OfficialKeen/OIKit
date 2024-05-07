@@ -194,7 +194,7 @@ extension UIView {
 
 extension UIView {
     @discardableResult
-    public func width(_ state: OIState<CGFloat>) -> Self {
+    public func width(_ state: SBinding<CGFloat>) -> Self {
         state.didSet = { [weak self] newWidth in
             self?.widthAnchor.constraint(equalToConstant: newWidth).isActive = true
         }
@@ -204,7 +204,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func height(_ state: OIState<CGFloat>) -> Self {
+    public func height(_ state: SBinding<CGFloat>) -> Self {
         state.didSet = { [weak self] newHeight in
             self?.heightAnchor.constraint(equalToConstant: newHeight).isActive = true
         }
@@ -214,7 +214,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func background(_ state: OIState<UIColor>, opacity: CGFloat = 1.0) -> Self {
+    public func background(_ state: SBinding<UIColor>, opacity: CGFloat = 1.0) -> Self {
         state.didSet = { [weak self] newColor in
             self?.backgroundColor = newColor.withAlphaComponent(opacity)
         }
@@ -224,7 +224,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func background(_ state: OIState<UInt>, opacity: CGFloat = 1.0) -> Self {
+    public func background(_ state: SBinding<UInt>, opacity: CGFloat = 1.0) -> Self {
         state.didSet = { [weak self] hexValue in
             let color = UIColor(hex: UInt32(hexValue))
             self?.backgroundColor = color
@@ -235,7 +235,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func cornerRadius(_ radius: OIState<CGFloat?>) -> Self {
+    public func cornerRadius(_ radius: SBinding<CGFloat?>) -> Self {
         radius.didSet = { [weak self] newRadius in
             self?.layer.cornerRadius = newRadius ?? 0
             self?.layer.masksToBounds = true
@@ -245,7 +245,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func cornerRadius(_ radiusState: OIState<CGFloat>) -> Self {
+    public func cornerRadius(_ radiusState: SBinding<CGFloat>) -> Self {
         radiusState.didSet = { [weak self] newRadius in
             self?.layer.cornerRadius = newRadius
             self?.layer.masksToBounds = true
@@ -255,7 +255,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func isHidden(_ state: OIState<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -270,7 +270,7 @@ extension UIView {
     }
     
     @discardableResult
-    public func isUserEnabled(_ isEnabled: OIState<Bool>) -> Self {
+    public func isUserEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isUserInteractionEnabled = newIsEnabled
         }

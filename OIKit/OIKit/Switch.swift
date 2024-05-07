@@ -104,7 +104,7 @@ public extension UISwitch {
 
 extension UISwitch {
     // Method untuk mengatur isOn dengan @UIState
-    func isOn(_ isOn: OIState<Bool>) -> Self {
+    func isOn(_ isOn: SBinding<Bool>) -> Self {
         self.isOn = isOn.wrappedValue
         isOn.didSet = { [weak self] newValue in
             self?.isOn = newValue
@@ -113,7 +113,7 @@ extension UISwitch {
     }
     
     @discardableResult
-    func onTintColor(_ color: OIState<UIColor>) -> Self {
+    func onTintColor(_ color: SBinding<UIColor>) -> Self {
         color.didSet = { [weak self] newColor in
             self?.onTintColor = newColor
         }
@@ -122,7 +122,7 @@ extension UISwitch {
     }
     
     @discardableResult
-    func onTintColor(_ hex: OIState<Int>) -> Self {
+    func onTintColor(_ hex: SBinding<Int>) -> Self {
         hex.didSet = { [weak self] newHex in
             let color = UIColor(hex: UInt32(newHex))
             self?.onTintColor = color
@@ -132,7 +132,7 @@ extension UISwitch {
     }
     
     @discardableResult
-    func isEnabled(_ isEnabled: OIState<Bool>) -> Self {
+    func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isEnabled = newIsEnabled
         }

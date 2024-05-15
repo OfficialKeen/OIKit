@@ -15,6 +15,24 @@ public extension UIProgressView {
     }
     
     @discardableResult
+    func onProgress(_ progress: SBinding<Float>, animated: Bool = true) -> UIProgressView {
+        progress.didSet = { [weak self] newProgress in
+            self?.setProgress(newProgress, animated: animated)
+        }
+        progress.didSet?(progress.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    func onProgress(_ progress: SBinding<Float?>, animated: Bool = true) -> UIProgressView {
+        progress.didSet = { [weak self] newProgress in
+            self?.setProgress(newProgress ?? 0.0, animated: animated)
+        }
+        progress.didSet?(progress.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     func progressTintColor(_ color: UIColor) -> UIProgressView {
         self.progressTintColor = color
         return self

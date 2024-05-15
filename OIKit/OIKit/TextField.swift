@@ -438,14 +438,14 @@ extension UITextField {
         return self
     }
     
-    @discardableResult
+    /*@discardableResult
     public func text(_ state: SBinding<String>) -> UITextField {
         self.text = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.text = newText
         }
         return self
-    }
+    }*/
     
     @discardableResult
     public func foregroundColor(_ state: SBinding<UIColor?>) -> UITextField {
@@ -511,4 +511,26 @@ extension UITextField {
         isEnabled.didSet?(isEnabled.wrappedValue)
         return self
     }
+}
+
+extension UITextField {
+    @discardableResult
+    public func text(_ state: SBinding<String>) -> UITextField {
+        state.didSet = { [weak self] newValue in
+            self?.text = newValue
+        }
+        self.text = state.wrappedValue
+        self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        objc_setAssociatedObject(self, &UITextField.bindingKey, state, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        return self
+    }
+    
+    @objc private func textFieldDidChange() {
+        if let binding = objc_getAssociatedObject(self, &UITextField.bindingKey) as? SBinding<String> {
+            binding.wrappedValue = self.text ?? ""
+        }
+    }
+    
+    private static var bindingKey: UInt8 = 0
 }

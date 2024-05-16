@@ -21,6 +21,13 @@ extension UITableView {
     }
     
     @discardableResult
+    public func setRegister(_ nib: UINib?, forCellReuseIdentifier identifier: String) -> Self {
+        guard let nib = nib else { fatalError("Nib is nil") }
+        self.register(nib, forCellReuseIdentifier: identifier)
+        return self
+    }
+    
+    @discardableResult
     public func dataSource(_ dataSource: UITableViewDataSource?) -> Self {
         self.dataSource = dataSource
         return self

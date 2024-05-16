@@ -327,3 +327,27 @@ extension UISearchBar {
         return self
     }
 }
+
+extension UISearchBar {
+    @discardableResult
+    public func font(_ size: CGFloat, weight: UIFont.Weight = .regular) -> Self {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: size, weight: weight)
+        ]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = attributes
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ color: UIColor) -> Self {
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ colorHex: UInt) -> Self {
+        let color = UIColor(hex: UInt32(colorHex))
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = color
+        return self
+    }
+}

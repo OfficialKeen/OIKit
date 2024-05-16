@@ -24,6 +24,17 @@ public class NavigationLinkView: UIView {
 
         return self
     }
+    
+    @discardableResult
+    public func content(_ action: @escaping Action, setup block: (UIView) -> Void) -> NavigationLinkView {
+        block(self)
+        self.action = action
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        addGestureRecognizer(tapGesture)
+
+        return self
+    }
 
     @objc private func viewTapped() {
         action?()

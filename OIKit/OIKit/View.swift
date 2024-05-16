@@ -278,3 +278,47 @@ extension UIView {
         return self
     }
 }
+
+extension UIView {
+    @discardableResult
+    public func overlay(_ radius: CGFloat? = nil, withShadow shadowConfig: (() -> Shadow)? = nil) -> Self {
+        self.layer.cornerRadius = radius ?? 0
+        self.layer.masksToBounds = true
+        
+        if let shadowConfig = shadowConfig?() {
+            applyShadow(with: shadowConfig)
+        }
+        return self
+    }
+
+    @discardableResult
+    public func overlay(_ corner: UIRectCorner, _ radius: CGFloat, withShadow shadowConfig: (() -> Shadow)? = nil) -> Self {
+        layer.maskedCorners = []
+        
+        if corner.contains(.topLeft) {
+            layer.maskedCorners.insert(.layerMinXMinYCorner)
+        }
+        
+        if corner.contains(.bottomLeft) {
+            layer.maskedCorners.insert(.layerMinXMaxYCorner)
+        }
+        
+        if corner.contains(.topRight) {
+            layer.maskedCorners.insert(.layerMaxXMinYCorner)
+        }
+        
+        if corner.contains(.bottomRight) {
+            layer.maskedCorners.insert(.layerMaxXMaxYCorner)
+        }
+        
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
+        
+        if let shadowConfig = shadowConfig?() {
+            applyShadow(with: shadowConfig)
+        }
+        
+        return self
+    }
+
+}

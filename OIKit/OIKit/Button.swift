@@ -587,3 +587,32 @@ extension UIButton {
         return self
     }
 }
+
+extension UIButton {
+    @discardableResult
+    public func image(_ name: String, tintColor: UInt, for state: UIControl.State = .normal) -> UIButton {
+        let color = UIColor(hex: UInt32(tintColor))
+        if let image = UIImage(named: name)?.withRenderingMode(.alwaysTemplate) {
+            setImage(image, for: state)
+            self.tintColor = color
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ name: SBinding<String?>, tintColor: UInt, for controlState: UIControl.State = .normal) -> UIButton {
+        name.didSet = { [weak self] newName in
+            guard let imageName = newName, let image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate) else {
+                return
+            }
+            self?.setImage(image, for: controlState)
+        }
+        
+        let color = UIColor(hex: UInt32(tintColor))
+        self.tintColor = color
+        
+        name.didSet?(name.wrappedValue)
+        
+        return self
+    }
+}

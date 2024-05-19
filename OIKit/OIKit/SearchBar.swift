@@ -354,7 +354,7 @@ extension UISearchBar {
 
 import UIKit
 
-class SearchBar: UISearchBar {
+public class SearchBar: UISearchBar {
     @discardableResult
     func delegate(_ delegate: UISearchBarDelegate?) -> Self {
         self.delegate = delegate

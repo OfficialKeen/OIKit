@@ -114,7 +114,7 @@ extension UITextView {
 
 import UIKit
 
-class TextView: UITextView {
+public class TextView: UITextView {
     @discardableResult
     func text(_ text: String) -> Self {
         self.text = text

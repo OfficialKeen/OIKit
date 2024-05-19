@@ -302,7 +302,7 @@ extension UIImageView {
 
 import UIKit
 
-class Image: UIImageView {
+public class Image: UIImageView {
     @discardableResult
     func image(_ name: String) -> Self {
         self.image = UIImage(named: name)

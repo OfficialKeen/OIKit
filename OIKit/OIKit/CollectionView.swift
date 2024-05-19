@@ -439,7 +439,7 @@ extension UICollectionView {
 
 import UIKit
 
-class Collection: UICollectionView {
+public class Collection: UICollectionView {
 
     public enum ScrollDirections {
         case vertical

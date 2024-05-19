@@ -451,7 +451,7 @@ extension UICheckBox {
 import UIKit
 
 @IBDesignable
-open class CheckView: UIControl {
+public class CheckView: UIControl {
     
     // MARK: - Properties
     

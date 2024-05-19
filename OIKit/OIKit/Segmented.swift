@@ -204,7 +204,7 @@ extension UISegmentedControl {
 
 import UIKit
 
-class Segmented: UISegmentedControl {
+public class Segmented: UISegmentedControl {
     @discardableResult
     func items(_ items: [String]) -> Segmented {
         removeAllSegments()

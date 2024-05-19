@@ -304,13 +304,13 @@ import UIKit
 
 public class Image: UIImageView {
     @discardableResult
-    func image(_ name: String) -> Self {
+    public func image(_ name: String) -> Self {
         self.image = UIImage(named: name)
         return self
     }
     
     @discardableResult
-    func image(systemName: String) -> Self {
+    public func image(systemName: String) -> Self {
         if #available(iOS 13.0, *) {
             self.image = UIImage(systemName: systemName)
         } else {
@@ -320,54 +320,54 @@ public class Image: UIImageView {
     }
     
     @discardableResult
-    func renderingMode(_ renderingMode: UIImage.RenderingMode) -> Self {
+    public func renderingMode(_ renderingMode: UIImage.RenderingMode) -> Self {
         self.image = self.image?.withRenderingMode(renderingMode)
         return self
     }
     
     @discardableResult
-    func foregroundColor(_ color: UIColor) -> Self {
+    public func foregroundColor(_ color: UIColor) -> Self {
         self.tintColor = color
         return self
     }
     
     @discardableResult
-    func foregroundColor(_ hex: UInt) -> Self {
+    public func foregroundColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
         return self
     }
     
     @discardableResult
-    func resizable() -> Self {
+    public func resizable() -> Self {
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
         return self
     }
     
     @discardableResult
-    func scaledToFill() -> Self {
+    public func scaledToFill() -> Self {
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
         return self
     }
     
     @discardableResult
-    func scaledToFit() -> Self {
+    public func scaledToFit() -> Self {
         self.contentMode = .scaleAspectFit
         self.clipsToBounds = true
         return self
     }
     
     @discardableResult
-    func clipped() -> Self {
+    public func clipped() -> Self {
         self.clipsToBounds = true
         self.layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    func aspectRatio(aspectRatio: CGSize? = nil, contentMode: UIView.ContentMode) -> Self {
+    public func aspectRatio(aspectRatio: CGSize? = nil, contentMode: UIView.ContentMode) -> Self {
         self.contentMode = contentMode
         self.clipsToBounds = true
         
@@ -387,7 +387,7 @@ public class Image: UIImageView {
     }
     
     @discardableResult
-    func frame(width: CGFloat?, height: CGFloat?, alignment: Alignment? = nil) -> Self {
+    public func frame(width: CGFloat?, height: CGFloat?, alignment: Alignment? = nil) -> Self {
         if let width = width {
             self.widthAnchor.constraint(equalToConstant: width).isActive = true
         }
@@ -413,7 +413,7 @@ public class Image: UIImageView {
     }
     
     @discardableResult
-    func frame(
+    public func frame(
         width: CGFloat? = nil,
         height: CGFloat? = nil,
         minWidth: CGFloat? = nil,
@@ -475,7 +475,7 @@ public class Image: UIImageView {
 
 extension Image {
     @discardableResult
-    func image(_ state: SBinding<UIImage?>) -> Self {
+    public func image(_ state: SBinding<UIImage?>) -> Self {
         state.didSet = { [weak self] newImage in
             self?.image = newImage
         }
@@ -484,7 +484,7 @@ extension Image {
     }
     
     @discardableResult
-    func image(_ state: SBinding<String?>) -> Self {
+    public func image(_ state: SBinding<String?>) -> Self {
         state.didSet = { [weak self] newImageName in
             guard let imageName = newImageName else { return }
             self?.image = UIImage(named: imageName)
@@ -494,7 +494,7 @@ extension Image {
     }
     
     @discardableResult
-    func image(systemName: SBinding<String?>) -> Self {
+    public func image(systemName: SBinding<String?>) -> Self {
         if #available(iOS 13.0, *) {
             systemName.didSet = { [weak self] newImageName in
                 guard let imageName = newImageName else { return }
@@ -515,7 +515,7 @@ extension Image {
     }
     
     @discardableResult
-    func image(systemName: SBinding<UIImage?>) -> Self {
+    public func image(systemName: SBinding<UIImage?>) -> Self {
         systemName.didSet = { [weak self] newImage in
             self?.image = newImage
         }
@@ -524,7 +524,7 @@ extension Image {
     }
     
     @discardableResult
-    func renderingMode(_ renderingMode: SBinding<UIImage.RenderingMode>) -> Self {
+    public func renderingMode(_ renderingMode: SBinding<UIImage.RenderingMode>) -> Self {
         renderingMode.didSet = { [weak self] newRenderingMode in
             self?.image = self?.image?.withRenderingMode(newRenderingMode)
         }
@@ -533,7 +533,7 @@ extension Image {
     }
     
     @discardableResult
-    func foregroundColor(_ color: SBinding<UIColor>) -> Self {
+    public func foregroundColor(_ color: SBinding<UIColor>) -> Self {
         color.didSet = { [weak self] newColor in
             self?.tintColor = newColor
         }
@@ -541,7 +541,8 @@ extension Image {
         return self
     }
     
-    func foregroundColor(_ hex: SBinding<UInt>) -> Self {
+    @discardableResult
+    public func foregroundColor(_ hex: SBinding<UInt>) -> Self {
         hex.didSet = { [weak self] newHex in
             let color = UIColor(hex: UInt32(newHex))
             self?.tintColor = color
@@ -551,7 +552,7 @@ extension Image {
     }
     
     @discardableResult
-    func image(_ state: SBinding<UIImage?>, renderingModeState: SBinding<UIImage.RenderingMode?> = SBinding<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
+    public func image(_ state: SBinding<UIImage?>, renderingModeState: SBinding<UIImage.RenderingMode?> = SBinding<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
         state.didSet = { [weak self] newImage in
             self?.image = newImage
         }
@@ -566,7 +567,7 @@ extension Image {
     }
     
     @discardableResult
-    func image(_ state: SBinding<String?>, renderingModeState: SBinding<UIImage.RenderingMode?> = SBinding<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
+    public func image(_ state: SBinding<String?>, renderingModeState: SBinding<UIImage.RenderingMode?> = SBinding<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
         state.didSet = { [weak self] newImageName in
             guard let imageName = newImageName else { return }
             self?.image = UIImage(named: imageName)
@@ -582,28 +583,28 @@ extension Image {
     }
     
     @discardableResult
-    func image(_ name: String, _ renderingMode: UIImage.RenderingMode = .alwaysTemplate) -> Self {
+    public func image(_ name: String, _ renderingMode: UIImage.RenderingMode = .alwaysTemplate) -> Self {
         self.image = UIImage(named: name)
         self.image = self.image?.withRenderingMode(renderingMode)
         return self
     }
     
     @discardableResult
-    func image(systemName: String, _ renderingMode: UIImage.RenderingMode = .alwaysTemplate) -> Self {
+    public func image(systemName: String, _ renderingMode: UIImage.RenderingMode = .alwaysTemplate) -> Self {
         self.image = UIImage(named: systemName)
         self.image = self.image?.withRenderingMode(renderingMode)
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ cornerRadius: CGFloat) -> Self {
+    public func cornerRadius(_ cornerRadius: CGFloat) -> Self {
         self.layer.cornerRadius = cornerRadius
         self.clipsToBounds = true
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
+    public func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
         layer.maskedCorners = []
         
         if corner.contains(.topLeft) {
@@ -629,13 +630,13 @@ extension Image {
     }
     
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -644,13 +645,13 @@ extension Image {
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }

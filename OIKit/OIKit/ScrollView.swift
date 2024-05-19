@@ -140,7 +140,7 @@ struct OIContentViewBuilder {
 
 public class ScrollView: UIScrollView {
     @discardableResult
-    func content(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, content: (UIView) -> UIView) -> ScrollView {
+    public func content(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, content: (UIView) -> UIView) -> ScrollView {
         let contentView = content(UIView())
         
         self.addSubview(contentView)

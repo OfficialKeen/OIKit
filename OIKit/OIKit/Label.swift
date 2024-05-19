@@ -413,13 +413,13 @@ public enum FontDesign {
 
 public class Text: UILabel {
     @discardableResult
-    func text(_ text: String) -> Self {
+    public func text(_ text: String) -> Self {
         self.text = text
         return self
     }
 
     @discardableResult
-    func font(_ size: CGFloat, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
+    public func font(_ size: CGFloat, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
         let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: weight]
 
         let fontDescriptor = UIFontDescriptor(fontAttributes: [
@@ -432,31 +432,31 @@ public class Text: UILabel {
     }
 
     @discardableResult
-    func font(_ style: UIFont.TextStyle) -> Self {
+    public func font(_ style: UIFont.TextStyle) -> Self {
         self.font = UIFont.preferredFont(forTextStyle: style)
         return self
     }
 
     @discardableResult
-    func fontDesign(_ design: FontDesign) -> Self {
+    public func fontDesign(_ design: FontDesign) -> Self {
         return self.font(self.font?.pointSize ?? UIFont.systemFontSize, weight: .regular, design: design)
     }
 
 
     @discardableResult
-    func fontWeight(_ weight: UIFont.Weight) -> Self {
+    public func fontWeight(_ weight: UIFont.Weight) -> Self {
         let existingFont = self.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
         self.font = UIFont.systemFont(ofSize: existingFont.pointSize, weight: weight)
         return self
     }
 
     @discardableResult
-    func bold() -> Self {
+    public func bold() -> Self {
         return fontWeight(.bold)
     }
 
     @discardableResult
-    func underline(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
+    public func underline(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
         if isActive {
             addUnderline(color: color)
         }
@@ -464,13 +464,13 @@ public class Text: UILabel {
     }
 
     @discardableResult
-    func italic() -> Self {
+    public func italic() -> Self {
         apply(style: .font, value: UIFont.italicSystemFont(ofSize: self.font?.pointSize ?? UIFont.systemFontSize))
         return self
     }
 
     @discardableResult
-    func strikethrough(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
+    public func strikethrough(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
         if isActive {
             apply(style: .strikethroughStyle, value: NSUnderlineStyle.single.rawValue, color: color)
         }
@@ -478,31 +478,33 @@ public class Text: UILabel {
     }
 
     @discardableResult
-    func foregroundColor(_ color: UIColor) -> Self {
+    public func foregroundColor(_ color: UIColor) -> Self {
         self.textColor = color
         return self
     }
     
-    func foregroundColor(_ hex: UInt) -> Self {
+    @discardableResult
+    public func foregroundColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.textColor = color
         return self
     }
     
     @discardableResult
-    func tintColor(_ color: UIColor) -> Self {
+    public func tintColor(_ color: UIColor) -> Self {
         self.tintColor = color
         return self
     }
     
-    func tintColor(_ hex: UInt) -> Self {
+    @discardableResult
+    public func tintColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
         return self
     }
 
     @discardableResult
-    func alignment(_ textAlignment: NSTextAlignment) -> Self {
+    public func alignment(_ textAlignment: NSTextAlignment) -> Self {
         let container = UIView()
         container.addSubview(self)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -528,14 +530,14 @@ public class Text: UILabel {
     }
 
     @discardableResult
-    func multilineTextAlignment(_ alignment: NSTextAlignment = .center) -> Self {
+    public func multilineTextAlignment(_ alignment: NSTextAlignment = .center) -> Self {
         self.textAlignment = alignment
         self.numberOfLines = 0
         return self
     }
     
     @discardableResult
-    func baselineOffset(_ baselineOffset: CGFloat) -> Self {
+    public func baselineOffset(_ baselineOffset: CGFloat) -> Self {
         let attributedString = NSMutableAttributedString(string: self.text ?? "")
         attributedString.addAttribute(.baselineOffset, value: baselineOffset, range: NSRange(location: 0, length: attributedString.length))
         self.attributedText = attributedString
@@ -543,7 +545,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func kerning(_ kerning: CGFloat) -> Self {
+    public func kerning(_ kerning: CGFloat) -> Self {
         let attributedString = NSMutableAttributedString(string: self.text ?? "")
         attributedString.addAttribute(.kern, value: kerning, range: NSRange(location: 0, length: attributedString.length))
         self.attributedText = attributedString
@@ -584,14 +586,14 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func multilineTextAlignment(_ alignment: NSTextAlignment = .center, _ lines: Int) -> Self {
+    public func multilineTextAlignment(_ alignment: NSTextAlignment = .center, _ lines: Int) -> Self {
         self.textAlignment = alignment
         self.numberOfLines = lines
         return self
     }
     
     @discardableResult
-    func multilineTextAlignment(_ state: SBinding<NSTextAlignment>) -> Self {
+    public func multilineTextAlignment(_ state: SBinding<NSTextAlignment>) -> Self {
         self.textAlignment = state.wrappedValue
         self.numberOfLines = 0
         
@@ -602,7 +604,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func text(_ state: SBinding<String>) -> Self {
+    public func text(_ state: SBinding<String>) -> Self {
         self.text = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.text = newText
@@ -611,7 +613,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func tintColor(_ state: SBinding<UIColor>) -> Self {
+    public func tintColor(_ state: SBinding<UIColor>) -> Self {
         self.tintColor = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.tintColor = newText
@@ -620,7 +622,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func foregroundColor(_ state: SBinding<UIColor?>) -> Self {
+    public func foregroundColor(_ state: SBinding<UIColor?>) -> Self {
         self.textColor = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.textColor = newText
@@ -629,7 +631,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func foregroundColor(_ state: SBinding<UIColor>) -> Self {
+    public func foregroundColor(_ state: SBinding<UIColor>) -> Self {
         self.textColor = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.textColor = newText
@@ -638,7 +640,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func foregroundColor(_ hex: SBinding<UInt>) -> Self {
+    public func foregroundColor(_ hex: SBinding<UInt>) -> Self {
         hex.didSet = { [weak self] newHex in
             let color = UIColor(hex: UInt32(newHex))
             self?.textColor = color
@@ -648,7 +650,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func foregroundColor(_ hex: SBinding<UInt?>) -> Self {
+    public func foregroundColor(_ hex: SBinding<UInt?>) -> Self {
         hex.didSet = { [weak self] newHex in
             guard let hexValue = newHex else { return }
             let color = UIColor(hex: UInt32(hexValue))
@@ -659,7 +661,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func font(_ state: SBinding<UIFont?>) -> Self {
+    public func font(_ state: SBinding<UIFont?>) -> Self {
         self.font = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.font = newText
@@ -668,7 +670,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func font(_ state: SBinding<UIFont>) -> Self {
+    public func font(_ state: SBinding<UIFont>) -> Self {
         self.font = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.font = newText
@@ -677,7 +679,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func fontWeight(_ state: SBinding<UIFont.Weight>) -> Self {
+    public func fontWeight(_ state: SBinding<UIFont.Weight>) -> Self {
         let existingFont = self.font ?? UIFont.systemFont(ofSize: UIFont.systemFontSize)
         self.font = UIFont.systemFont(ofSize: existingFont.pointSize, weight: state.wrappedValue)
         state.didSet = { [weak self] newWeight in
@@ -689,7 +691,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func fontDesign(_ state: SBinding<FontDesign>) -> Self {
+    public func fontDesign(_ state: SBinding<FontDesign>) -> Self {
         let newFont = UIFont(name: state.wrappedValue.fontName, size: self.font?.pointSize ?? UIFont.systemFontSize) ?? UIFont.systemFont(ofSize: 12)
         
         self.setFont(newFont)
@@ -703,7 +705,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func baselineOffset(_ state: SBinding<CGFloat>, _ isActive: Bool = true) -> Self {
+    public func baselineOffset(_ state: SBinding<CGFloat>, _ isActive: Bool = true) -> Self {
         if isActive {
             let attributedString = NSMutableAttributedString(string: self.text ?? "")
             attributedString.addAttribute(.baselineOffset, value: state.wrappedValue, range: NSRange(location: 0, length: attributedString.length))
@@ -719,7 +721,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func kerning(_ state: SBinding<CGFloat>, _ isActive: Bool = true) -> Self {
+    public func kerning(_ state: SBinding<CGFloat>, _ isActive: Bool = true) -> Self {
         if isActive {
             let attributedString = NSMutableAttributedString(string: self.text ?? "")
             attributedString.addAttribute(.kern, value: state.wrappedValue, range: NSRange(location: 0, length: attributedString.length))
@@ -735,7 +737,7 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func strikethrough(_ state: SBinding<Bool>, color: UIColor? = nil) -> Self {
+    public func strikethrough(_ state: SBinding<Bool>, color: UIColor? = nil) -> Self {
         apply(style: .strikethroughStyle, value: state.wrappedValue ? NSUnderlineStyle.single.rawValue : 0, color: color)
         
         state.didSet = { [weak self] isActive in
@@ -746,13 +748,13 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func isEnabled(_ isEnabled: Bool = true) -> Self {
+    public func isEnabled(_ isEnabled: Bool = true) -> Self {
         self.isEnabled = isEnabled
         return self
     }
     
     @discardableResult
-    func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isEnabled = newIsEnabled
         }
@@ -761,13 +763,13 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -776,13 +778,13 @@ public class Text: UILabel {
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }

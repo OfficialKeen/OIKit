@@ -545,7 +545,7 @@ public enum ImageSide {
 
 public class TextField: UITextField, UITextFieldDelegate {
     @discardableResult
-    func placeholder(_ text: String, font: UIFont? = nil) -> TextField {
+    public func placeholder(_ text: String, font: UIFont? = nil) -> TextField {
         self.placeholder = text
         if let font = font {
             let attributes = [NSAttributedString.Key.font: font]
@@ -555,13 +555,13 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
 
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -570,74 +570,75 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func isSecure(_ isEnabled: Bool = true) -> Self {
+    public func isSecure(_ isEnabled: Bool = true) -> Self {
         self.isSecureTextEntry = isEnabled
         return self
     }
     
     @discardableResult
-    func background(_ color: UIColor) -> Self {
+    public func background(_ color: UIColor) -> Self {
         self.backgroundColor = color
         return self
     }
     
     @discardableResult
-    func background(_ hex: UInt) -> Self {
+    public func background(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         return background(color)
     }
     
     @discardableResult
-    func text(_ text: String) -> TextField {
+    public func text(_ text: String) -> TextField {
         self.text = text
         return self
     }
     
     @discardableResult
-    func stroke(_ color: UIColor? = .black, lineWidth: CGFloat? = 1) -> Self {
+    public func stroke(_ color: UIColor? = .black, lineWidth: CGFloat? = 1) -> Self {
         self.layer.borderColor = color?.cgColor
         self.layer.borderWidth = lineWidth ?? 0
         return self
     }
     
-    func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
+    @discardableResult
+    public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    func foregroundColor(_ color: UIColor) -> TextField {
+    public func foregroundColor(_ color: UIColor) -> TextField {
         self.textColor = color
         return self
     }
     
-    func foregroundColor(_ hex: UInt) -> Self {
+    public func foregroundColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.textColor = color
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ cornerRadius: CGFloat) -> Self {
+    public func cornerRadius(_ cornerRadius: CGFloat) -> Self {
         self.layer.cornerRadius = cornerRadius
         self.clipsToBounds = true
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
+    public func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
         layer.maskedCorners = []
         
         if corner.contains(.topLeft) {
@@ -663,19 +664,19 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func tintColor(_ color: UIColor) -> TextField {
+    public func tintColor(_ color: UIColor) -> TextField {
         self.tintColor = color
         return self
     }
     
-    func tintColor(_ hex: UInt) -> Self {
+    public func tintColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
         return self
     }
     
     @discardableResult
-    func font(_ size: CGFloat, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> TextField {
+    public func font(_ size: CGFloat, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> TextField {
         let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: weight]
 
         let fontDescriptor = UIFontDescriptor(fontAttributes: [
@@ -688,25 +689,25 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func font(_ style: UIFont.TextStyle) -> Self {
+    public func font(_ style: UIFont.TextStyle) -> Self {
         self.font = UIFont.preferredFont(forTextStyle: style)
         return self
     }
     
     @discardableResult
-    func font(_ font: UIFont? = nil) -> Self {
+    public func font(_ font: UIFont? = nil) -> Self {
         self.font = font
         return self
     }
     
     @discardableResult
-    func keyboardType(_ type: UIKeyboardType) -> TextField {
+    public func keyboardType(_ type: UIKeyboardType) -> TextField {
         self.keyboardType = type
         return self
     }
     
     @discardableResult
-    func padding(left: CGFloat? = nil, top: CGFloat? = nil, right: CGFloat? = nil, bottom: CGFloat? = nil) -> TextField {
+    public func padding(left: CGFloat? = nil, top: CGFloat? = nil, right: CGFloat? = nil, bottom: CGFloat? = nil) -> TextField {
         let leftPadding = left ?? 0
         let topPadding = top ?? 0
         let rightPadding = right ?? 0
@@ -730,17 +731,17 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func padding(_ value: CGFloat) -> TextField {
+    public func padding(_ value: CGFloat) -> TextField {
         return padding(left: value, top: value, right: value, bottom: value)
     }
     
     @discardableResult
-    func addImage(position side: ImageSide, _ image: UIImage, padding: CGFloat, onTapGesture: (() -> Void)? = nil) -> TextField {
+    public func addImage(position side: ImageSide, _ image: UIImage, padding: CGFloat, onTapGesture: (() -> Void)? = nil) -> TextField {
         return addImage(position: side, image, paddingLeft: padding, paddingRight: padding, onTapGesture: onTapGesture)
     }
     
     @discardableResult
-    func addImage(position side: ImageSide, _ image: UIImage, setFrame size: CGSize? = nil, tintColorImage: UIColor? = nil, padding: CGFloat, onTapGesture: (() -> Void)? = nil) -> TextField {
+    public func addImage(position side: ImageSide, _ image: UIImage, setFrame size: CGSize? = nil, tintColorImage: UIColor? = nil, padding: CGFloat, onTapGesture: (() -> Void)? = nil) -> TextField {
         var resizedImage = image
         if let size = size {
             resizedImage = image.resized(to: size)
@@ -755,7 +756,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func addImage(position side: ImageSide, _ image: UIImage, paddingLeft: CGFloat? = nil, paddingRight: CGFloat? = nil, onTapGesture: (() -> Void)? = nil) -> TextField {
+    public func addImage(position side: ImageSide, _ image: UIImage, paddingLeft: CGFloat? = nil, paddingRight: CGFloat? = nil, onTapGesture: (() -> Void)? = nil) -> TextField {
         let imageView = UIImageView(image: image)
         let totalPadding = (paddingLeft ?? 0) + (paddingRight ?? 0)
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: imageView.frame.size.width + totalPadding, height: imageView.frame.size.height))
@@ -783,7 +784,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func onEditingChange(_ action: @escaping (String) -> Void) -> TextField {
+    public func onEditingChange(_ action: @escaping (String) -> Void) -> TextField {
         addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         objc_setAssociatedObject(self, &AssociatedKeys.textChangeAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return self
@@ -797,7 +798,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func onSubmit(_ action: @escaping () -> Void) -> TextField {
+    public func onSubmit(_ action: @escaping () -> Void) -> TextField {
         addTarget(self, action: #selector(handleSubmit), for: .editingDidEndOnExit)
         objc_setAssociatedObject(self, &AssociatedKeys.submitAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         return self
@@ -838,7 +839,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func onReturn(_ action: @escaping () -> Bool) -> TextField {
+    public func onReturn(_ action: @escaping () -> Bool) -> TextField {
         returnAction = action
         self.delegate = self
         return self
@@ -858,7 +859,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func onDidEndEditing(_ action: @escaping () -> Void) -> TextField {
+    public func onDidEndEditing(_ action: @escaping () -> Void) -> TextField {
         endEditingAction = action
         self.delegate = self
         return self
@@ -878,7 +879,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func onDidEndTap(_ action: @escaping () -> Void) -> TextField {
+    public func onDidEndTap(_ action: @escaping () -> Void) -> TextField {
         beginEditingAction = action
         self.delegate = self
         return self
@@ -898,7 +899,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func onDidTap(_ action: @escaping () -> Bool) -> TextField {
+    public func onDidTap(_ action: @escaping () -> Bool) -> TextField {
         shouldBeginEditingAction = action
         self.delegate = self
         return self
@@ -918,7 +919,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func onShouldEndEditing(_ action: @escaping () -> Bool) -> TextField {
+    public func onShouldEndEditing(_ action: @escaping () -> Bool) -> TextField {
         shouldEndEditingAction = action
         self.delegate = self
         return self
@@ -938,7 +939,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func shouldClear(_ action: @escaping () -> Bool) -> TextField {
+    public func shouldClear(_ action: @escaping () -> Bool) -> TextField {
         shouldClearAction = action
         self.delegate = self
         return self
@@ -958,7 +959,7 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
-    func onChange(_ action: @escaping (UITextField, NSRange, String) -> Bool) -> TextField {
+    public func onChange(_ action: @escaping (UITextField, NSRange, String) -> Bool) -> TextField {
         shouldChangeCharactersAction = action
         self.delegate = self
         return self
@@ -992,7 +993,7 @@ extension String {
         case template
     }
     
-    func imageSFSymbols(_ mode: ImageMode = .original) -> UIImage {
+    public func imageSFSymbols(_ mode: ImageMode = .original) -> UIImage {
         guard #available(iOS 13.0, *) else {
             return UIImage() // Return a default empty image for unsupported iOS versions
         }
@@ -1007,14 +1008,14 @@ extension String {
         }
     }
     
-    var renderingImage: UIImage {
+    public var renderingImage: UIImage {
         return UIImage(named: self) ?? UIImage() // Return an empty image if the asset is not found
     }
 }
 
 extension TextField {
     @discardableResult
-    func text(_ state: SBinding<String>) -> TextField {
+    public func text(_ state: SBinding<String>) -> TextField {
         state.didSet = { [weak self] newValue in
             self?.text = newValue
         }
@@ -1033,3 +1034,4 @@ extension TextField {
     
     private static var bindingKey: UInt8 = 0
 }
+

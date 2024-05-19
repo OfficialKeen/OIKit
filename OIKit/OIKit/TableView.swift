@@ -122,29 +122,30 @@ extension UITableView {
     }
 }*/
 
+
 import UIKit
 
 public class Table: UITableView {
     @discardableResult
-    func reload() -> Self {
+    public func reload() -> Self {
         self.reloadData()
         return self
     }
     
     @discardableResult
-    func setRegister(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) -> Self {
+    public func setRegister(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) -> Self {
         self.register(cellClass, forCellReuseIdentifier: identifier)
         return self
     }
     
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -153,32 +154,32 @@ public class Table: UITableView {
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    func setRegister(_ nib: UINib?, forCellReuseIdentifier identifier: String) -> Self {
+    public func setRegister(_ nib: UINib?, forCellReuseIdentifier identifier: String) -> Self {
         guard let nib = nib else { fatalError("Nib is nil") }
         self.register(nib, forCellReuseIdentifier: identifier)
         return self
     }
     
     @discardableResult
-    func dataSource(_ dataSource: UITableViewDataSource?) -> Self {
+    public func dataSource(_ dataSource: UITableViewDataSource?) -> Self {
         self.dataSource = dataSource
         return self
     }
     
     @discardableResult
-    func delegate(_ delegate: UITableViewDelegate?) -> Self {
+    public func delegate(_ delegate: UITableViewDelegate?) -> Self {
         self.delegate = delegate
         self.showsVerticalScrollIndicator()
         self.showsHorizontalScrollIndicator()
@@ -186,43 +187,43 @@ public class Table: UITableView {
     }
     
     @discardableResult
-    func contentInsetAdjustmentBehavior(_ behavior: UIScrollView.ContentInsetAdjustmentBehavior) -> Self {
+    public func contentInsetAdjustmentBehavior(_ behavior: UIScrollView.ContentInsetAdjustmentBehavior) -> Self {
         self.contentInsetAdjustmentBehavior = behavior
         return self
     }
     
     @discardableResult
-    func separatorStyle(_ style: UITableViewCell.SeparatorStyle) -> Self {
+    public func separatorStyle(_ style: UITableViewCell.SeparatorStyle) -> Self {
         self.separatorStyle = style
         return self
     }
     
     @discardableResult
-    func rowHeight(_ height: CGFloat) -> Self {
+    public func rowHeight(_ height: CGFloat) -> Self {
         self.rowHeight = height
         return self
     }
     
     @discardableResult
-    func estimatedRowHeight(_ height: CGFloat) -> Self {
+    public func estimatedRowHeight(_ height: CGFloat) -> Self {
         self.estimatedRowHeight = height
         return self
     }
     
     @discardableResult
-    func showsVerticalScrollIndicator(_ showsIndicator: Bool = false) -> Self {
+    public func showsVerticalScrollIndicator(_ showsIndicator: Bool = false) -> Self {
         self.showsVerticalScrollIndicator = showsIndicator
         return self
     }
     
     @discardableResult
-    func showsHorizontalScrollIndicator(_ showsIndicator: Bool = false) -> Self {
+    public func showsHorizontalScrollIndicator(_ showsIndicator: Bool = false) -> Self {
         self.showsHorizontalScrollIndicator = showsIndicator
         return self
     }
     
     @discardableResult
-    func infinityHeaderView(_ headerView: UIView) -> Self {
+    public func infinityHeaderView(_ headerView: UIView) -> Self {
         self.tableHeaderView = headerView
         let size = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         let height = size.height
@@ -232,7 +233,7 @@ public class Table: UITableView {
     }
     
     @discardableResult
-    func infinityFooterView(_ footerView: UIView) -> Self {
+    public func infinityFooterView(_ footerView: UIView) -> Self {
         self.tableFooterView = footerView
         let size = footerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         let height = size.height
@@ -242,14 +243,14 @@ public class Table: UITableView {
     }
     
     @discardableResult
-    func didSelectRowAt(_ closure: @escaping (UITableView, IndexPath) -> Void) -> Self {
+    public func didSelectRowAt(_ closure: @escaping (UITableView, IndexPath) -> Void) -> Self {
         return self
     }
 }
 
 extension Table {
     @discardableResult
-    func dynamicHeight() -> Self {
+    public func dynamicHeight() -> Self {
         self.contentSize = .zero // Set initial content size to zero
         return self
     }
@@ -265,5 +266,3 @@ extension Table {
         return CGSize(width: UIView.noIntrinsicMetric, height: contentSize.height)
     }
 }
-
-

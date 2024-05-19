@@ -163,82 +163,82 @@ import UIKit
 
 public class Toggle: UISwitch {
     @discardableResult
-    func frame(x: CGFloat, y: CGFloat) -> Self {
+    public func frame(x: CGFloat, y: CGFloat) -> Self {
         self.transform = CGAffineTransform(scaleX: x, y: y)
         return self
     }
     
     @discardableResult
-    func isOn(_ isOn: Bool) -> Self {
+    public func isOn(_ isOn: Bool) -> Self {
         self.isOn = isOn
         return self
     }
     
     @discardableResult
-    func onTintColor(_ color: UIColor) -> Self {
+    public func onTintColor(_ color: UIColor) -> Self {
         self.onTintColor = color
         return self
     }
     
     @discardableResult
-    func thumbTintColor(_ color: UIColor) -> Self {
+    public func thumbTintColor(_ color: UIColor) -> Self {
         self.thumbTintColor = color
         return self
     }
     
     @discardableResult
-    func tintColor(_ color: UIColor) -> Self {
+    public func tintColor(_ color: UIColor) -> Self {
         self.tintColor = color
         return self
     }
     
     @discardableResult
-    func onTintColor(_ hex: Int) -> Self {
+    public func onTintColor(_ hex: Int) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.onTintColor = color
         return self
     }
     
     @discardableResult
-    func thumbTintColor(_ hex: Int) -> Self {
+    public func thumbTintColor(_ hex: Int) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.thumbTintColor = color
         return self
     }
     
     @discardableResult
-    func tintColor(_ hex: Int) -> Self {
+    public func tintColor(_ hex: Int) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
         return self
     }
     
     @discardableResult
-    func onImage(_ image: UIImage?) -> Self {
+    public func onImage(_ image: UIImage?) -> Self {
         self.onImage = image
         return self
     }
     
     @discardableResult
-    func offImage(_ image: UIImage?) -> Self {
+    public func offImage(_ image: UIImage?) -> Self {
         self.offImage = image
         return self
     }
     
     @discardableResult
-    func isEnabled(_ isEnabled: Bool) -> Self {
+    public func isEnabled(_ isEnabled: Bool) -> Self {
         self.isEnabled = isEnabled
         return self
     }
     
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -247,7 +247,7 @@ public class Toggle: UISwitch {
     }
     
     @discardableResult
-    func onChange(_ handler: @escaping (UISwitch) -> Void) -> Self {
+    public func onChange(_ handler: @escaping (UISwitch) -> Void) -> Self {
         self.addTarget(self, action: #selector(handleValueChanged(_:)), for: .valueChanged)
         self.valueChangedHandler = handler
         return self
@@ -273,7 +273,7 @@ public class Toggle: UISwitch {
 
 extension Toggle {
     // Method untuk mengatur isOn dengan @UIState
-    func isOn(_ isOn: SBinding<Bool>) -> Self {
+    public func isOn(_ isOn: SBinding<Bool>) -> Self {
         self.isOn = isOn.wrappedValue
         isOn.didSet = { [weak self] newValue in
             self?.isOn = newValue
@@ -282,7 +282,7 @@ extension Toggle {
     }
     
     @discardableResult
-    func onTintColor(_ color: SBinding<UIColor>) -> Self {
+    public func onTintColor(_ color: SBinding<UIColor>) -> Self {
         color.didSet = { [weak self] newColor in
             self?.onTintColor = newColor
         }
@@ -291,7 +291,7 @@ extension Toggle {
     }
     
     @discardableResult
-    func onTintColor(_ hex: SBinding<Int>) -> Self {
+    public func onTintColor(_ hex: SBinding<Int>) -> Self {
         hex.didSet = { [weak self] newHex in
             let color = UIColor(hex: UInt32(newHex))
             self?.onTintColor = color
@@ -301,7 +301,7 @@ extension Toggle {
     }
     
     @discardableResult
-    func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isEnabled = newIsEnabled
         }
@@ -312,7 +312,7 @@ extension Toggle {
 
 extension Toggle {
     // Method untuk menambahkan closure valueChange
-    func onChange(_ handler: @escaping (Bool) -> Void) -> Self {
+    public func onChange(_ handler: @escaping (Bool) -> Void) -> Self {
         addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)
         valueChangedHandlers = handler
         return self
@@ -327,4 +327,3 @@ extension Toggle {
         set { objc_setAssociatedObject(self, &AssociatedKeys.valueChangedHandler, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }
-

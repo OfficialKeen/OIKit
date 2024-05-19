@@ -116,13 +116,13 @@ import UIKit
 
 public class TextView: UITextView {
     @discardableResult
-    func text(_ text: String) -> Self {
+    public func text(_ text: String) -> Self {
         self.text = text
         return self
     }
     
     @discardableResult
-    func text(_ state: SBinding<String>) -> Self {
+    public func text(_ state: SBinding<String>) -> Self {
         self.text = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.text = newText
@@ -131,12 +131,13 @@ public class TextView: UITextView {
     }
     
     @discardableResult
-    func foregroundColor(_ color: UIColor) -> Self {
+    public func foregroundColor(_ color: UIColor) -> Self {
         self.textColor = color
         return self
     }
     
-    func foregroundColor(_ hex: UInt32) -> Self {
+    @discardableResult
+    public func foregroundColor(_ hex: UInt32) -> Self {
         let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
         let blue = CGFloat(hex & 0x0000FF) / 255.0
@@ -147,12 +148,13 @@ public class TextView: UITextView {
     }
     
     @discardableResult
-    func tintColor(_ color: UIColor) -> Self {
+    public func tintColor(_ color: UIColor) -> Self {
         self.tintColor = color
         return self
     }
     
-    func tintColor(_ hex: UInt32) -> Self {
+    @discardableResult
+    public func tintColor(_ hex: UInt32) -> Self {
         let red = CGFloat((hex & 0xFF0000) >> 16) / 255.0
         let green = CGFloat((hex & 0x00FF00) >> 8) / 255.0
         let blue = CGFloat(hex & 0x0000FF) / 255.0
@@ -163,13 +165,13 @@ public class TextView: UITextView {
     }
     
     @discardableResult
-    func font(_ font: UIFont) -> Self {
+    public func font(_ font: UIFont) -> Self {
         self.font = font
         return self
     }
     
     @discardableResult
-    func font(_ size: CGFloat = 16, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
+    public func font(_ size: CGFloat = 16, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
         let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: weight]
 
         let fontDescriptor = UIFontDescriptor(fontAttributes: [
@@ -182,57 +184,57 @@ public class TextView: UITextView {
     }
 
     @discardableResult
-    func font(_ style: UIFont.TextStyle) -> Self {
+    public func font(_ style: UIFont.TextStyle) -> Self {
         self.font = UIFont.preferredFont(forTextStyle: style)
         return self
     }
     
     @discardableResult
-    func alignment(_ alignment: NSTextAlignment) -> Self {
+    public func alignment(_ alignment: NSTextAlignment) -> Self {
         self.textAlignment = alignment
         return self
     }
     
     @discardableResult
-    func padding(_ value: CGFloat) -> Self {
+    public func padding(_ value: CGFloat) -> Self {
         let insets = UIEdgeInsets(top: value, left: value, bottom: value, right: value)
         self.textContainerInset = insets
         return self
     }
     
     @discardableResult
-    func background(_ color: UIColor) -> Self {
+    public func background(_ color: UIColor) -> Self {
         self.backgroundColor = color
         return self
     }
     
     @discardableResult
-    func background(_ hex: UInt) -> Self {
+    public func background(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         return background(color)
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ radius: CGFloat? = nil) -> Self {
+    public func cornerRadius(_ radius: CGFloat? = nil) -> Self {
         self.layer.cornerRadius = radius ?? 0
         self.layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
+    public func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
         layer.maskedCorners = []
         
         if corner.contains(.topLeft) {
@@ -258,13 +260,13 @@ public class TextView: UITextView {
     }
     
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -273,13 +275,14 @@ public class TextView: UITextView {
     }
     
     @discardableResult
-    func stroke(_ color: UIColor? = .black, lineWidth: CGFloat? = 1) -> Self {
+    public func stroke(_ color: UIColor? = .black, lineWidth: CGFloat? = 1) -> Self {
         self.layer.borderColor = color?.cgColor
         self.layer.borderWidth = lineWidth ?? 0
         return self
     }
     
-    func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
+    @discardableResult
+    public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
     }
@@ -289,7 +292,7 @@ public class TextView: UITextView {
     }
     
     @discardableResult
-    func placeholder(_ text: String, fontSize: CGFloat? = nil, font: UIFont? = nil, position: CGPoint) -> Self {
+    public func placeholder(_ text: String, fontSize: CGFloat? = nil, font: UIFont? = nil, position: CGPoint) -> Self {
         let placeholderLabel = UILabel()
         placeholderLabel.font = font ?? self.font // Gunakan font default jika tidak diberikan
         placeholderLabel.textColor = UIColor.purple
@@ -311,5 +314,3 @@ public class TextView: UITextView {
         placeholderLabel?.isHidden = !self.text.isEmpty
     }
 }
-
-

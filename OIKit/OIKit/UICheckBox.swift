@@ -509,93 +509,93 @@ public class CheckView: UIControl {
     // MARK: - Configuration
     
     @discardableResult
-    func style(_ style: Style) -> CheckView {
+    public func style(_ style: Style) -> CheckView {
         self.style = style
         return self
     }
     
     @discardableResult
-    func borderStyle(_ borderStyle: BorderStyle) -> CheckView {
+    public func borderStyle(_ borderStyle: BorderStyle) -> CheckView {
         self.borderStyle = borderStyle
         return self
     }
     
     @discardableResult
-    func borderWidth(_ width: CGFloat) -> CheckView {
+    public func borderWidth(_ width: CGFloat) -> CheckView {
         borderWidth = width
         return self
     }
     
     @discardableResult
-    func checkmarkSize(_ size: CGFloat) -> CheckView {
+    public func checkmarkSize(_ size: CGFloat) -> CheckView {
         checkmarkSize = size
         return self
     }
 
     @discardableResult
-    func uncheckedBorderColor(_ color: UIColor) -> CheckView {
+    public func uncheckedBorderColor(_ color: UIColor) -> CheckView {
         uncheckedBorderColor = color
         return self
     }
 
     @discardableResult
-    func uncheckedBorderColor(_ hex: UInt32) -> CheckView {
+    public func uncheckedBorderColor(_ hex: UInt32) -> CheckView {
         return uncheckedBorderColor(UIColor(hex: hex))
     }
 
     @discardableResult
-    func checkedBorderColor(_ color: UIColor) -> CheckView {
+    public func checkedBorderColor(_ color: UIColor) -> CheckView {
         checkedBorderColor = color
         return self
     }
 
     @discardableResult
-    func checkedBorderColor(_ hex: UInt32) -> CheckView {
+    public func checkedBorderColor(_ hex: UInt32) -> CheckView {
         return checkedBorderColor(UIColor(hex: hex))
     }
 
     @discardableResult
-    func checkmarkColor(_ color: UIColor) -> CheckView {
+    public func checkmarkColor(_ color: UIColor) -> CheckView {
         checkmarkColor = color
         return self
     }
 
     @discardableResult
-    func checkmarkColor(_ hex: UInt32) -> CheckView {
+    public func checkmarkColor(_ hex: UInt32) -> CheckView {
         return checkmarkColor(UIColor(hex: hex))
     }
 
     @discardableResult
-    func backgroundColor(_ color: UIColor) -> CheckView {
+    public func backgroundColor(_ color: UIColor) -> CheckView {
         checkboxBackgroundColor = color
         return self
     }
 
     @discardableResult
-    func backgroundColor(_ hex: UInt32) -> CheckView {
+    public func backgroundColor(_ hex: UInt32) -> CheckView {
         return backgroundColor(UIColor(hex: hex))
     }
     
     @discardableResult
-    func increasedTouchRadius(_ radius: CGFloat) -> CheckView {
+    public func increasedTouchRadius(_ radius: CGFloat) -> CheckView {
         increasedTouchRadius = radius
         return self
     }
     
     @discardableResult
-    func useHapticFeedback(_ use: Bool) -> CheckView {
+    public func useHapticFeedback(_ use: Bool) -> CheckView {
         useHapticFeedback = use
         return self
     }
     
     @discardableResult
-    func isChecked(_ checked: Bool) -> CheckView {
+    public func isChecked(_ checked: Bool) -> CheckView {
         isChecked = checked
         return self
     }
     
     @discardableResult
-    func isChecked(_ state: SBinding<Bool>) -> Self {
+    public func isChecked(_ state: SBinding<Bool>) -> Self {
         self.isChecked = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isChecked = newValue
@@ -604,27 +604,27 @@ public class CheckView: UIControl {
     }
     
     @discardableResult
-    func valueChanged(_ action: @escaping (Bool) -> Void) -> CheckView {
+    public func valueChanged(_ action: @escaping (Bool) -> Void) -> CheckView {
         addTarget(self, action: #selector(valueChangedHandler(_:)), for: .valueChanged)
         valueChangedAction = action
         return self
     }
     
     @discardableResult
-    func frame(width: CGFloat, height: CGFloat) -> Self {
+    public func frame(width: CGFloat, height: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -633,13 +633,13 @@ public class CheckView: UIControl {
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
@@ -752,13 +752,13 @@ public class CheckView: UIControl {
 
 extension CheckView {
     @discardableResult
-    func isEnabled(_ isEnabled: Bool = true) -> Self {
+    public func isEnabled(_ isEnabled: Bool = true) -> Self {
         self.isEnabled = isEnabled
         return self
     }
     
     @discardableResult
-    func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             self?.isEnabled = newIsEnabled
         }
@@ -767,7 +767,7 @@ extension CheckView {
     }
     
     @discardableResult
-    func defaultStyle(_ style: Style) -> Self {
+    public func defaultStyle(_ style: Style) -> Self {
         switch style {
         case .square:
             self.squareStyle()
@@ -784,7 +784,7 @@ extension CheckView {
     }
     
     @discardableResult
-    func squareStyle(style: CheckView.Style = .square,
+    public func squareStyle(style: CheckView.Style = .square,
                              borderWidth: CGFloat = 1.0,
                              borderColor: UIColor = .clear,
                              checkColorHex: UInt32 = 0x4D9BFF,
@@ -812,7 +812,7 @@ extension CheckView {
     }
     
     @discardableResult
-    func circleStyle(style: CheckView.Style = .circle,
+    public func circleStyle(style: CheckView.Style = .circle,
                              borderWidth: CGFloat = 1.0,
                              borderColor: UIColor = .clear,
                              checkColorHex: UInt32 = 0x4D9BFF,
@@ -840,7 +840,7 @@ extension CheckView {
     }
     
     @discardableResult
-    func crossStyle(style: CheckView.Style = .cross,
+    public func crossStyle(style: CheckView.Style = .cross,
                              borderWidth: CGFloat = 1.0,
                              borderColor: UIColor = .clear,
                              checkColorHex: UInt32 = 0x4D9BFF,
@@ -868,7 +868,7 @@ extension CheckView {
     }
     
     @discardableResult
-    func tickStyle(style: CheckView.Style = .tick,
+    public func tickStyle(style: CheckView.Style = .tick,
                              borderWidth: CGFloat = 1.0,
                              borderColor: UIColor = .clear,
                              checkColorHex: UInt32 = 0x4D9BFF,
@@ -896,7 +896,7 @@ extension CheckView {
     }
     
     @discardableResult
-    func customStyle(style: CheckView.Style = .tick,
+    public func customStyle(style: CheckView.Style = .tick,
                              borderWidth: CGFloat = 1.0,
                              borderColor: UIColor = .clear,
                              checkColorHex: UInt32 = 0x4D9BFF,

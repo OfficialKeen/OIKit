@@ -356,55 +356,55 @@ import UIKit
 
 public class SearchBar: UISearchBar {
     @discardableResult
-    func delegate(_ delegate: UISearchBarDelegate?) -> Self {
+    public func delegate(_ delegate: UISearchBarDelegate?) -> Self {
         self.delegate = delegate
         return self
     }
     
     @discardableResult
-    func prompt(_ prompt: String? = nil) -> Self {
+    public func prompt(_ prompt: String? = nil) -> Self {
         self.prompt = prompt
         return self
     }
     
     @discardableResult
-    func placeholder(_ placeholder: String?) -> Self {
+    public func placeholder(_ placeholder: String?) -> Self {
         self.placeholder = placeholder
         return self
     }
     
     @discardableResult
-    func barButtonItems(_ items: [UIBarButtonItem]? = nil) -> Self {
+    public func barButtonItems(_ items: [UIBarButtonItem]? = nil) -> Self {
         self.setShowsCancelButton(true, animated: true)
         return self
     }
     
     @discardableResult
-    func scopeBar(_ selectedScope: Int? = nil) -> Self {
+    public func scopeBar(_ selectedScope: Int? = nil) -> Self {
         self.showsScopeBar = true
         return self
     }
     
     @discardableResult
-    func keyboardType(_ type: UIKeyboardType) -> Self {
+    public func keyboardType(_ type: UIKeyboardType) -> Self {
         self.keyboardType = type
         return self
     }
     
     @discardableResult
-    func autocorrectionType(_ type: UITextAutocorrectionType) -> Self {
+    public func autocorrectionType(_ type: UITextAutocorrectionType) -> Self {
         self.autocorrectionType = type
         return self
     }
     
     @discardableResult
-    func autocapitalizationType(_ type: UITextAutocapitalizationType) -> Self {
+    public func autocapitalizationType(_ type: UITextAutocapitalizationType) -> Self {
         self.autocapitalizationType = type
         return self
     }
     
     @discardableResult
-    func clearButtonMode(_ mode: UITextField.ViewMode) -> Self {
+    public func clearButtonMode(_ mode: UITextField.ViewMode) -> Self {
         if let textField = self.value(forKey: "searchField") as? UITextField {
             textField.clearButtonMode = mode
         }
@@ -412,25 +412,25 @@ public class SearchBar: UISearchBar {
     }
     
     @discardableResult
-    func showsBookmarkButton(_ shows: Bool) -> Self {
+    public func showsBookmarkButton(_ shows: Bool) -> Self {
         self.showsBookmarkButton = shows
         return self
     }
     
     @discardableResult
-    func showsCancelButton(_ shows: Bool = false) -> Self {
+    public func showsCancelButton(_ shows: Bool = false) -> Self {
         self.showsCancelButton = shows
         return self
     }
     
     @discardableResult
-    func backgroundImage(_ image: UIImage = UIImage()) -> Self {
+    public func backgroundImage(_ image: UIImage = UIImage()) -> Self {
         self.backgroundImage = image
         return self
     }
     
     @discardableResult
-    func textAttributes(_ attributes: [NSAttributedString.Key : Any]?) -> Self {
+    public func textAttributes(_ attributes: [NSAttributedString.Key : Any]?) -> Self {
         if let attributes = attributes {
             if #available(iOS 13.0, *) {
                 self.searchTextField.defaultTextAttributes = attributes
@@ -442,7 +442,7 @@ public class SearchBar: UISearchBar {
     }
     
     @discardableResult
-    func background(_ color: UIColor) -> Self {
+    public func background(_ color: UIColor) -> Self {
         if let searchBarTextField = self.value(forKey: "searchField") as? UITextField {
             searchBarTextField.backgroundColor = color
         }
@@ -450,7 +450,7 @@ public class SearchBar: UISearchBar {
     }
     
     @discardableResult
-    func background(_ hex: UInt) -> Self {
+    public func background(_ hex: UInt) -> Self {
         if let searchBarTextField = self.value(forKey: "searchField") as? UITextField {
             let color = UIColor(hex: UInt32(hex))
             searchBarTextField.backgroundColor = color
@@ -459,26 +459,26 @@ public class SearchBar: UISearchBar {
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ radius: CGFloat? = nil) -> Self {
+    public func cornerRadius(_ radius: CGFloat? = nil) -> Self {
         self.layer.cornerRadius = radius ?? 0
         self.layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
+    public func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
         layer.maskedCorners = []
         
         if corner.contains(.topLeft) {
@@ -504,13 +504,13 @@ public class SearchBar: UISearchBar {
     }
     
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -519,13 +519,13 @@ public class SearchBar: UISearchBar {
     }
     
     @discardableResult
-    func stroke(_ color: UIColor? = .black, lineWidth: CGFloat? = 1) -> Self {
+    public func stroke(_ color: UIColor? = .black, lineWidth: CGFloat? = 1) -> Self {
         self.layer.borderColor = color?.cgColor
         self.layer.borderWidth = lineWidth ?? 0
         return self
     }
     
-    func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
+    public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
     }
@@ -562,7 +562,7 @@ extension SearchBar { //textDidChange
         return self
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchTextDidChangeAction?(searchBar, searchText)
     }
 }
@@ -584,7 +584,7 @@ extension SearchBar { //searchBarTextDidBeginEditing
         return self
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    public func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBarTextDidBeginEditingAction?(searchBar)
     }
 }
@@ -606,7 +606,7 @@ extension SearchBar { //searchBarTextDidEndEditing
         return self
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    public func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBarTextDidEndEditingAction?(searchBar)
     }
 }
@@ -628,7 +628,7 @@ extension SearchBar { //shouldChangeTextInRange
         return self
     }
     
-    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    public func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         return shouldChangeTextInRangeAction?(searchBar, range, text) ?? true
     }
 }
@@ -650,7 +650,7 @@ extension SearchBar { //searchBarSearchButtonClicked
         return self
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBarSearchButtonClickedAction?(searchBar)
     }
 }
@@ -672,7 +672,7 @@ extension SearchBar { //searchBarCancelButtonClicked
         return self
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBarCancelButtonClickedAction?(searchBar)
     }
 }
@@ -694,7 +694,7 @@ extension SearchBar { //searchBarResultsListButtonClicked
         return self
     }
     
-    func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
+    public func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
         searchBarResultsListButtonClickedAction?(searchBar)
     }
 }
@@ -716,7 +716,7 @@ extension SearchBar { //selectedScopeButtonIndexDidChange
         return self
     }
     
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    public func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         selectedScopeButtonIndexDidChangeAction?(searchBar, selectedScope)
     }
 }

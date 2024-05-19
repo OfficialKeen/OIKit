@@ -196,7 +196,7 @@ extension UIStackView {
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -211,26 +211,26 @@ extension UIStackView {
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ radius: CGFloat? = nil) -> Self {
+    public func cornerRadius(_ radius: CGFloat? = nil) -> Self {
         self.layer.cornerRadius = radius ?? 0
         self.layer.masksToBounds = true
         return self
     }
     
     @discardableResult
-    func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
+    public func cornerRadius(_ corner: UIRectCorner, _ radius: CGFloat) -> Self {
         layer.maskedCorners = []
         
         if corner.contains(.topLeft) {
@@ -256,7 +256,7 @@ extension UIStackView {
     }
     
     @discardableResult
-    func shadow(color: UIColor, opacity: Float, radius: CGFloat, offset: CGSize) -> Self {
+    public func shadow(color: UIColor, opacity: Float, radius: CGFloat, offset: CGSize) -> Self {
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOpacity = opacity
         self.layer.shadowOffset = offset
@@ -266,7 +266,7 @@ extension UIStackView {
     }
     
     @discardableResult
-    func shadow(color: UInt, opacity: Float, radius: CGFloat, offset: CGSize) -> Self {
+    public func shadow(color: UInt, opacity: Float, radius: CGFloat, offset: CGSize) -> Self {
         let hexColor = UIColor(hex: UInt32(color))
         self.layer.shadowColor = hexColor.cgColor
         self.layer.shadowOpacity = opacity
@@ -277,14 +277,14 @@ extension UIStackView {
     }
     
     @discardableResult
-    func stroke(_ color: UIColor? = .black, lineWidth: CGFloat? = 1) -> Self {
+    public func stroke(_ color: UIColor? = .black, lineWidth: CGFloat? = 1) -> Self {
         self.layer.borderColor = color?.cgColor
         self.layer.borderWidth = lineWidth ?? 0
         return self
     }
     
     @discardableResult
-    func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
+    public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
     }

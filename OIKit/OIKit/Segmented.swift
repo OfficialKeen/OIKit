@@ -5,7 +5,7 @@
 //  Created by keenoi on 31/03/24.
 //
 
-import UIKit
+/*import UIKit
 
 extension UISegmentedControl {
     @discardableResult
@@ -197,6 +197,230 @@ extension UISegmentedControl {
             self?.isEnabled = newIsEnabled
         }
         isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
+    }
+}
+*/
+
+import UIKit
+
+class Segmented: UISegmentedControl {
+    @discardableResult
+    func items(_ items: [String]) -> Segmented {
+        removeAllSegments()
+        for (index, title) in items.enumerated() {
+            insertSegment(withTitle: title, at: index, animated: false)
+        }
+        return self
+    }
+    
+    @discardableResult
+    func cornerRadius(_ radius: CGFloat) -> Segmented {
+        layer.cornerRadius = radius
+        layer.masksToBounds = true
+        return self
+    }
+    
+    @discardableResult
+    func setDefaultIndex(_ index: Int) -> Segmented {
+        selectedSegmentIndex = index
+        return self
+    }
+    
+    @discardableResult
+    func selectedColor(_ hex: UInt) -> Segmented {
+        if #available(iOS 13.0, *) {
+            selectedSegmentTintColor = UIColor(hex: UInt32(hex))
+        } else {
+            // Fallback on earlier versions
+        }
+        return self
+    }
+    
+    @discardableResult
+    func selectedColor(_ color: UIColor) -> Segmented {
+        if #available(iOS 13.0, *) {
+            selectedSegmentTintColor = color
+        } else {
+            // Fallback on earlier versions
+        }
+        return self
+    }
+    
+    @discardableResult
+    func titleSelectColor(_ hex: UInt) -> Segmented {
+        setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hex: UInt32(hex))], for: .selected)
+        return self
+    }
+    
+    @discardableResult
+    func titleSelectColor(_ color: UIColor) -> Segmented {
+        setTitleTextAttributes([NSAttributedString.Key.foregroundColor: color], for: .selected)
+        return self
+    }
+    
+    @discardableResult
+    func titleUnselectColor(_ hex: UInt) -> Segmented {
+        setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hex: UInt32(hex))], for: .normal)
+        return self
+    }
+    
+    @discardableResult
+    func titleUnselectColor(_ color: UIColor) -> Segmented {
+        setTitleTextAttributes([NSAttributedString.Key.foregroundColor: color], for: .normal)
+        return self
+    }
+    
+    @discardableResult
+    func foregroundColor(_ hex: UInt) -> Segmented {
+        tintColor = UIColor(hex: UInt32(hex))
+        return self
+    }
+    
+    @discardableResult
+    func foregroundColor(_ color: UIColor) -> Segmented {
+        tintColor = color
+        return self
+    }
+    
+    @discardableResult
+    func fontSize(_ size: CGFloat) -> Segmented {
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)]
+        setTitleTextAttributes(attributes, for: .normal)
+        return self
+    }
+    
+    @discardableResult
+    func fontSize(_ size: CGFloat, weight: UIFont.Weight) -> Segmented {
+        let font = UIFont.systemFont(ofSize: size, weight: weight)
+        let attributes = [NSAttributedString.Key.font: font]
+        setTitleTextAttributes(attributes, for: .normal)
+        return self
+    }
+    
+    @discardableResult
+    func isMomentary(_ value: Bool) -> Segmented {
+        isMomentary = value
+        return self
+    }
+    
+    @discardableResult
+    func isEnabled(_ value: Bool) -> Segmented {
+        isEnabled = value
+        return self
+    }
+    
+    @discardableResult
+    func apportionsSegmentWidthsByContent(_ value: Bool) -> Segmented {
+        apportionsSegmentWidthsByContent = value
+        return self
+    }
+    
+    @discardableResult
+    func setSegmentTitle(_ title: String?, forSegmentAt segment: Int) -> Segmented {
+        setTitle(title, forSegmentAt: segment)
+        return self
+    }
+    
+    @discardableResult
+    func setSegmentImage(_ image: UIImage?, forSegmentAt segment: Int) -> Segmented {
+        setImage(image, forSegmentAt: segment)
+        return self
+    }
+    
+    @discardableResult
+    func setSegmentWidth(_ width: CGFloat, forSegmentAt segment: Int) -> Segmented {
+        setWidth(width, forSegmentAt: segment)
+        return self
+    }
+    
+    @discardableResult
+    func onValueChanged(_ closure: @escaping (Int) -> Void) -> Segmented {
+        addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)
+        self.valueChangedClosure = closure
+        
+        return self
+    }
+    
+    private var valueChangedClosure: ((Int) -> Void)? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.valueChangedClosure) as? (Int) -> Void
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.valueChangedClosure, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    @objc private func valueChanged(_ segmentedControl: Segmented) {
+        valueChangedClosure?(segmentedControl.selectedSegmentIndex)
+    }
+}
+
+private struct AssociatedKeys {
+    static var valueChangedClosure: UInt8 = 0
+}
+
+extension Segmented {
+    @discardableResult
+    func items(_ items: SBinding<[String]>) -> Segmented {
+        items.didSet = { [weak self] newItems in
+            self?.removeAllSegments()
+            for (index, title) in newItems.enumerated() {
+                self?.insertSegment(withTitle: title, at: index, animated: false)
+            }
+        }
+        items.didSet?(items.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    func setDefaultIndex(_ index: SBinding<Int>) -> Segmented {
+        index.didSet = { [weak self] newIndex in
+            self?.selectedSegmentIndex = newIndex
+        }
+        index.didSet?(index.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    func isEnabled(_ isEnabled: Bool = true) -> Self {
+        self.isEnabled = isEnabled
+        return self
+    }
+    
+    @discardableResult
+    func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
+        isEnabled.didSet = { [weak self] newIsEnabled in
+            self?.isEnabled = newIsEnabled
+        }
+        isEnabled.didSet?(isEnabled.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    func width(_ width: CGFloat) -> Segmented {
+        self.widthAnchor.constraint(equalToConstant: width).isActive = true
+        return self
+    }
+    
+    @discardableResult
+    func height(_ height: CGFloat) -> Segmented {
+        self.heightAnchor.constraint(equalToConstant: height).isActive = true
+        return self
+    }
+    
+    @discardableResult
+    func isHidden(_ bool: Bool = true) -> Segmented {
+        self.isHidden = bool
+        return self
+    }
+    
+    @discardableResult
+    func isHidden(_ state: SBinding<Bool>) -> Segmented {
+        self.isHidden = state.wrappedValue
+        state.didSet = { [weak self] newValue in
+            self?.isHidden = newValue
+        }
         return self
     }
 }

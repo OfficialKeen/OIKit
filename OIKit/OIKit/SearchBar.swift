@@ -556,7 +556,7 @@ extension SearchBar { //textDidChange
     }
     
     @discardableResult
-    func onTextChanged(_ action: @escaping (UISearchBar, String) -> Void, for searchBar: UISearchBar? = nil) -> Self {
+    public func onTextChanged(_ action: @escaping (UISearchBar, String) -> Void, for searchBar: UISearchBar? = nil) -> Self {
         self.delegate = self
         self.searchTextDidChangeAction = action
         return self
@@ -578,7 +578,7 @@ extension SearchBar { //searchBarTextDidBeginEditing
     }
     
     @discardableResult
-    func onDidTap(_ action: @escaping (UISearchBar) -> Void) -> Self {
+    public func onDidTap(_ action: @escaping (UISearchBar) -> Void) -> Self {
         self.delegate = self
         self.searchBarTextDidBeginEditingAction = action
         return self
@@ -600,7 +600,7 @@ extension SearchBar { //searchBarTextDidEndEditing
     }
     
     @discardableResult
-    func onDidEndTap(_ action: @escaping (UISearchBar) -> Void) -> Self {
+    public func onDidEndTap(_ action: @escaping (UISearchBar) -> Void) -> Self {
         self.delegate = self
         self.searchBarTextDidEndEditingAction = action
         return self
@@ -622,7 +622,7 @@ extension SearchBar { //shouldChangeTextInRange
     }
     
     @discardableResult
-    func onChange(_ action: @escaping (UISearchBar, NSRange, String) -> Bool) -> Self {
+    public func onChange(_ action: @escaping (UISearchBar, NSRange, String) -> Bool) -> Self {
         self.delegate = self
         self.shouldChangeTextInRangeAction = action
         return self
@@ -644,7 +644,7 @@ extension SearchBar { //searchBarSearchButtonClicked
     }
     
     @discardableResult
-    func onSubmit(_ action: @escaping (UISearchBar) -> Void) -> Self {
+    public func onSubmit(_ action: @escaping (UISearchBar) -> Void) -> Self {
         self.delegate = self
         self.searchBarSearchButtonClickedAction = action
         return self
@@ -666,7 +666,7 @@ extension SearchBar { //searchBarCancelButtonClicked
     }
     
     @discardableResult
-    func onCancelButton(_ action: @escaping (UISearchBar) -> Void) -> Self {
+    public func onCancelButton(_ action: @escaping (UISearchBar) -> Void) -> Self {
         self.delegate = self
         self.searchBarCancelButtonClickedAction = action
         return self
@@ -688,7 +688,7 @@ extension SearchBar { //searchBarResultsListButtonClicked
     }
     
     @discardableResult
-    func onResultsListButton(_ action: @escaping (UISearchBar) -> Void) -> Self {
+    public func onResultsListButton(_ action: @escaping (UISearchBar) -> Void) -> Self {
         self.delegate = self
         self.searchBarResultsListButtonClickedAction = action
         return self
@@ -710,7 +710,7 @@ extension SearchBar { //selectedScopeButtonIndexDidChange
     }
     
     @discardableResult
-    func onScopeButton(_ action: @escaping (UISearchBar, Int) -> Void) -> Self {
+    public func onScopeButton(_ action: @escaping (UISearchBar, Int) -> Void) -> Self {
         self.delegate = self
         self.selectedScopeButtonIndexDidChangeAction = action
         return self
@@ -723,7 +723,7 @@ extension SearchBar { //selectedScopeButtonIndexDidChange
 
 extension SearchBar {
     @discardableResult
-    func placeholder(_ placeholder: SBinding<String>) -> Self {
+    public func placeholder(_ placeholder: SBinding<String>) -> Self {
         self.placeholder = placeholder.wrappedValue
         placeholder.didSet = { [weak self] newValue in
             self?.placeholder = newValue
@@ -732,7 +732,7 @@ extension SearchBar {
     }
     
     @discardableResult
-    func isEnabled(_ isEnabled: Bool = true) -> Self {
+    public func isEnabled(_ isEnabled: Bool = true) -> Self {
         if #available(iOS 16.4, *) {
             self.isEnabled = isEnabled
         } else {
@@ -742,7 +742,7 @@ extension SearchBar {
     }
     
     @discardableResult
-    func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
+    public func isEnabled(_ isEnabled: SBinding<Bool>) -> Self {
         isEnabled.didSet = { [weak self] newIsEnabled in
             if #available(iOS 16.4, *) {
                 self?.isEnabled = newIsEnabled
@@ -758,7 +758,7 @@ extension SearchBar {
 
 extension SearchBar {
     @discardableResult
-    func font(_ size: CGFloat, weight: UIFont.Weight = .regular) -> Self {
+    public func font(_ size: CGFloat, weight: UIFont.Weight = .regular) -> Self {
         let attributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: size, weight: weight)
         ]
@@ -767,13 +767,13 @@ extension SearchBar {
     }
     
     @discardableResult
-    func foregroundColor(_ color: UIColor) -> Self {
+    public func foregroundColor(_ color: UIColor) -> Self {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = color
         return self
     }
     
     @discardableResult
-    func foregroundColor(_ colorHex: UInt) -> Self {
+    public func foregroundColor(_ colorHex: UInt) -> Self {
         let color = UIColor(hex: UInt32(colorHex))
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = color
         return self

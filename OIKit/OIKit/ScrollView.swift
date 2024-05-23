@@ -138,9 +138,9 @@ struct OIContentViewBuilder {
     }
 }
 
-public class ScrollView: UIScrollView {
+public class Scroll: UIScrollView {
     @discardableResult
-    public func content(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, content: (UIView) -> UIView) -> ScrollView {
+    public func content(multiplier: CGFloat? = nil, isPaging: Bool = false, showIndicatorScroll: Bool = false, content: (UIView) -> UIView) -> Scroll {
         let contentView = content(UIView())
         
         self.addSubview(contentView)

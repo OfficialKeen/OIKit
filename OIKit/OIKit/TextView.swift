@@ -114,7 +114,9 @@ extension UITextView {
 
 import UIKit
 
-public class TextView: UITextView {
+public class TextView: UITextView, UITextViewDelegate {
+    private var textBinding: SBinding<String>?
+
     @discardableResult
     public func text(_ text: String) -> Self {
         self.text = text
@@ -124,10 +126,16 @@ public class TextView: UITextView {
     @discardableResult
     public func text(_ state: SBinding<String>) -> Self {
         self.text = state.wrappedValue
+        self.textBinding = state
         state.didSet = { [weak self] newText in
             self?.text = newText
         }
+        self.delegate = self // Set the delegate to self to capture text changes
         return self
+    }
+
+    public func textViewDidChange(_ textView: UITextView) {
+        textBinding?.wrappedValue = textView.text
     }
     
     @discardableResult
@@ -294,23 +302,21 @@ public class TextView: UITextView {
     @discardableResult
     public func placeholder(_ text: String, fontSize: CGFloat? = nil, font: UIFont? = nil, position: CGPoint) -> Self {
         let placeholderLabel = UILabel()
-        placeholderLabel.font = font ?? self.font // Gunakan font default jika tidak diberikan
+        placeholderLabel.font = font ?? self.font
         placeholderLabel.textColor = UIColor.purple
         placeholderLabel.text = text
-        placeholderLabel.font = placeholderLabel.font.withSize(fontSize ?? 16) // Gunakan ukuran font default 17 jika tidak diberikan
+        placeholderLabel.font = placeholderLabel.font.withSize(fontSize ?? 16)
         placeholderLabel.sizeToFit()
-        placeholderLabel.frame.origin = position // Mengatur posisi placeholder sesuai parameter
-        placeholderLabel.tag = 100 // for accessing the placeholder label later
+        placeholderLabel.frame.origin = position
+        placeholderLabel.tag = 100
         self.addSubview(placeholderLabel)
         
-        // Menambahkan observer untuk notifikasi ketika teks berubah
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextView.textDidChangeNotification, object: nil)
         
         return self
     }
     
     @objc private func textDidChange() {
-        // Sembunyikan placeholder jika terdapat teks
         placeholderLabel?.isHidden = !self.text.isEmpty
     }
 }

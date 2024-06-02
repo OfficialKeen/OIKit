@@ -447,7 +447,7 @@ public class Collection: UICollectionView {
     }
 
     @discardableResult
-    convenience init(direction: ScrollDirections) {
+    public convenience init(direction: ScrollDirections) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = (direction == .vertical) ? .vertical : .horizontal
         self.init(frame: .zero, collectionViewLayout: layout)
@@ -459,13 +459,13 @@ public class Collection: UICollectionView {
     }
     
     @discardableResult
-    func isHidden(_ bool: Bool = true) -> Self {
+    public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self
     }
     
     @discardableResult
-    func isHidden(_ state: SBinding<Bool>) -> Self {
+    public func isHidden(_ state: SBinding<Bool>) -> Self {
         self.isHidden = state.wrappedValue
         state.didSet = { [weak self] newValue in
             self?.isHidden = newValue
@@ -474,115 +474,115 @@ public class Collection: UICollectionView {
     }
     
     @discardableResult
-    func width(_ width: CGFloat) -> Self {
+    public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
     }
     
     @discardableResult
-    func height(_ height: CGFloat) -> Self {
+    public func height(_ height: CGFloat) -> Self {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
 
     @discardableResult
-    func reload() -> Collection {
+    public func reload() -> Collection {
         self.reloadData()
         return self
     }
 
     @discardableResult
-    func delegate(_ delegate: UICollectionViewDelegate) -> Collection {
+    public func delegate(_ delegate: UICollectionViewDelegate) -> Collection {
         self.delegate = delegate
         return self
     }
 
     @discardableResult
-    func dataSource(_ dataSource: UICollectionViewDataSource) -> Collection {
+    public func dataSource(_ dataSource: UICollectionViewDataSource) -> Collection {
         self.dataSource = dataSource
         return self
     }
 
     @discardableResult
-    func register(cell: AnyClass, id: String) -> Collection {
+    public func register(cell: AnyClass, id: String) -> Collection {
         self.register(cell, forCellWithReuseIdentifier: id)
         return self
     }
 
     @discardableResult
-    func register(cell: AnyClass?, elementKind: String, id: String) -> Collection {
+    public func register(cell: AnyClass?, elementKind: String, id: String) -> Collection {
         self.register(cell, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: id)
         return self
     }
 
     @discardableResult
-    func showsHorizontalScrollIndicator(_ value: Bool) -> Collection {
+    public func showsHorizontalScrollIndicator(_ value: Bool) -> Collection {
         self.showsHorizontalScrollIndicator = value
         return self
     }
 
     @discardableResult
-    func showsVerticalScrollIndicator(_ value: Bool) -> Collection {
+    public func showsVerticalScrollIndicator(_ value: Bool) -> Collection {
         self.showsVerticalScrollIndicator = value
         return self
     }
 
     @discardableResult
-    func isScrollEnabled(_ value: Bool) -> Collection {
+    public func isScrollEnabled(_ value: Bool) -> Collection {
         self.isScrollEnabled = value
         return self
     }
 
     @discardableResult
-    func allowsSelection(_ value: Bool) -> Collection {
+    public func allowsSelection(_ value: Bool) -> Collection {
         self.allowsSelection = value
         return self
     }
 
     @discardableResult
-    func allowsMultipleSelection(_ value: Bool) -> Collection {
+    public func allowsMultipleSelection(_ value: Bool) -> Collection {
         self.allowsMultipleSelection = value
         return self
     }
 
     @discardableResult
-    func contentInset(_ value: UIEdgeInsets) -> Collection {
+    public func contentInset(_ value: UIEdgeInsets) -> Collection {
         self.contentInset = value
         return self
     }
 
     @discardableResult
-    func scrollIndicatorInsets(_ value: UIEdgeInsets) -> Collection {
+    public func scrollIndicatorInsets(_ value: UIEdgeInsets) -> Collection {
         self.scrollIndicatorInsets = value
         return self
     }
 
     @discardableResult
-    func alwaysBounceVertical(_ value: Bool) -> Collection {
+    public func alwaysBounceVertical(_ value: Bool) -> Collection {
         self.alwaysBounceVertical = value
         return self
     }
 
     @discardableResult
-    func alwaysBounceHorizontal(_ value: Bool) -> Collection {
+    public func alwaysBounceHorizontal(_ value: Bool) -> Collection {
         self.alwaysBounceHorizontal = value
         return self
     }
 
     @discardableResult
-    func contentSize(_ value: CGSize) -> Collection {
+    public func contentSize(_ value: CGSize) -> Collection {
         self.contentSize = value
         return self
     }
 
     @discardableResult
-    func contentOffset(_ value: CGPoint) -> Collection {
+    public func contentOffset(_ value: CGPoint) -> Collection {
         self.contentOffset = value
         return self
     }
 
     @discardableResult
-    func didSelectItemAt(_ closure: @escaping (UICollectionView, IndexPath) -> Void) -> Collection {
+    public func didSelectItemAt(_ closure: @escaping (UICollectionView, IndexPath) -> Void) -> Collection {
         if #available(iOS 14.0, *) {
             self.selectionFollowsFocus = false
         }
@@ -595,84 +595,84 @@ public class Collection: UICollectionView {
     }
 
     @discardableResult
-    func didDeselectItemAt(_ closure: @escaping (UICollectionView, IndexPath) -> Void) -> Collection {
+    public func didDeselectItemAt(_ closure: @escaping (UICollectionView, IndexPath) -> Void) -> Collection {
         self.delegate = self
         self.deselectionHandler = closure // Adding deselection handler closure
         return self
     }
 
     @discardableResult
-    func willDisplay(_ closure: @escaping (UICollectionView, UICollectionViewCell, IndexPath) -> Void) -> Collection {
+    public func willDisplay(_ closure: @escaping (UICollectionView, UICollectionViewCell, IndexPath) -> Void) -> Collection {
         self.delegate = self
         self.willDisplayHandler = closure // Adding willDisplay handler closure
         return self
     }
 
     @discardableResult
-    func didEndDisplaying(_ closure: @escaping (UICollectionView, UICollectionViewCell, IndexPath) -> Void) -> Collection {
+    public func didEndDisplaying(_ closure: @escaping (UICollectionView, UICollectionViewCell, IndexPath) -> Void) -> Collection {
         self.delegate = self
         self.didEndDisplayingHandler = closure // Adding didEndDisplaying handler closure
         return self
     }
 
     @discardableResult
-    func didHighlightItemAt(_ closure: @escaping (UICollectionView, IndexPath) -> Void) -> Collection {
+    public func didHighlightItemAt(_ closure: @escaping (UICollectionView, IndexPath) -> Void) -> Collection {
         self.delegate = self
         self.didHighlightHandler = closure // Adding didHighlight handler closure
         return self
     }
 
     @discardableResult
-    func didUnhighlightItemAt(_ closure: @escaping (UICollectionView, IndexPath) -> Void) -> Collection {
+    public func didUnhighlightItemAt(_ closure: @escaping (UICollectionView, IndexPath) -> Void) -> Collection {
         self.delegate = self
         self.didUnhighlightHandler = closure // Adding didUnhighlight handler closure
         return self
     }
 
     @discardableResult
-    func sizeForItemAt(_ closure: @escaping (UICollectionView, UICollectionViewLayout, IndexPath) -> CGSize) -> Collection {
+    public func sizeForItemAt(_ closure: @escaping (UICollectionView, UICollectionViewLayout, IndexPath) -> CGSize) -> Collection {
         self.delegate = self
         self.sizeForItemHandler = closure // Adding sizeForItemAt handler closure
         return self
     }
 
     @discardableResult
-    func insetForSectionAt(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> UIEdgeInsets) -> Collection {
+    public func insetForSectionAt(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> UIEdgeInsets) -> Collection {
         self.delegate = self
         self.insetForSectionHandler = closure // Adding insetForSectionAt handler closure
         return self
     }
 
     @discardableResult
-    func spacingCell(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Collection {
+    public func spacingCell(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Collection {
         self.delegate = self
         self.minimumLineSpacingForSectionHandler = closure // Adding minimumLineSpacingForSectionAt handler closure
         return self
     }
 
     @discardableResult
-    func minimumLineSpacingForSectionAt(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Collection {
+    public func minimumLineSpacingForSectionAt(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Collection {
         self.delegate = self
         self.minimumLineSpacingForSectionHandler = closure // Adding minimumLineSpacingForSectionAt handler closure
         return self
     }
 
     @discardableResult
-    func minimumInteritemSpacingForSectionAt(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Collection {
+    public func minimumInteritemSpacingForSectionAt(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGFloat) -> Collection {
         self.delegate = self
         self.minimumInteritemSpacingForSectionHandler = closure // Adding minimumInteritemSpacingForSectionAt handler closure
         return self
     }
 
     @discardableResult
-    func referenceSizeForHeaderInSection(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGSize) -> Collection {
+    public func referenceSizeForHeaderInSection(_ closure: @escaping (UICollectionView, UICollectionViewLayout, Int) -> CGSize) -> Collection {
         self.delegate = self
         self.referenceSizeForHeaderInSectionHandler = closure // Adding referenceSizeForHeaderInSection handler closure
         return self
     }
 
     @discardableResult
-    func viewForSupplementaryElementOfKind(_ closure: @escaping (UICollectionView, String, IndexPath) -> UICollectionReusableView) -> Collection {
+    public func viewForSupplementaryElementOfKind(_ closure: @escaping (UICollectionView, String, IndexPath) -> UICollectionReusableView) -> Collection {
         self.delegate = self
         self.viewForSupplementaryElementHandler = closure // Adding viewForSupplementaryElementOfKind handler closure
         return self

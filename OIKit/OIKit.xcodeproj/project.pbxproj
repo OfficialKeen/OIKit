@@ -11,14 +11,14 @@
 		EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3882B57A79C007B59C5 /* StackView.swift */; };
 		EC0AA3A92B57B419007B59C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* View.swift */; };
 		EC0C7C2F2BE7359B00B93E95 /* SBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C7C2E2BE7359B00B93E95 /* SBinding.swift */; };
-		EC0C7C312BE76FBF00B93E95 /* UICheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C7C302BE76FBF00B93E95 /* UICheckBox.swift */; };
+		EC0C7C312BE76FBF00B93E95 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C7C302BE76FBF00B93E95 /* CheckView.swift */; };
 		EC2E44DB2BF4F3AC00729036 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */; };
 		EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A1EA02BBAFB250050D2C9 /* TextView.swift */; };
 		EC7012012BBCED590068F457 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7012002BBCED590068F457 /* Controller.swift */; };
 		EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085D2B5EB45B006584A6 /* Color.swift */; };
 		EC7E08602B5EB48A006584A6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085F2B5EB48A006584A6 /* Button.swift */; };
-		EC7E08622B5ECB77006584A6 /* Padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08612B5ECB77006584A6 /* Padding.swift */; };
-		EC7E08642B5ECBC1006584A6 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08632B5ECBC1006584A6 /* Label.swift */; };
+		EC7E08622B5ECB77006584A6 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08612B5ECB77006584A6 /* Stack.swift */; };
+		EC7E08642B5ECBC1006584A6 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08632B5ECBC1006584A6 /* Text.swift */; };
 		EC7E08662B5ECC07006584A6 /* Spacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08652B5ECC07006584A6 /* Spacer.swift */; };
 		EC7E08682B5ECC1B006584A6 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08672B5ECC1B006584A6 /* Image.swift */; };
 		EC7E086A2B5ECC49006584A6 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08692B5ECC49006584A6 /* Anchor.swift */; };
@@ -26,10 +26,10 @@
 		EC7E086E2B5ECC72006584A6 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E086D2B5ECC72006584A6 /* Circle.swift */; };
 		EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */; };
 		EC7E08722B5ECD2A006584A6 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08712B5ECD2A006584A6 /* ScrollView.swift */; };
-		EC99CB752BCE5C6500738B9A /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99CB742BCE5C6500738B9A /* Switch.swift */; };
-		ECA77A972BBC19C600E6421C /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA77A962BBC19C600E6421C /* TableView.swift */; };
+		EC99CB752BCE5C6500738B9A /* Toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99CB742BCE5C6500738B9A /* Toggle.swift */; };
+		ECA77A972BBC19C600E6421C /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA77A962BBC19C600E6421C /* Table.swift */; };
 		ECA8BD2B2BB9AE7D00EBB673 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD2A2BB9AE7D00EBB673 /* TextField.swift */; };
-		ECA8BD2D2BB9B10700EBB673 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD2C2BB9B10700EBB673 /* CollectionView.swift */; };
+		ECA8BD2D2BB9B10700EBB673 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD2C2BB9B10700EBB673 /* Collection.swift */; };
 		ECA8BD2F2BB9B22A00EBB673 /* Segmented.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD2E2BB9B22A00EBB673 /* Segmented.swift */; };
 		ECA8BD312BB9B2D900EBB673 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA8BD302BB9B2D900EBB673 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
@@ -40,14 +40,14 @@
 		EC0AA3882B57A79C007B59C5 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		EC0AA3A82B57B419007B59C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		EC0C7C2E2BE7359B00B93E95 /* SBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBinding.swift; sourceTree = "<group>"; };
-		EC0C7C302BE76FBF00B93E95 /* UICheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICheckBox.swift; sourceTree = "<group>"; };
+		EC0C7C302BE76FBF00B93E95 /* CheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
 		EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		EC3A1EA02BBAFB250050D2C9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EC7012002BBCED590068F457 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		EC7E085D2B5EB45B006584A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EC7E085F2B5EB48A006584A6 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		EC7E08612B5ECB77006584A6 /* Padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Padding.swift; sourceTree = "<group>"; };
-		EC7E08632B5ECBC1006584A6 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		EC7E08612B5ECB77006584A6 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
+		EC7E08632B5ECBC1006584A6 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		EC7E08652B5ECC07006584A6 /* Spacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacer.swift; sourceTree = "<group>"; };
 		EC7E08672B5ECC1B006584A6 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EC7E08692B5ECC49006584A6 /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
@@ -55,10 +55,10 @@
 		EC7E086D2B5ECC72006584A6 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLink.swift; sourceTree = "<group>"; };
 		EC7E08712B5ECD2A006584A6 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
-		EC99CB742BCE5C6500738B9A /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
-		ECA77A962BBC19C600E6421C /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		EC99CB742BCE5C6500738B9A /* Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggle.swift; sourceTree = "<group>"; };
+		ECA77A962BBC19C600E6421C /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		ECA8BD2A2BB9AE7D00EBB673 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		ECA8BD2C2BB9B10700EBB673 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		ECA8BD2C2BB9B10700EBB673 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		ECA8BD2E2BB9B22A00EBB673 /* Segmented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segmented.swift; sourceTree = "<group>"; };
 		ECA8BD302BB9B2D900EBB673 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,8 +99,8 @@
 				EC0AA3A82B57B419007B59C5 /* View.swift */,
 				EC7E085D2B5EB45B006584A6 /* Color.swift */,
 				EC7E085F2B5EB48A006584A6 /* Button.swift */,
-				EC7E08612B5ECB77006584A6 /* Padding.swift */,
-				EC7E08632B5ECBC1006584A6 /* Label.swift */,
+				EC7E08612B5ECB77006584A6 /* Stack.swift */,
+				EC7E08632B5ECBC1006584A6 /* Text.swift */,
 				EC7E08652B5ECC07006584A6 /* Spacer.swift */,
 				EC7E08672B5ECC1B006584A6 /* Image.swift */,
 				EC7E08692B5ECC49006584A6 /* Anchor.swift */,
@@ -109,15 +109,15 @@
 				EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */,
 				EC7E08712B5ECD2A006584A6 /* ScrollView.swift */,
 				ECA8BD2A2BB9AE7D00EBB673 /* TextField.swift */,
-				ECA8BD2C2BB9B10700EBB673 /* CollectionView.swift */,
+				ECA8BD2C2BB9B10700EBB673 /* Collection.swift */,
 				ECA8BD2E2BB9B22A00EBB673 /* Segmented.swift */,
 				ECA8BD302BB9B2D900EBB673 /* SearchBar.swift */,
 				EC3A1EA02BBAFB250050D2C9 /* TextView.swift */,
-				ECA77A962BBC19C600E6421C /* TableView.swift */,
+				ECA77A962BBC19C600E6421C /* Table.swift */,
 				EC7012002BBCED590068F457 /* Controller.swift */,
-				EC99CB742BCE5C6500738B9A /* Switch.swift */,
+				EC99CB742BCE5C6500738B9A /* Toggle.swift */,
 				EC0C7C2E2BE7359B00B93E95 /* SBinding.swift */,
-				EC0C7C302BE76FBF00B93E95 /* UICheckBox.swift */,
+				EC0C7C302BE76FBF00B93E95 /* CheckView.swift */,
 				EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */,
 			);
 			path = OIKit;
@@ -213,19 +213,19 @@
 			files = (
 				EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */,
 				EC7E08682B5ECC1B006584A6 /* Image.swift in Sources */,
-				EC7E08622B5ECB77006584A6 /* Padding.swift in Sources */,
+				EC7E08622B5ECB77006584A6 /* Stack.swift in Sources */,
 				EC0C7C2F2BE7359B00B93E95 /* SBinding.swift in Sources */,
 				ECA8BD2B2BB9AE7D00EBB673 /* TextField.swift in Sources */,
 				EC2E44DB2BF4F3AC00729036 /* ProgressView.swift in Sources */,
 				EC7E08662B5ECC07006584A6 /* Spacer.swift in Sources */,
-				EC7E08642B5ECBC1006584A6 /* Label.swift in Sources */,
-				EC99CB752BCE5C6500738B9A /* Switch.swift in Sources */,
+				EC7E08642B5ECBC1006584A6 /* Text.swift in Sources */,
+				EC99CB752BCE5C6500738B9A /* Toggle.swift in Sources */,
 				ECA8BD2F2BB9B22A00EBB673 /* Segmented.swift in Sources */,
-				ECA8BD2D2BB9B10700EBB673 /* CollectionView.swift in Sources */,
+				ECA8BD2D2BB9B10700EBB673 /* Collection.swift in Sources */,
 				EC7E086C2B5ECC59006584A6 /* Rectangle.swift in Sources */,
 				EC7E086E2B5ECC72006584A6 /* Circle.swift in Sources */,
 				EC7E08722B5ECD2A006584A6 /* ScrollView.swift in Sources */,
-				EC0C7C312BE76FBF00B93E95 /* UICheckBox.swift in Sources */,
+				EC0C7C312BE76FBF00B93E95 /* CheckView.swift in Sources */,
 				EC0AA3A92B57B419007B59C5 /* View.swift in Sources */,
 				EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */,
 				EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */,
@@ -234,7 +234,7 @@
 				EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */,
 				ECA8BD312BB9B2D900EBB673 /* SearchBar.swift in Sources */,
 				EC7E08602B5EB48A006584A6 /* Button.swift in Sources */,
-				ECA77A972BBC19C600E6421C /* TableView.swift in Sources */,
+				ECA77A972BBC19C600E6421C /* Table.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,51 @@ CocoaPods is a dependency manager for Cocoa projects. To integrate `OIKit` into 
 
 ```ruby
 pod 'OIKit'
+```
 
-<a href="#" onclick="navigator.clipboard.writeText('pod \'OIKit\'');return false;"><img src="https://img.shields.io/badge/Copy%20to%20clipboard-green?logo=clipboard&style=flat"></a>
+## import OIKit
+```ruby
+import OIKit
+```
 
+```ruby
+import OIKit
+class ViewController: UIViewController {
+
+    @SBinding var name: String = "John Doe"
+    @SBinding var email: String = "email@gmail.com"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.VStack {
+            TextField()
+                .text($name)
+                .padding(8)
+                .background(.systemGray6)
+                .cornerRadius(8)
+            
+            TextField()
+                .text($email)
+                .padding(8)
+                .background(.systemGray6)
+                .cornerRadius(8)
+            
+            Button().content {
+                
+            } setup: { button in
+                button
+                    .title("Login")
+                    .font(size: 20, weight: .semibold)
+                    .height(40)
+                    .background(.systemBlue)
+                    .foregroundColor(.white)
+                    .cornerRadius(5)
+            }
+            
+            Spacer()
+        }
+        .padding()
+    }
+}
+```

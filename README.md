@@ -36,6 +36,7 @@ import OIKit
 
 ```ruby
 import OIKit
+
 class ViewController: UIViewController {
 
     @SBinding var name: String = "John Doe"

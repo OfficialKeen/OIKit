@@ -28,4 +28,5 @@ CocoaPods is a dependency manager for Cocoa projects. To integrate `OIKit` into 
 ```ruby
 pod 'OIKit'
 
+<a href="#" onclick="navigator.clipboard.writeText('pod \'OIKit\'');return false;"><img src="https://img.shields.io/badge/Copy%20to%20clipboard-green?logo=clipboard&style=flat"></a>
 

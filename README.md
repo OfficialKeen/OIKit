@@ -34,6 +34,7 @@ pod 'OIKit'
 import OIKit
 ```
 
+### Sample Code
 ```ruby
 import OIKit
 

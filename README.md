@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.VStack(spacing: 10 {
+        view.VStack(spacing: 10) {
             TextField()
                 .text($name)
                 .padding(8)

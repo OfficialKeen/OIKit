@@ -46,24 +46,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.VStack {
+        view.VStack(spacing: 10 {
             TextField()
                 .text($name)
                 .padding(8)
                 .background(.systemGray6)
                 .cornerRadius(8)
-            
+                .height(30)
+
             TextField()
                 .text($email)
                 .padding(8)
                 .background(.systemGray6)
                 .cornerRadius(8)
+                .height(30)
             
             Button().content {
                 
             } setup: { button in
                 button
-                    .title("Login")
+                    .title("Log in")
                     .font(size: 20, weight: .semibold)
                     .height(40)
                     .background(.systemBlue)
@@ -74,6 +76,7 @@ class ViewController: UIViewController {
             Spacer()
         }
         .padding()
+        .background(.white)
     }
 }
 ```

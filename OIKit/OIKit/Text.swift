@@ -33,6 +33,11 @@ public class Text: UILabel {
         self.text = text
         return self
     }
+    
+    public func text(_ text: Int) -> Self {
+        self.text = "\(text)"
+        return self
+    }
 
     @discardableResult
     public func font(_ size: CGFloat, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
@@ -224,6 +229,15 @@ public class Text: UILabel {
         self.text = state.wrappedValue
         state.didSet = { [weak self] newText in
             self?.text = newText
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func text(_ state: SBinding<Int>) -> Self {
+        self.text = "\(state.wrappedValue)"
+        state.didSet = { [weak self] newText in
+            self?.text = "\(newText)"
         }
         return self
     }

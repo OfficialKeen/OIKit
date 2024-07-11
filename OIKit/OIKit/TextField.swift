@@ -13,6 +13,15 @@ public enum ImageSide {
 }
 
 public class TextField: UITextField, UITextFieldDelegate {
+    private var maxLengthValue: Int?
+    
+    @discardableResult
+    public func maxLength(_ length: Int) -> TextField {
+        self.maxLengthValue = length
+        self.delegate = self
+        return self
+    }
+    
     @discardableResult
     public func placeholder(_ text: String, font: UIFont? = nil) -> TextField {
         self.placeholder = text
@@ -435,6 +444,11 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let maxLength = maxLengthValue {
+            let currentText = textField.text ?? ""
+            let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            return prospectiveText.count <= maxLength
+        }
         return shouldChangeCharactersAction?(textField, range, string) ?? true
     }
 }

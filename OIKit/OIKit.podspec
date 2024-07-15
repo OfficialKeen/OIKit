@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "OIKit"
-  spec.version      = "1.9.32"
+  spec.version      = "1.9.33"
   spec.summary      = "OIKit (UI For UIKit)"
   spec.description  = "Easy coding with OIKit"
 

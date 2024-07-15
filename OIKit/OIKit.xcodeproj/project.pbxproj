@@ -12,6 +12,7 @@
 		EC0AA3A92B57B419007B59C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* View.swift */; };
 		EC0C7C2F2BE7359B00B93E95 /* SBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C7C2E2BE7359B00B93E95 /* SBinding.swift */; };
 		EC0C7C312BE76FBF00B93E95 /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0C7C302BE76FBF00B93E95 /* CheckView.swift */; };
+		EC226B2E2C44FA3000489197 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC226B2D2C44FA3000489197 /* LoaderView.swift */; };
 		EC2E44DB2BF4F3AC00729036 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */; };
 		EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A1EA02BBAFB250050D2C9 /* TextView.swift */; };
 		EC7012012BBCED590068F457 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7012002BBCED590068F457 /* Controller.swift */; };
@@ -41,6 +42,7 @@
 		EC0AA3A82B57B419007B59C5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		EC0C7C2E2BE7359B00B93E95 /* SBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SBinding.swift; sourceTree = "<group>"; };
 		EC0C7C302BE76FBF00B93E95 /* CheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
+		EC226B2D2C44FA3000489197 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		EC3A1EA02BBAFB250050D2C9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EC7012002BBCED590068F457 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				EC0C7C2E2BE7359B00B93E95 /* SBinding.swift */,
 				EC0C7C302BE76FBF00B93E95 /* CheckView.swift */,
 				EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */,
+				EC226B2D2C44FA3000489197 /* LoaderView.swift */,
 			);
 			path = OIKit;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				EC7012012BBCED590068F457 /* Controller.swift in Sources */,
 				EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */,
 				ECA8BD312BB9B2D900EBB673 /* SearchBar.swift in Sources */,
+				EC226B2E2C44FA3000489197 /* LoaderView.swift in Sources */,
 				EC7E08602B5EB48A006584A6 /* Button.swift in Sources */,
 				ECA77A972BBC19C600E6421C /* Table.swift in Sources */,
 			);

@@ -370,3 +370,121 @@ extension UIStackView {
         return self
     }
 }
+
+extension UIStackView {
+    private func findViewController() -> UIViewController? {
+        var nextResponder: UIResponder? = self
+        while let responder = nextResponder {
+            if let viewController = responder as? UIViewController {
+                return viewController
+            }
+            nextResponder = responder.next
+        }
+        return nil
+    }
+    
+    @discardableResult
+    public func ignoresToolbar(_ bool: Bool = true) -> UIStackView {
+        if let viewController = self.findViewController() {
+            viewController.navigationController?.setToolbarHidden(bool, animated: true)
+            viewController.navigationController?.setNavigationBarHidden(bool, animated: true)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func ignoresSafeArea() -> UIStackView {
+        if let superview = self.superview {
+            self.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                self.topAnchor.constraint(equalTo: superview.topAnchor),
+                self.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+                self.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+                self.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+            ])
+        }
+        // Mengatur layoutMargins menjadi UIEdgeInsets zero untuk menghindari konflik
+        self.layoutMargins = .zero
+        self.isLayoutMarginsRelativeArrangement = false
+        
+        return self
+    }
+    
+    @discardableResult
+    public func navigationTitle(_ title: String) -> UIStackView {
+        if let viewController = self.findViewController() {
+            viewController.navigationItem.title = title
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func navigationBarTitleDisplayMode(_ mode: UINavigationItem.LargeTitleDisplayMode) -> UIStackView {
+        if let viewController = self.findViewController() {
+            viewController.navigationController?.navigationBar.prefersLargeTitles = (mode != .never)
+            viewController.navigationItem.largeTitleDisplayMode = mode
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func toolbar(@ToolbarItemBuilder _ content: () -> [ToolbarItem]) -> UIStackView {
+        if let viewController = self.findViewController() {
+            let toolbarItems = content()
+            var leadingItems: [UIBarButtonItem] = []
+            var trailingItems: [UIBarButtonItem] = []
+            var principalItem: UIBarButtonItem?
+            
+            for item in toolbarItems {
+                let barButtonItem = item.toBarButtonItem()
+                switch item.placement {
+                case .topBarLeading:
+                    leadingItems.append(barButtonItem)
+                case .topBarTrailing:
+                    trailingItems.append(barButtonItem)
+                case .bottomBar:
+                    // For toolbar at the bottom
+                    viewController.toolbarItems = (viewController.toolbarItems ?? []) + [barButtonItem]
+                case .principal:
+                    principalItem = barButtonItem
+                }
+            }
+            
+            viewController.navigationItem.leftBarButtonItems = leadingItems
+            viewController.navigationItem.rightBarButtonItems = trailingItems
+            if let principalItem = principalItem {
+                viewController.navigationItem.titleView = principalItem.customView
+            }
+        }
+        return self
+    }
+}
+// Define ToolbarItem for UI elements in the toolbar
+public struct ToolbarItem {
+    let placement: ToolbarItemPlacement
+    let viewClosure: () -> UIView
+    
+    init(placement: ToolbarItemPlacement, viewClosure: @escaping () -> UIView) {
+        self.placement = placement
+        self.viewClosure = viewClosure
+    }
+    
+    func toBarButtonItem() -> UIBarButtonItem {
+        let view = viewClosure()
+        return UIBarButtonItem(customView: view)
+    }
+}
+// Result builder for ToolbarItem
+@resultBuilder
+public struct ToolbarItemBuilder {
+    public static func buildBlock(_ items: ToolbarItem...) -> [ToolbarItem] {
+        return items
+    }
+}
+// Enum untuk menentukan posisi item di toolbar
+public enum ToolbarItemPlacement {
+    case topBarLeading
+    case topBarTrailing
+    case bottomBar
+    case principal
+}

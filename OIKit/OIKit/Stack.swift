@@ -384,11 +384,25 @@ extension UIStackView {
     }
     
     @discardableResult
-    public func ignoresToolbar(_ bool: Bool = true) -> UIStackView {
+    public func ignoresNavBar(_ bool: Bool = true) -> UIStackView {
         if let viewController = self.findViewController() {
             viewController.navigationController?.setToolbarHidden(bool, animated: true)
             viewController.navigationController?.setNavigationBarHidden(bool, animated: true)
         }
+        return self
+    }
+    
+    @discardableResult
+    public func ignoresNavBar(_ binding: SBinding<Bool>) -> UIStackView {
+        binding.didSet = { [weak self] bool in
+            guard let self = self, let viewController = self.findViewController() else { return }
+            viewController.navigationController?.setToolbarHidden(bool, animated: true)
+            viewController.navigationController?.setNavigationBarHidden(bool, animated: true)
+        }
+        
+        // Set the initial value
+        binding.didSet?(binding.wrappedValue)
+        
         return self
     }
     
@@ -443,7 +457,8 @@ extension UIStackView {
                 case .topBarTrailing:
                     trailingItems.append(barButtonItem)
                 case .bottomBar:
-                    // For toolbar at the bottom
+                    // For toolbar at the bottom, handle keyboard automatically
+                    self.setupKeyboardNotifications(for: barButtonItem.customView)
                     viewController.toolbarItems = (viewController.toolbarItems ?? []) + [barButtonItem]
                 case .principal:
                     principalItem = barButtonItem
@@ -458,19 +473,37 @@ extension UIStackView {
         }
         return self
     }
+    
+    // Setup keyboard notifications
+    private func setupKeyboardNotifications(for bottomBarItem: UIView?) {
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { [weak bottomBarItem] notification in
+            guard let userInfo = notification.userInfo,
+                  let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+            
+            UIView.animate(withDuration: 0.3) {
+                bottomBarItem?.transform = CGAffineTransform(translationX: 0, y: -keyboardFrame.height)
+            }
+        }
+        
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { [weak bottomBarItem] notification in
+            UIView.animate(withDuration: 0.3) {
+                bottomBarItem?.transform = .identity
+            }
+        }
+    }
 }
 // Define ToolbarItem for UI elements in the toolbar
 public struct ToolbarItem {
-    let placement: ToolbarItemPlacement
-    let viewClosure: () -> UIView
+    public let placement: ToolbarItemPlacement
+    public let content: () -> UIView
     
-    init(placement: ToolbarItemPlacement, viewClosure: @escaping () -> UIView) {
+    public init(placement: ToolbarItemPlacement, content: @escaping () -> UIView) {
         self.placement = placement
-        self.viewClosure = viewClosure
+        self.content = content
     }
     
-    func toBarButtonItem() -> UIBarButtonItem {
-        let view = viewClosure()
+    public func toBarButtonItem() -> UIBarButtonItem {
+        let view = content()
         return UIBarButtonItem(customView: view)
     }
 }

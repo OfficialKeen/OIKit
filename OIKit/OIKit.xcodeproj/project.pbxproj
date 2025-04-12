@@ -57,7 +57,6 @@
 		EC7E086D2B5ECC72006584A6 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLink.swift; sourceTree = "<group>"; };
 		EC7E08712B5ECD2A006584A6 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
-		EC8B06452DAA673500A0A929 /* OIKitSPM */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OIKitSPM; path = ../OIKitSPM; sourceTree = SOURCE_ROOT; };
 		EC99CB742BCE5C6500738B9A /* Toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggle.swift; sourceTree = "<group>"; };
 		ECA77A962BBC19C600E6421C /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		ECA8BD2A2BB9AE7D00EBB673 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -80,7 +79,6 @@
 		EC0AA3742B57A544007B59C5 = {
 			isa = PBXGroup;
 			children = (
-				EC8B06452DAA673500A0A929 /* OIKitSPM */,
 				EC0AA3802B57A544007B59C5 /* OIKit */,
 				EC0AA37F2B57A544007B59C5 /* Products */,
 				EC0AA3A22B57ADBC007B59C5 /* Frameworks */,

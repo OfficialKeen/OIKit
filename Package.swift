@@ -22,7 +22,7 @@ let package = Package(
     targets: [
         .target(
             name: "OIKit", // Nama target yang akan dibuild
-            path: "OIKit" // Path menuju folder OIKit yang berisi semua file framework
+            path: "./OIKit" // Path menuju folder OIKit yang berisi semua file framework
         ),
     ]
 )

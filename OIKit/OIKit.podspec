@@ -15,10 +15,10 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/OfficialKeen/OIKit"
   spec.license      = "MIT"
   spec.author       = { "Keen" => "zhekeen90@gmail.com" }
-  spec.platform     = :ios, "11.0"
+  spec.platform     = :ios, "12.0"
   spec.source       = { :git => "https://github.com/OfficialKeen/OIKit.git", :tag => spec.version.to_s }
   spec.source_files  = "OIKit/**/*.{swift}"
-  spec.swift_versions = "4.2"
+  spec.swift_versions = "5.0"
   
   # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"

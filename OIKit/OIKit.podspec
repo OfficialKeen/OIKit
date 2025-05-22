@@ -8,18 +8,19 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "OIKit"
-  spec.version      = "1.9.39"
+  spec.version      = "1.9.43"
   spec.summary      = "OIKit (UI For UIKit)"
   spec.description  = "Easy coding with OIKit"
 
   spec.homepage     = "https://github.com/OfficialKeen/OIKit"
   spec.license      = "MIT"
   spec.author       = { "Keen" => "zhekeen90@gmail.com" }
-  spec.platform     = :ios, "12.0"
+  spec.ios.deployment_target = '12.0'
   spec.source       = { :git => "https://github.com/OfficialKeen/OIKit.git", :tag => spec.version.to_s }
   spec.source_files  = "OIKit/**/*.{swift}"
   spec.swift_versions = "5.0"
   
+  # spec.platform     = :ios, "12.0"
   # spec.resource  = "icon.png"
   # spec.resources = "Resources/*.png"
   # spec.preserve_paths = "FilesToSave", "MoreFilesToSave"

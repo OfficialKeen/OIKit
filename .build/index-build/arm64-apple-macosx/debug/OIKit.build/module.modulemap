@@ -1,0 +1,4 @@
+module OIKit {
+    header "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/OIKit-Swift.h"
+    requires objc
+}

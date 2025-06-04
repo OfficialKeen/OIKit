@@ -1,0 +1,490 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.OIKit-arm64-apple-macosx15.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/sources",
+      "importPath" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Anchor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Button.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/CheckView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Circle.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Collection.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Color.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Controller.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Image.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/LoaderView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/NavigationLink.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ProgressView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Rectangle.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SBinding.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ScrollView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SearchBar.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Segmented.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Spacer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Stack.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/StackView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Table.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Text.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextField.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Toggle.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/View.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "OIKit",
+      "moduleOutputPath" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/Modules/OIKit.swiftmodule",
+      "objects" : [
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Anchor.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Button.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/CheckView.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Circle.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Collection.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Color.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Controller.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Image.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/LoaderView.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/NavigationLink.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ProgressView.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Rectangle.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SBinding.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ScrollView.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SearchBar.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Segmented.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Spacer.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Stack.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/StackView.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Table.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Text.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextField.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextView.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Toggle.swift.o",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/View.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-enable-batch-mode",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/OIKit-Swift.h",
+        "-swift-version",
+        "5",
+        "-Xfrontend",
+        "-experimental-lazy-typecheck",
+        "-Xfrontend",
+        "-experimental-skip-all-function-bodies",
+        "-Xfrontend",
+        "-experimental-allow-module-with-compiler-errors",
+        "-Xfrontend",
+        "-empty-abi-descriptor",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g"
+      ],
+      "outputFileMapPath" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/Modules/OIKit.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : true,
+      "sources" : [
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Anchor.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Button.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/CheckView.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Circle.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Collection.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Color.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Controller.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Image.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/LoaderView.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/NavigationLink.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ProgressView.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Rectangle.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SBinding.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ScrollView.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SearchBar.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Segmented.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Spacer.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Stack.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/StackView.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Table.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Text.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextField.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextView.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Toggle.swift",
+        "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/View.swift"
+      ],
+      "tempsPath" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "OIKit" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "OIKit",
+      "-incremental",
+      "-c",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Anchor.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Button.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/CheckView.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Circle.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Collection.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Color.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Controller.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Image.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/LoaderView.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/NavigationLink.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ProgressView.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Rectangle.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SBinding.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ScrollView.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SearchBar.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Segmented.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Spacer.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Stack.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/StackView.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Table.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Text.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextField.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextView.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Toggle.swift",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/View.swift",
+      "-I",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-enable-batch-mode",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/OIKit-Swift.h",
+      "-swift-version",
+      "5",
+      "-Xfrontend",
+      "-experimental-lazy-typecheck",
+      "-Xfrontend",
+      "-experimental-skip-all-function-bodies",
+      "-Xfrontend",
+      "-experimental-allow-module-with-compiler-errors",
+      "-Xfrontend",
+      "-empty-abi-descriptor",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "OIKit" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "enableAllTraits" : false
+  },
+  "writeCommands" : {
+    "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Anchor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Button.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/CheckView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Circle.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Collection.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Color.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Controller.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Image.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/LoaderView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/NavigationLink.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ProgressView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Rectangle.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SBinding.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ScrollView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SearchBar.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Segmented.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Spacer.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Stack.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/StackView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Table.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Text.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextField.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Toggle.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/View.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/sources"
+    },
+    "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

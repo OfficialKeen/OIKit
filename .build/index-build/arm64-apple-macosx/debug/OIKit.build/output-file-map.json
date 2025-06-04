@@ -1,0 +1,155 @@
+{
+  "": {
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/master.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Anchor.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Anchor.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Anchor.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Anchor~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Anchor.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Button.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Button.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Button.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Button~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Button.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/CheckView.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/CheckView.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/CheckView.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/CheckView~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/CheckView.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Circle.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Circle.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Circle.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Circle~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Circle.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Collection.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Collection.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Collection.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Collection~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Collection.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Color.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Color.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Color.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Color~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Color.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Controller.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Controller.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Controller.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Controller~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Controller.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Image.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Image.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Image.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Image~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Image.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/LoaderView.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/LoaderView.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/LoaderView.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/LoaderView~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/LoaderView.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/NavigationLink.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/NavigationLink.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/NavigationLink.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/NavigationLink~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/NavigationLink.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ProgressView.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ProgressView.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ProgressView.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ProgressView~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ProgressView.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Rectangle.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Rectangle.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Rectangle.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Rectangle~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Rectangle.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SBinding.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SBinding.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SBinding.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SBinding~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SBinding.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/ScrollView.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ScrollView.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ScrollView.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ScrollView~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/ScrollView.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/SearchBar.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SearchBar.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SearchBar.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SearchBar~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/SearchBar.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Segmented.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Segmented.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Segmented.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Segmented~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Segmented.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Spacer.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Spacer.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Spacer.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Spacer~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Spacer.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Stack.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Stack.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Stack.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Stack~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Stack.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/StackView.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/StackView.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/StackView.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/StackView~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/StackView.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Table.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Table.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Table.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Table~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Table.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Text.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Text.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Text.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Text~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Text.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextField.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextField.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextField.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextField~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextField.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/TextView.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextView.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextView.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextView~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/TextView.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/Toggle.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Toggle.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Toggle.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Toggle~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/Toggle.swiftdeps"
+  },
+  "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/OIKit/OIKit/View.swift": {
+    "dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/View.d",
+    "object": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/View.swift.o",
+    "swiftmodule": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/View~partial.swiftmodule",
+    "swift-dependencies": "/Users/keenoi/iOS/UIKit/FRAMEWORK/OIKit/.build/index-build/arm64-apple-macosx/debug/OIKit.build/View.swiftdeps"
+  }
+}

@@ -18,6 +18,26 @@ public class Segmented: UISegmentedControl {
     }
     
     @discardableResult
+    public func items(_ images: [UIImage?]) -> Segmented {
+        removeAllSegments()
+        for (index, image) in images.enumerated() {
+            insertSegment(with: image, at: index, animated: false)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func imageSize(width: CGFloat? = nil, height: CGFloat? = nil) -> Segmented {
+        for index in 0..<numberOfSegments {
+            if let image = imageForSegment(at: index) {
+                let resizedImage = image.resizedSegmentedImage(toWidth: width, height: height)
+                setSegmentImage(resizedImage, forSegmentAt: index)
+            }
+        }
+        return self
+    }
+    
+    @discardableResult
     public func cornerRadius(_ radius: CGFloat) -> Segmented {
         layer.cornerRadius = radius
         layer.masksToBounds = true
@@ -225,5 +245,20 @@ extension Segmented {
             self?.isHidden = newValue
         }
         return self
+    }
+}
+
+extension UIImage {
+    func resizedSegmentedImage(toWidth width: CGFloat? = nil, height: CGFloat? = nil) -> UIImage {
+        let originalSize = self.size
+        let newWidth = width ?? originalSize.width
+        let newHeight = height ?? originalSize.height
+        
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        draw(in: CGRect(origin: .zero, size: newSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizedImage ?? self
     }
 }

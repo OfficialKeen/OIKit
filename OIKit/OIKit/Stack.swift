@@ -225,6 +225,30 @@ extension UIStackView {
         return stroke(color, lineWidth: lineWidth)
     }
     
+    @discardableResult
+    public func stroke(_ color: SBinding<UIColor?>, lineWidth: SBinding<CGFloat?>) -> Self {
+        self.layer.borderColor = color.wrappedValue?.cgColor
+        self.layer.borderWidth = lineWidth.wrappedValue ?? 0
+        color.didSet = { [weak self] newColor in
+            self?.layer.borderColor = newColor?.cgColor
+        }
+        lineWidth.didSet = { [weak self] newLineWidth in
+            self?.layer.borderWidth = newLineWidth ?? 0
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func stroke(_ hexColor: SBinding<UInt>, lineWidth: SBinding<CGFloat?>) -> Self {
+        let color = SBinding<UIColor?>(
+            wrappedValue: UIColor(hex: UInt32(hexColor.wrappedValue)),
+            didSet: { [weak self] newColor in
+                self?.layer.borderColor = newColor?.cgColor
+            }
+        )
+        return stroke(color, lineWidth: lineWidth)
+    }
+    
     public func stroke(_ state: SBinding<UIColor>, lineWidth: CGFloat = 1.0) -> Self {
         self.layer.borderWidth = lineWidth
         state.didSet = { [weak self] newColor in
@@ -232,6 +256,20 @@ extension UIStackView {
         }
         
         state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    public func stroke(_ state: SBinding<UIColor>, lineWidth: SBinding<CGFloat>) -> Self {
+        self.layer.borderWidth = lineWidth.wrappedValue
+        state.didSet = { [weak self] newColor in
+            self?.layer.borderColor = newColor.cgColor
+        }
+        lineWidth.didSet = { [weak self] newLineWidth in
+            self?.layer.borderWidth = newLineWidth
+        }
+        state.didSet?(state.wrappedValue)
+        lineWidth.didSet?(lineWidth.wrappedValue)
+        
         return self
     }
     
@@ -244,6 +282,21 @@ extension UIStackView {
         }
         
         state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    public func stroke(_ state: SBinding<UInt>, lineWidth: SBinding<CGFloat>) -> Self {
+        self.layer.borderWidth = lineWidth.wrappedValue
+        state.didSet = { [weak self] hexValue in
+            let color = UIColor(hex: UInt32(hexValue))
+            self?.layer.borderColor = color.cgColor
+        }
+        lineWidth.didSet = { [weak self] newLineWidth in
+            self?.layer.borderWidth = newLineWidth
+        }
+        state.didSet?(state.wrappedValue)
+        lineWidth.didSet?(lineWidth.wrappedValue)
+        
         return self
     }
     

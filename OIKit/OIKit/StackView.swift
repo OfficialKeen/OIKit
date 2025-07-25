@@ -357,3 +357,106 @@ extension UIView {
         return container
     }
 }
+
+public enum CenteredOption {
+    case none, centerX, centerY, centerXY
+}
+
+extension UIView {
+    @discardableResult
+    public func VStack(
+        spacing: CGFloat = 0,
+        alignment: UIStackView.Alignment = .fill,
+        distribution: UIStackView.Distribution = .fill,
+        centered: CenteredOption = .none,
+        @UIStackViewBuilder content: () -> [UIView]
+    ) -> UIStackView {
+        let views = content()
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .vertical
+        stackView.spacing = spacing
+        stackView.alignment = alignment
+        stackView.distribution = distribution
+        addSubview(stackView)
+        
+        // Adjust stackView constraints or layout if needed
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        switch centered {
+        case .none:
+            NSLayoutConstraint.activate([
+                stackView.topAnchor.constraint(equalTo: topAnchor),
+                stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        case .centerX:
+            NSLayoutConstraint.activate([
+                stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                stackView.topAnchor.constraint(equalTo: topAnchor),
+                stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        case .centerY:
+            NSLayoutConstraint.activate([
+                stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+                stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            ])
+        case .centerXY:
+            NSLayoutConstraint.activate([
+                stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+                stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            ])
+        }
+        
+        return stackView
+    }
+    
+    @discardableResult
+    public func HStack(
+        spacing: CGFloat = 0,
+        alignment: UIStackView.Alignment = .fill,
+        distribution: UIStackView.Distribution = .fill,
+        centered: CenteredOption = .none,
+        @UIStackViewBuilder content: () -> [UIView]
+    ) -> UIStackView {
+        let views = content()
+        let stack = UIStackView(arrangedSubviews: views)
+        stack.axis = .horizontal
+        stack.spacing = spacing
+        stack.alignment = alignment
+        stack.distribution = distribution
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(stack)
+        
+        switch centered {
+        case .none:
+            NSLayoutConstraint.activate([
+                stack.topAnchor.constraint(equalTo: topAnchor),
+                stack.leadingAnchor.constraint(equalTo: leadingAnchor),
+                stack.trailingAnchor.constraint(equalTo: trailingAnchor),
+                stack.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        case .centerX:
+            NSLayoutConstraint.activate([
+                stack.centerXAnchor.constraint(equalTo: centerXAnchor),
+                stack.topAnchor.constraint(equalTo: topAnchor),
+                stack.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        case .centerY:
+            NSLayoutConstraint.activate([
+                stack.centerYAnchor.constraint(equalTo: centerYAnchor),
+                stack.leadingAnchor.constraint(equalTo: leadingAnchor),
+                stack.trailingAnchor.constraint(equalTo: trailingAnchor)
+            ])
+        case .centerXY:
+            NSLayoutConstraint.activate([
+                stack.centerXAnchor.constraint(equalTo: centerXAnchor),
+                stack.centerYAnchor.constraint(equalTo: centerYAnchor)
+            ])
+        }
+        
+        return stack
+    }
+}

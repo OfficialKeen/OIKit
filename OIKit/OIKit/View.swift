@@ -373,3 +373,94 @@ extension View {
     }
 }
 
+// MARK: CenteredView
+public enum CenteredView {
+    case centerX
+    case centerY
+    case centerXY
+    case none
+}
+
+extension UIView {
+    @discardableResult
+    public func addView(
+        paddingTop: CGFloat = 0,
+        paddingLeft: CGFloat = 0,
+        paddingBottom: CGFloat = 0,
+        paddingRight: CGFloat = 0,
+        centered: CenteredView = .none,
+        @UIStackViewBuilder content: () -> [UIView]
+    ) -> UIView {
+        let container = UIView()
+        addSubview(container)
+        container.translatesAutoresizingMaskIntoConstraints = false
+        
+        let guide = safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            container.topAnchor.constraint(equalTo: guide.topAnchor, constant: paddingTop),
+            container.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: paddingLeft),
+            container.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: -paddingRight),
+            container.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -paddingBottom)
+        ])
+        
+        let views = content()
+        for view in views {
+            container.addSubview(view)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Handle centering logic
+            let centerX = centered == .centerX || centered == .centerXY
+            let centerY = centered == .centerY || centered == .centerXY
+            
+            if centerX {
+                view.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+            } else {
+                view.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+                view.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+            }
+            
+            if centerY {
+                view.centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
+            } else {
+                view.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+                view.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+            }
+        }
+        return container
+    }
+    
+    // Overloads yang compatible
+    @discardableResult
+    public func addView(
+        top: CGFloat = 0,
+        left: CGFloat = 0,
+        bottom: CGFloat = 0,
+        right: CGFloat = 0,
+        centered: CenteredView = .none,
+        @UIStackViewBuilder content: () -> [UIView]
+    ) -> UIView {
+        addView(paddingTop: top, paddingLeft: left, paddingBottom: bottom,
+                paddingRight: right, centered: centered, content: content)
+    }
+    
+    @discardableResult
+    public func addView(
+        padding: CGFloat = 0,
+        centered: CenteredView = .none,
+        @UIStackViewBuilder content: () -> [UIView]
+    ) -> UIView {
+        addView(paddingTop: padding, paddingLeft: padding, paddingBottom: padding,
+                paddingRight: padding, centered: centered, content: content)
+    }
+}
+
+// Helper yang updated
+public func Centered(
+    _ centered: CenteredView = .none,
+    padding: CGFloat = 0,
+    @UIStackViewBuilder content: () -> [UIView]
+) -> UIView {
+    let dummy = UIView()
+    return dummy.addView(padding: padding, centered: centered, content: content)
+}

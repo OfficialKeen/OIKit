@@ -418,6 +418,86 @@ public class Text: UILabel {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
         return self
     }
+    
+    @discardableResult
+    public func textMasked(_ raw: Int,
+                           visibleDigits: Int = 3,
+                           maskCharacter: Character = "*") -> Self {
+        return textMasked("\(raw)", visibleDigits: visibleDigits, maskCharacter: maskCharacter)
+    }
+    
+    @discardableResult
+    public func textMasked(_ raw: String,
+                           visibleDigits: Int = 3,
+                           maskCharacter: Character = "*") -> Self {
+        let cleaned  = raw.filter(\.isNumber)          // amankan hanya angka
+        let startIdx = max(0, cleaned.count - visibleDigits)
+        let suffix   = String(cleaned.suffix(visibleDigits))
+        let masked   = String(repeating: maskCharacter,
+                              count: startIdx) + suffix
+        self.text = masked
+        return self
+    }
+    
+    @discardableResult
+    public func textMasked(_ binding: SBinding<String>,
+                           visibleDigits: Int = 3,
+                           maskCharacter: Character = "*") -> Self {
+        
+        // Fungsi kecil untuk apply mask
+        func mask(_ raw: String) -> String {
+            let cleaned = raw.filter(\.isNumber)
+            let start   = max(0, cleaned.count - visibleDigits)
+            let suffix  = String(cleaned.suffix(visibleDigits))
+            return String(repeating: maskCharacter, count: start) + suffix
+        }
+        
+        // Set teks pertama kali
+        self.text = mask(binding.wrappedValue)
+        
+        // Pantau setiap perubahan
+        binding.didSet = { [weak self] newRaw in
+            self?.text = mask(newRaw)
+        }
+        
+        // Trigger sekali lagi untuk memastikan sinkron
+        binding.didSet?(binding.wrappedValue)
+        
+        return self
+    }
+    
+    @discardableResult
+    public func textMaskedCombine(_ binding: SBinding<String>,
+                           visibleDigits: Int = 3,
+                           maskCharacter: Character = "*") -> Self {
+
+        func mask(_ raw: String) -> String {
+            let start  = max(0, raw.count - visibleDigits)
+            let suffix = String(raw.suffix(visibleDigits))
+            return String(repeating: maskCharacter, count: start) + suffix
+        }
+
+        // Set awal
+        self.text = mask(binding.wrappedValue)
+
+        // Pantau perubahan
+        binding.didSet = { [weak self] newRaw in
+            self?.text = mask(newRaw)
+        }
+
+        binding.didSet?(binding.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func textMaskedCombine(_ raw: String,
+                           visibleDigits: Int = 3,
+                           maskCharacter: Character = "*") -> Self {
+        let start  = max(0, raw.count - visibleDigits)
+        let suffix = String(raw.suffix(visibleDigits))
+        self.text  = String(repeating: maskCharacter, count: start) + suffix
+        return self
+    }
 }
 
 private extension UIView {

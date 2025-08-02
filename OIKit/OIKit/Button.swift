@@ -657,6 +657,42 @@ extension Button {
     }
     
     @discardableResult
+    public func background(_ binding: SBinding<UIColor>) -> Self {
+        self.backgroundColor = binding.wrappedValue
+        binding.didSet = { [weak self] newColor in
+            self?.backgroundColor = newColor
+        }
+        binding.didSet?(binding.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func background(_ binding: SBinding<UInt>) -> Self {
+        binding.didSet = { [weak self] hexValue in
+            let color = UIColor(hex: UInt32(hexValue))
+            self?.backgroundColor = color
+        }
+        binding.didSet?(binding.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func disable(_ isDisabled: Bool = false) -> Self {
+        self.isEnabled = !isDisabled
+        return self
+    }
+    
+    @discardableResult
+    public func disable(_ binding: SBinding<Bool>) -> Self {
+        self.isEnabled = !binding.wrappedValue
+        binding.didSet = { [weak self] newDisabled in
+            self?.isEnabled = !newDisabled
+        }
+        binding.didSet?(binding.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func isHidden(_ bool: Bool = true) -> Self {
         self.isHidden = bool
         return self

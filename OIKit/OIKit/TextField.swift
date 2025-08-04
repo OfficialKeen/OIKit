@@ -262,6 +262,13 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
+    public func onEditingChange(textField action: @escaping (UITextField) -> Void) -> TextField {
+        addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        objc_setAssociatedObject(self, &AssociatedKeys.textChangeAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        return self
+    }
+    
+    @discardableResult
     public func onEditingChange(_ action: @escaping (String) -> Void) -> TextField {
         addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         objc_setAssociatedObject(self, &AssociatedKeys.textChangeAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

@@ -8,6 +8,60 @@
 import UIKit
 
 public class Segmented: UISegmentedControl {
+    private struct Keys {
+        static var textsKey  = "texts"
+        static var imagesKey = "images"
+    }
+    
+    @available(iOS 13.0, *)
+    @discardableResult
+    public func items(texts: [String], images: [UIImage?]) -> Segmented {
+        guard texts.count == images.count else { return self }
+        
+        // simpan di associated object
+        objc_setAssociatedObject(self, &Keys.textsKey,  texts,  .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objc_setAssociatedObject(self, &Keys.imagesKey, images, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        // reset & isi gambar dulu
+        removeAllSegments()
+        images.enumerated().forEach { insertSegment(with: $1, at: $0, animated: false) }
+        
+        // listener
+        removeTarget(self, action: #selector(updateSegments), for: .valueChanged)
+        addTarget(self, action: #selector(updateSegments), for: .valueChanged)
+        
+        selectedSegmentIndex = 0
+        updateSegments()
+        return self
+    }
+    
+    @available(iOS 13.0, *)
+    @objc private func updateSegments() {
+        guard
+            let texts  = objc_getAssociatedObject(self, &Keys.textsKey)  as? [String],
+            let images = objc_getAssociatedObject(self, &Keys.imagesKey) as? [UIImage?]
+        else { return }
+        
+        for idx in 0..<numberOfSegments {
+            let img = idx == selectedSegmentIndex
+            ? titleImage(texts[idx])
+            : images[idx]
+            setImage(img, forSegmentAt: idx)
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    private func titleImage(_ string: String,
+                            font: UIFont = .systemFont(ofSize: 14, weight: .semibold),
+                            color: UIColor = .label) -> UIImage? {
+        let size = (string as NSString).size(withAttributes: [.font: font])
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            (string as NSString).draw(at: .zero,
+                                      withAttributes: [.font: font,
+                                                       .foregroundColor: color])
+        }
+    }
+    
     @discardableResult
     public func items(_ items: [String]) -> Segmented {
         removeAllSegments()

@@ -17,7 +17,7 @@ public class TooltipView: UIView {
     private var arrowColor: UIColor = UIColor(white: 0.15, alpha: 0.9)
     private let contentBuilder: (() -> UIView)?
 
-    enum Orientation { case top, bottom, left, right }
+    public enum Orientation { case top, bottom, left, right }
 
     // MARK: - UI
     private let label = UILabel()
@@ -217,7 +217,7 @@ public class TooltipView: UIView {
     }
     
     @discardableResult
-    static func show(text: String,
+    public func show(text: String,
                      sourceView: UIView,
                      orientation: Orientation = .top,
                      in container: UIView) -> TooltipView {
@@ -229,7 +229,7 @@ public class TooltipView: UIView {
     }
 
     @discardableResult
-    static func show(sourceView: UIView,
+    public func show(sourceView: UIView,
                      orientation: Orientation = .top,
                      in container: UIView,
                      contentBuilder: @escaping () -> UIView) -> TooltipView {

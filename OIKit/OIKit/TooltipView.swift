@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TooltipView: UIView {
+public class TooltipView: UIView {
 
     // MARK: - Properties
     private let text: String

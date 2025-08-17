@@ -15,6 +15,7 @@
 		EC226B2E2C44FA3000489197 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC226B2D2C44FA3000489197 /* LoaderView.swift */; };
 		EC2E44DB2BF4F3AC00729036 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */; };
 		EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A1EA02BBAFB250050D2C9 /* TextView.swift */; };
+		EC3F3BD32E5212F000B986FC /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F3BD22E5212F000B986FC /* TooltipView.swift */; };
 		EC7012012BBCED590068F457 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7012002BBCED590068F457 /* Controller.swift */; };
 		EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085D2B5EB45B006584A6 /* Color.swift */; };
 		EC7E08602B5EB48A006584A6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085F2B5EB48A006584A6 /* Button.swift */; };
@@ -45,6 +46,7 @@
 		EC226B2D2C44FA3000489197 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		EC3A1EA02BBAFB250050D2C9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		EC3F3BD22E5212F000B986FC /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		EC7012002BBCED590068F457 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		EC7E085D2B5EB45B006584A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EC7E085F2B5EB48A006584A6 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				EC0C7C302BE76FBF00B93E95 /* CheckView.swift */,
 				EC2E44DA2BF4F3AC00729036 /* ProgressView.swift */,
 				EC226B2D2C44FA3000489197 /* LoaderView.swift */,
+				EC3F3BD22E5212F000B986FC /* TooltipView.swift */,
 			);
 			path = OIKit;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				EC0C7C2F2BE7359B00B93E95 /* SBinding.swift in Sources */,
 				ECA8BD2B2BB9AE7D00EBB673 /* TextField.swift in Sources */,
 				EC2E44DB2BF4F3AC00729036 /* ProgressView.swift in Sources */,
+				EC3F3BD32E5212F000B986FC /* TooltipView.swift in Sources */,
 				EC7E08662B5ECC07006584A6 /* Spacer.swift in Sources */,
 				EC7E08642B5ECBC1006584A6 /* Text.swift in Sources */,
 				EC99CB752BCE5C6500738B9A /* Toggle.swift in Sources */,

@@ -217,10 +217,10 @@ public class TooltipView: UIView {
     }
     
     @discardableResult
-    public func show(text: String,
-                     sourceView: UIView,
-                     orientation: Orientation = .top,
-                     in container: UIView) -> TooltipView {
+    public static func show(text: String,
+                            sourceView: UIView,
+                            orientation: Orientation = .top,
+                            in container: UIView) -> TooltipView {
         let tip = TooltipView(text: text,
                               sourceView: sourceView,
                               orientation: orientation)
@@ -229,10 +229,10 @@ public class TooltipView: UIView {
     }
 
     @discardableResult
-    public func show(sourceView: UIView,
-                     orientation: Orientation = .top,
-                     in container: UIView,
-                     contentBuilder: @escaping () -> UIView) -> TooltipView {
+    public static func show(sourceView: UIView,
+                            orientation: Orientation = .top,
+                            in container: UIView,
+                            contentBuilder: @escaping () -> UIView) -> TooltipView {
         let tip = TooltipView(sourceView: sourceView,
                               orientation: orientation,
                               contentBuilder: contentBuilder)
@@ -269,7 +269,7 @@ extension TooltipView {
     }
     
     @discardableResult
-    func background(_ color: UIColor) -> Self {
+    public func background(_ color: UIColor) -> Self {
         backgroundColor = color
         
         arrowColor = color
@@ -289,7 +289,7 @@ extension TooltipView {
     }
     
     @discardableResult
-    func background(_ color: UIColor, opacity: CGFloat = 1.0) -> Self {
+    public func background(_ color: UIColor, opacity: CGFloat = 1.0) -> Self {
         let final = color.withAlphaComponent(opacity)
         backgroundColor = final
         arrowLayer.fillColor = final.cgColor
@@ -297,7 +297,7 @@ extension TooltipView {
     }
     
     @discardableResult
-    func background(_ hex: UInt, opacity: CGFloat = 1.0) -> Self {
+    public func background(_ hex: UInt, opacity: CGFloat = 1.0) -> Self {
         let color = UIColor(hex: UInt32(hex)).withAlphaComponent(opacity)
         backgroundColor = color
         arrowLayer.fillColor = color.cgColor
@@ -305,7 +305,7 @@ extension TooltipView {
     }
     
     @discardableResult
-    func cornerRadius(_ radius: CGFloat = 10) -> Self {
+    public func cornerRadius(_ radius: CGFloat = 10) -> Self {
         layer.cornerRadius = radius
         return self
     }
@@ -344,7 +344,7 @@ extension TooltipView {
     }
     
     @discardableResult
-    func arrowColor(_ color: UIColor) -> Self {
+    public func arrowColor(_ color: UIColor) -> Self {
         arrowColor = color
         arrowLayer.fillColor = color.cgColor
         return self

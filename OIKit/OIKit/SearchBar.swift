@@ -96,24 +96,19 @@ public class SearchBar: UISearchBar {
     
     @discardableResult
     public func background(_ color: UIColor) -> Self {
-        if #available(iOS 26.0, *) {
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-                        .backgroundColor = color
+        if let searchBarTextField = self.value(forKey: "searchField") as? UITextField {
+            searchBarTextField.backgroundColor = color
         }
-        if #available(iOS 13.0, *) {
-            searchTextField.backgroundColor = color
-        } else {
-            (value(forKey: "searchField") as? UITextField)?.backgroundColor = color
-        }
-        backgroundImage = UIImage()
-        barTintColor = color
         return self
     }
     
     @discardableResult
     public func background(_ hex: UInt) -> Self {
-        let color = UIColor(hex: UInt32(hex))
-        return background(color)
+        if let searchBarTextField = self.value(forKey: "searchField") as? UITextField {
+            let color = UIColor(hex: UInt32(hex))
+            searchBarTextField.backgroundColor = color
+        }
+        return self
     }
     
     @discardableResult

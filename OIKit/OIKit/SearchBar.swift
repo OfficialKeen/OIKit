@@ -106,6 +106,7 @@ public class SearchBar: UISearchBar {
         if let tf = value(forKey: "searchField") as? UITextField {
             tf.backgroundColor = targetColor
         }
+        backgroundImage = UIImage()
         return self
     }
     

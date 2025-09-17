@@ -17,6 +17,7 @@
 		EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3A1EA02BBAFB250050D2C9 /* TextView.swift */; };
 		EC3F3BD32E5212F000B986FC /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3F3BD22E5212F000B986FC /* TooltipView.swift */; };
 		EC7012012BBCED590068F457 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7012002BBCED590068F457 /* Controller.swift */; };
+		EC7B464C2E7A91AF009A9DAE /* TextFieldOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B464B2E7A91AF009A9DAE /* TextFieldOTP.swift */; };
 		EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085D2B5EB45B006584A6 /* Color.swift */; };
 		EC7E08602B5EB48A006584A6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E085F2B5EB48A006584A6 /* Button.swift */; };
 		EC7E08622B5ECB77006584A6 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7E08612B5ECB77006584A6 /* Stack.swift */; };
@@ -48,6 +49,7 @@
 		EC3A1EA02BBAFB250050D2C9 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		EC3F3BD22E5212F000B986FC /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		EC7012002BBCED590068F457 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		EC7B464B2E7A91AF009A9DAE /* TextFieldOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldOTP.swift; sourceTree = "<group>"; };
 		EC7E085D2B5EB45B006584A6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EC7E085F2B5EB48A006584A6 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		EC7E08612B5ECB77006584A6 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				EC7E086F2B5ECCF3006584A6 /* NavigationLink.swift */,
 				EC7E08712B5ECD2A006584A6 /* ScrollView.swift */,
 				ECA8BD2A2BB9AE7D00EBB673 /* TextField.swift */,
+				EC7B464B2E7A91AF009A9DAE /* TextFieldOTP.swift */,
 				ECA8BD2C2BB9B10700EBB673 /* Collection.swift */,
 				ECA8BD2E2BB9B22A00EBB673 /* Segmented.swift */,
 				ECA8BD302BB9B2D900EBB673 /* SearchBar.swift */,
@@ -236,6 +239,7 @@
 				EC0AA3A92B57B419007B59C5 /* View.swift in Sources */,
 				EC7E085E2B5EB45B006584A6 /* Color.swift in Sources */,
 				EC7E08702B5ECCF3006584A6 /* NavigationLink.swift in Sources */,
+				EC7B464C2E7A91AF009A9DAE /* TextFieldOTP.swift in Sources */,
 				EC7E086A2B5ECC49006584A6 /* Anchor.swift in Sources */,
 				EC7012012BBCED590068F457 /* Controller.swift in Sources */,
 				EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */,

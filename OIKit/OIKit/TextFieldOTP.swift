@@ -24,6 +24,8 @@ class OTPTextField: UITextField {
 
 public class TextFieldOTP: UIStackView {
     
+    private var mode: OTPKeyboardMode = .numeric
+    
     private var filledBorderColor: UIColor = .systemPink
     private var emptyBorderColor:  UIColor = .systemGray
     private var emptyBgColor: UIColor = .clear
@@ -382,3 +384,27 @@ enum OTPBorderStyle {
     case hex(UInt32)
 }
 
+public enum OTPKeyboardMode {
+    case numeric      // 0-9
+    case alphanumeric // A-Z, a-z, 0-9
+}
+
+extension TextFieldOTP {
+    private func applyMode() {
+        textFields.forEach {
+            switch mode {
+            case .numeric:
+                $0.keyboardType = .numberPad
+            case .alphanumeric:
+                $0.keyboardType = .asciiCapable   // full keyboard
+            }
+        }
+    }
+    
+    @discardableResult
+    public func keyboardMode(_ mode: OTPKeyboardMode) -> Self {
+        self.mode = mode
+        applyMode()
+        return self
+    }
+}

@@ -32,6 +32,7 @@ public class TextFieldOTP: UIStackView {
     private var filledBgColor: UIColor = .clear
     
     private var digitCount: Int = 4
+    private var onChange: ((String) -> Void)?
     private var onComplete: ((String) -> Void)?
     
     private var textFields: [OTPTextField] = []
@@ -153,6 +154,12 @@ public class TextFieldOTP: UIStackView {
             $0.layer.masksToBounds = true
             $0.layer.cornerRadius = radius
         }
+        return self
+    }
+    
+    @discardableResult
+    public func onChange(_ action: @escaping (String) -> Void) -> Self {
+        self.onChange = action
         return self
     }
     
@@ -358,6 +365,7 @@ extension TextFieldOTP: UITextFieldDelegate {
         }
         
         refreshAllVisuals()
+        onChange?(code())
         return false
     }
 }

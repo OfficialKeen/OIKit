@@ -24,6 +24,8 @@ class OTPTextField: UITextField {
 
 public class TextFieldOTP: UIStackView {
     
+    private var resetBinding: SBinding<Bool>?
+    
     private var mode: OTPKeyboardMode = .numeric
     
     private var filledBorderColor: UIColor = .systemPink
@@ -167,6 +169,25 @@ public class TextFieldOTP: UIStackView {
     public func onCodeCompleted(_ action: @escaping (String) -> Void) -> Self {
         self.onComplete = action
         return self
+    }
+    
+    @discardableResult
+    public func reset(_ binding: SBinding<Bool>) -> Self {
+        self.resetBinding = binding
+        binding.didSet = { [weak self] newValue in
+            if newValue {
+                self?.resetFields()
+                binding.wrappedValue = false
+            }
+        }
+        return self
+    }
+    
+    private func resetFields() {
+        textFields.forEach { $0.text = "" }
+        refreshAllVisuals()
+        textFields.first?.becomeFirstResponder()
+        onChange?(code())
     }
     
     // MARK: - Setup

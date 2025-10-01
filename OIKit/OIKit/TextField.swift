@@ -262,6 +262,38 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
+    public func addImage(position side: ImageSide, _ imageName: String, setFrame size: CGSize? = nil, tintColorImage: UIColor? = nil, padding: CGFloat, onTapGesture: (() -> Void)? = nil) -> TextField {
+        let raw = UIImage(named: imageName) ?? UIImage()
+        var resized = raw
+        if let size = size { resized = raw.resized(to: size) }
+
+        let tinted: UIImage
+        if #available(iOS 13.0, *), let tint = tintColorImage {
+            tinted = resized.withTintColor(tint)
+        } else {
+            tinted = resized
+        }
+        return addImage(position: side, tinted, paddingLeft: padding, paddingRight: padding, onTapGesture: onTapGesture)
+    }
+    
+    @discardableResult
+    public func addImageSecureEye(eye: String = "eyeopen", eyeSlash: String = "eyeclose", padding: CGFloat = 12, width: CGFloat? = 20, height: CGFloat? = 20) -> TextField {
+        self.isSecureTextEntry = isEnabled
+        let secure = SBinding<Bool>(wrappedValue: isSecureTextEntry)
+        func updateIcon() {
+            let name = secure.wrappedValue ? eye : eyeSlash
+            rightView = nil
+            _ = addImage(position: .right, name, setFrame: (width != nil || height != nil) ? CGSize(width: width ?? 20, height: height ?? 20) : nil, padding: padding) { [weak self] in
+                secure.wrappedValue.toggle()
+                self?.isSecureTextEntry = secure.wrappedValue
+                updateIcon()
+            }
+        }
+        updateIcon()
+        return self
+    }
+    
+    @discardableResult
     public func onEditingChange(textField action: @escaping (UITextField) -> Void) -> TextField {
         addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         objc_setAssociatedObject(self, &AssociatedKeys.textChangeAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

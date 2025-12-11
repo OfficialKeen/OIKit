@@ -9,6 +9,7 @@ import UIKit
 
 public class TextView: UITextView, UITextViewDelegate {
     private var textBinding: SBinding<String>?
+    private var editableBinding: SBinding<Bool>?
     // MARK: - Private properties
     private var onChangeHandler: ((UITextView) -> Void)?
     private weak var externalDelegate: UITextViewDelegate?
@@ -42,8 +43,8 @@ public class TextView: UITextView, UITextViewDelegate {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
-        // remove binding handler to avoid retain cycles
         textBinding?.didSet = nil
+        editableBinding?.didSet = nil
     }
     
     // MARK: - Public chainable modifiers
@@ -323,6 +324,28 @@ public class TextView: UITextView, UITextViewDelegate {
     public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func editable(_ flag: Bool = false) -> Self {
+        editableBinding?.didSet = nil
+        editableBinding = nil
+        self.isEditable = flag
+        return self
+    }
+
+    @discardableResult
+    public func editable(_ state: SBinding<Bool>) -> Self {
+        editableBinding?.didSet = nil
+        editableBinding = state
+        self.isEditable = state.wrappedValue
+        state.didSet = { [weak self] newValue in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.isEditable = newValue
+            }
+        }
+        return self
     }
     
     @discardableResult

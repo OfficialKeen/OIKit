@@ -16,12 +16,17 @@ public class TextView: UITextView, UITextViewDelegate {
     private var paddingInset: UIEdgeInsets = .zero
     
     // MARK: - Init
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        commonInit()
+    }
+    
     public init() {
         super.init(frame: .zero, textContainer: nil)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
@@ -32,20 +37,42 @@ public class TextView: UITextView, UITextViewDelegate {
         self.font = UIFont.systemFont(ofSize: 15)
         self.isScrollEnabled = true
         self.textContainerInset = paddingInset
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChangeNotification(_:)), name: UITextView.textDidChangeNotification, object: self)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        // remove binding handler to avoid retain cycles
+        textBinding?.didSet = nil
     }
     
     // MARK: - Public chainable modifiers
     
     @discardableResult
     public func text(_ binding: SBinding<String>) -> Self {
+        // clear previous handler
+        textBinding?.didSet = nil
+        
         self.textBinding = binding
         self.text = binding.wrappedValue
+        // observe perubahan dari binding (misal diubah oleh TextField atau logic luar)
+        binding.didSet = { [weak self] newValue in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                if self.text != newValue {
+                    // Set text programmatically without triggering extra behaviors
+                    self.text = newValue
+                    self.placeholderLabel?.isHidden = !newValue.isEmpty
+                }
+            }
+        }
         return self
     }
     
     @discardableResult
     public func text(_ value: String) -> Self {
         self.text = value
+        placeholderLabel?.isHidden = !value.isEmpty
         return self
     }
     
@@ -107,8 +134,10 @@ public class TextView: UITextView, UITextViewDelegate {
     public func padding(_ insets: UIEdgeInsets) -> Self {
         self.textContainerInset = insets
         self.paddingInset = insets
-        placeholderLabel?.topAnchor.constraint(equalTo: self.topAnchor, constant: insets.top + 2).isActive = true
-        placeholderLabel?.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: insets.left + 5).isActive = true
+        if let label = placeholderLabel {
+            label.topAnchor.constraint(equalTo: self.topAnchor, constant: insets.top + 2).isActive = true
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: insets.left + 5).isActive = true
+        }
         return self
     }
     
@@ -127,6 +156,7 @@ public class TextView: UITextView, UITextViewDelegate {
     
     // MARK: - UITextViewDelegate
     public func textViewDidChange(_ textView: UITextView) {
+        // update binding ketika user mengetik
         textBinding?.wrappedValue = textView.text
         placeholderLabel?.isHidden = !textView.text.isEmpty
         onChangeHandler?(textView)
@@ -140,7 +170,7 @@ public class TextView: UITextView, UITextViewDelegate {
     public func textViewDidEndEditing(_ textView: UITextView) {
         externalDelegate?.textViewDidEndEditing?(textView)
     }
-
+    
     @discardableResult
     public func foregroundColor(_ color: UIColor) -> Self {
         self.textColor = color
@@ -178,25 +208,28 @@ public class TextView: UITextView, UITextViewDelegate {
     @discardableResult
     public func font(_ font: UIFont) -> Self {
         self.font = font
+        placeholderLabel?.font = font
         return self
     }
     
     @discardableResult
     public func font(_ size: CGFloat = 16, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
         let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: weight]
-
+        
         let fontDescriptor = UIFontDescriptor(fontAttributes: [
             .family: design.fontName,
             .traits: traits
         ])
-
+        
         self.font = UIFont(descriptor: fontDescriptor, size: size)
+        placeholderLabel?.font = self.font
         return self
     }
-
+    
     @discardableResult
     public func font(_ style: UIFont.TextStyle) -> Self {
         self.font = UIFont.preferredFont(forTextStyle: style)
+        placeholderLabel?.font = self.font
         return self
     }
     
@@ -230,6 +263,7 @@ public class TextView: UITextView, UITextViewDelegate {
         return self
     }
     
+    // keep both cornerRadius overloads as in original API
     @discardableResult
     public func cornerRadius(_ radius: CGFloat? = nil) -> Self {
         self.layer.cornerRadius = radius ?? 0
@@ -293,23 +327,31 @@ public class TextView: UITextView, UITextViewDelegate {
     
     @discardableResult
     public func placeholder(_ text: String, fontSize: CGFloat? = nil, font: UIFont? = nil, position: CGPoint) -> Self {
-        let placeholderLabel = UILabel()
-        placeholderLabel.font = font ?? self.font
-        placeholderLabel.textColor = UIColor.purple
-        placeholderLabel.text = text
-        placeholderLabel.font = placeholderLabel.font.withSize(fontSize ?? 16)
-        placeholderLabel.sizeToFit()
-        placeholderLabel.frame.origin = position
-        placeholderLabel.tag = 100
-        self.addSubview(placeholderLabel)
+        if placeholderLabel == nil {
+            let label = UILabel()
+            label.font = font ?? self.font
+            label.textColor = UIColor.purple
+            label.text = text
+            label.font = label.font.withSize(fontSize ?? 16)
+            label.sizeToFit()
+            label.frame.origin = position
+            label.tag = 100
+            label.translatesAutoresizingMaskIntoConstraints = true
+            self.addSubview(label)
+            placeholderLabel = label
+        } else {
+            placeholderLabel?.text = text
+            placeholderLabel?.font = placeholderLabel?.font.withSize(fontSize ?? (placeholderLabel?.font.pointSize ?? 16))
+            placeholderLabel?.frame.origin = position
+            placeholderLabel?.isHidden = !self.text.isEmpty
+        }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextView.textDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChangeNotification(_:)), name: UITextView.textDidChangeNotification, object: nil)
         
         return self
     }
     
-    @objc private func textDidChange() {
+    @objc private func textDidChangeNotification(_ note: Notification) {
         placeholderLabel?.isHidden = !self.text.isEmpty
     }
 }
-

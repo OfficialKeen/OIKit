@@ -34,7 +34,7 @@ public class CheckView: UIControl {
     private var checkmarkColor: UIColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
     private var checkboxBackgroundColor: UIColor = .white
     private var increasedTouchRadius: CGFloat = 5
-    private var useHapticFeedback: Bool = true
+    private var useHapticFeedback: Bool = false
     private var isChecked: Bool = false {
         didSet {
             setNeedsDisplay()

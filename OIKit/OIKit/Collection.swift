@@ -276,6 +276,7 @@ public class Collection: UICollectionView {
         static var minimumInteritemSpacingForSectionHandler: UInt8 = 0
         static var referenceSizeForHeaderInSectionHandler: UInt8 = 0
         static var viewForSupplementaryElementHandler: UInt8 = 0
+        static var gridConfigs: UInt8 = 0
     }
     
     private var didSelectionHandler: ((UICollectionView, IndexPath) -> Void)? {
@@ -337,6 +338,11 @@ public class Collection: UICollectionView {
         get { objc_getAssociatedObject(self, &AssociatedKeys.viewForSupplementaryElementHandler) as? (UICollectionView, String, IndexPath) -> UICollectionReusableView }
         set { objc_setAssociatedObject(self, &AssociatedKeys.viewForSupplementaryElementHandler, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC) }
     }
+    
+    private var gridConfigs: [Int: GridConfig] {
+        get { return objc_getAssociatedObject(self, &AssociatedKeys.gridConfigs) as? [Int: GridConfig] ?? [:] }
+        set { objc_setAssociatedObject(self, &AssociatedKeys.gridConfigs, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)}
+    }
 }
 
 extension Collection: UICollectionViewDelegateFlowLayout {
@@ -365,8 +371,52 @@ extension Collection: UICollectionViewDelegateFlowLayout {
         didUnhighlightHandler?(collectionView, indexPath)
     }
     
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        sizeForItemHandler?(collectionView, collectionViewLayout, indexPath) ?? CGSize.zero
+    /*public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+     sizeForItemHandler?(collectionView, collectionViewLayout, indexPath) ?? CGSize.zero
+     }*/
+    
+    public func collectionView(_ collectionView: UICollectionView,
+                               layout collectionViewLayout: UICollectionViewLayout,
+                               sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if let handler = sizeForItemHandler {
+            return handler(collectionView, collectionViewLayout, indexPath)
+        }
+        
+        guard let config = gridConfigs[indexPath.section] else {
+            return CGSize(width: collectionView.bounds.width, height: 50)
+        }
+        
+        let inset = config.inset
+        let spacing = config.spacing
+        let containerWidth = collectionView.bounds.width - inset.left - inset.right
+        
+        switch config.style {
+            
+        case .fixed(let columns):
+            
+            let safeColumns = max(columns, 1)
+            let totalSpacing = CGFloat(safeColumns - 1) * spacing
+            let width = floor((containerWidth - totalSpacing) / CGFloat(safeColumns))
+            
+            return CGSize(width: width, height: config.height ?? width)
+            
+        case .flexible(let columns):
+            
+            let safeColumns = max(columns, 1)
+            let totalSpacing = CGFloat(safeColumns - 1) * spacing
+            let width = floor((containerWidth - totalSpacing) / CGFloat(safeColumns))
+            
+            return CGSize(width: width, height: config.height ?? width * 0.75)
+            
+        case .adaptive(let minWidth):
+            
+            let columns = max(1, Int(containerWidth / minWidth))
+            let totalSpacing = CGFloat(columns - 1) * spacing
+            let width = floor((containerWidth - totalSpacing) / CGFloat(columns))
+            
+            return CGSize(width: width, height: config.height ?? width)
+        }
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -397,32 +447,71 @@ public enum GridStyle {
 }
 
 extension Collection {
+    
     @discardableResult
-    public func grid(_ style: GridStyle, height: CGFloat? = nil, spacing: CGFloat = 10, inset: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)) -> Self {
+    public func grid(
+        _ style: GridStyle,
+        height: CGFloat? = nil,
+        spacing: CGFloat = 10,
+        inset: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    ) -> Self {
+        
         self.minimumLineSpacingForSectionAt { _,_,_ in spacing }
         self.minimumInteritemSpacingForSectionAt { _,_,_ in spacing }
         self.insetForSectionAt { _,_,_ in inset }
+        
         self.sizeForItemAt { collectionView, _, _ in
+            
             let containerWidth = collectionView.bounds.width - inset.left - inset.right
+            
             switch style {
+                
             case .fixed(let columns):
+                
                 let safeColumns = max(columns, 1)
                 let totalSpacing = CGFloat(safeColumns - 1) * spacing
                 let width = floor((containerWidth - totalSpacing) / CGFloat(safeColumns))
+                
                 return CGSize(width: width, height: height ?? width)
+                
             case .flexible(let columns):
+                
                 let safeColumns = max(columns, 1)
                 let totalSpacing = CGFloat(safeColumns - 1) * spacing
                 let width = floor((containerWidth - totalSpacing) / CGFloat(safeColumns))
+                
                 let finalHeight = height ?? width * 0.75
+                
                 return CGSize(width: width, height: finalHeight)
+                
             case .adaptive(let minWidth):
+                
                 let columns = max(1, Int(containerWidth / minWidth))
                 let totalSpacing = CGFloat(columns - 1) * spacing
                 let width = floor((containerWidth - totalSpacing) / CGFloat(columns))
+                
                 return CGSize(width: width, height: height ?? width)
             }
         }
+        
+        return self
+    }
+}
+
+private struct GridConfig {
+    var style: GridStyle
+    var height: CGFloat?
+    var spacing: CGFloat
+    var inset: UIEdgeInsets
+}
+
+extension Collection {
+    @discardableResult
+    public func grid(_ style: GridStyle, section: Int, height: CGFloat? = nil, spacing: CGFloat = 10, inset: UIEdgeInsets = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)) -> Self {
+        var configs = gridConfigs
+        configs[section] = GridConfig(style: style, height: height, spacing: spacing, inset: inset)
+        gridConfigs = configs
+        ensureSelfDelegate()
         return self
     }
 }

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 public class NavigationLinkView: UIView {
 
     public typealias Action = () -> Void
@@ -62,6 +61,22 @@ public class NavigationLinkView: UIView {
     public func background(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         return background(color)
+    }
+    
+    @discardableResult
+    public func background(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        return background(UIColor(hex: value))
+    }
+    
+    @discardableResult
+    public func background(_ state: SBinding<String>, opacity: CGFloat = 1.0) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.backgroundColor = UIColor(hex: value).withAlphaComponent(opacity)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
     }
     
     @discardableResult
@@ -176,6 +191,23 @@ public class NavigationLinkView: UIView {
     public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func stroke(_ hexColor: String, lineWidth: CGFloat? = 1) -> Self {
+        guard let value = hexColor.hexToUInt32 else { return self }
+        return stroke(UIColor(hex: value), lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func stroke(_ state: SBinding<String>, lineWidth: CGFloat = 1.0) -> Self {
+        self.layer.borderWidth = lineWidth
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.layer.borderColor = UIColor(hex: value).cgColor
+        }
+        state.didSet?(state.wrappedValue)
+        return self
     }
     
     @discardableResult
@@ -339,6 +371,34 @@ public class NavigationLinkView: UIView {
         self.layer.shadowOffset = offset
         self.layer.shadowRadius = radius
         self.layer.masksToBounds = false
+        return self
+    }
+    
+    @discardableResult
+    public func shadow(color: String, opacity: Float, radius: CGFloat, offset: CGSize) -> Self {
+        guard let value = color.hexToUInt32 else { return self }
+        let hexColor = UIColor(hex: value)
+        self.layer.shadowColor = hexColor.cgColor
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = radius
+        self.layer.masksToBounds = false
+        return self
+    }
+    
+    @discardableResult
+    public func shadow(color: SBinding<String>, opacity: Float, radius: CGFloat, offset: CGSize) -> Self {
+        color.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.layer.shadowColor = UIColor(hex: value).cgColor
+        }
+        color.didSet?(color.wrappedValue)
+        
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = radius
+        self.layer.masksToBounds = false
+        
         return self
     }
 }

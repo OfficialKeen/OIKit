@@ -46,6 +46,23 @@ public class Toggle: UISwitch {
     }
     
     @discardableResult
+    public func onTintColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.onTintColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func onTintColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.onTintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func thumbTintColor(_ hex: Int) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.thumbTintColor = color
@@ -53,9 +70,43 @@ public class Toggle: UISwitch {
     }
     
     @discardableResult
+    public func thumbTintColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.thumbTintColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func thumbTintColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.thumbTintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func tintColor(_ hex: Int) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func tintColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.tintColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func tintColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.tintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
         return self
     }
     

@@ -83,6 +83,22 @@ public class SearchBar: UISearchBar {
     }
     
     @discardableResult
+    public func background(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        return background(UIColor(hex: value))
+    }
+    
+    @discardableResult
+    public func background(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.background(UIColor(hex: value))
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func textAttributes(_ attributes: [NSAttributedString.Key : Any]?) -> Self {
         if let attributes = attributes {
             if #available(iOS 13.0, *) {
@@ -186,6 +202,23 @@ public class SearchBar: UISearchBar {
     public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func stroke(_ hexColor: String, lineWidth: CGFloat? = 1) -> Self {
+        guard let value = hexColor.hexToUInt32 else { return self }
+        return stroke(UIColor(hex: value), lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func stroke(_ state: SBinding<String>, lineWidth: CGFloat = 1.0) -> Self {
+        self.layer.borderWidth = lineWidth
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.layer.borderColor = UIColor(hex: value).cgColor
+        }
+        state.didSet?(state.wrappedValue)
+        return self
     }
 }
 
@@ -434,6 +467,23 @@ extension SearchBar {
     public func foregroundColor(_ colorHex: UInt) -> Self {
         let color = UIColor(hex: UInt32(colorHex))
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { hex in
+            guard let value = hex.hexToUInt32 else { return }
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
         return self
     }
 }

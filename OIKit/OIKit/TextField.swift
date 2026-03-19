@@ -66,6 +66,22 @@ public class TextField: UITextField, UITextFieldDelegate {
     }
     
     @discardableResult
+    public func background(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        return background(UIColor(hex: value))
+    }
+    
+    @discardableResult
+    public func background(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.backgroundColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func text(_ text: String) -> TextField {
         self.text = text
         return self
@@ -82,6 +98,23 @@ public class TextField: UITextField, UITextFieldDelegate {
     public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func stroke(_ hexColor: String, lineWidth: CGFloat? = 1) -> Self {
+        guard let value = hexColor.hexToUInt32 else { return self }
+        return stroke(UIColor(hex: value), lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func stroke(_ state: SBinding<String>, lineWidth: CGFloat = 1.0) -> Self {
+        self.layer.borderWidth = lineWidth
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.layer.borderColor = UIColor(hex: value).cgColor
+        }
+        state.didSet?(state.wrappedValue)
+        return self
     }
     
     @discardableResult
@@ -105,6 +138,23 @@ public class TextField: UITextField, UITextFieldDelegate {
     public func foregroundColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.textColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.textColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.textColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
         return self
     }
     
@@ -150,6 +200,23 @@ public class TextField: UITextField, UITextFieldDelegate {
     public func tintColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func tintColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.tintColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func tintColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.tintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
         return self
     }
     

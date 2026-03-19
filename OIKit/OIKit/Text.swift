@@ -83,6 +83,15 @@ public class Text: UILabel {
         }
         return self
     }
+    
+    @discardableResult
+    public func underline(_ isActive: Bool = true, color: String?) -> Self {
+        if isActive {
+            let uiColor = color?.hexToUInt32.map { UIColor(hex: $0) }
+            addUnderline(color: uiColor)
+        }
+        return self
+    }
 
     @discardableResult
     public func italic() -> Self {
@@ -94,6 +103,17 @@ public class Text: UILabel {
     public func strikethrough(_ isActive: Bool = true, color: UIColor? = nil) -> Self {
         if isActive {
             apply(style: .strikethroughStyle, value: NSUnderlineStyle.single.rawValue, color: color)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func strikethrough(_ isActive: Bool = true, color: String?) -> Self {
+        let uiColor = color?.hexToUInt32.map { UIColor(hex: $0) }
+        if isActive {
+            apply(style: .strikethroughStyle,
+                  value: NSUnderlineStyle.single.rawValue,
+                  color: uiColor)
         }
         return self
     }
@@ -112,6 +132,13 @@ public class Text: UILabel {
     }
     
     @discardableResult
+    public func foregroundColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.textColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
     public func tintColor(_ color: UIColor) -> Self {
         self.tintColor = color
         return self
@@ -121,6 +148,13 @@ public class Text: UILabel {
     public func tintColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.tintColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func tintColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.tintColor = UIColor(hex: value)
         return self
     }
 
@@ -252,6 +286,16 @@ public class Text: UILabel {
     }
     
     @discardableResult
+    public func tintColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.tintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func foregroundColor(_ state: SBinding<UIColor?>) -> Self {
         self.textColor = state.wrappedValue
         state.didSet = { [weak self] newText in
@@ -287,6 +331,16 @@ public class Text: UILabel {
             self?.textColor = color
         }
         hex.didSet?(hex.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.textColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
         return self
     }
     

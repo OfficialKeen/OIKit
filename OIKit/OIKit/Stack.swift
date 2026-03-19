@@ -112,6 +112,12 @@ extension UIStackView {
     }
     
     @discardableResult
+    public func background(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        return background(UIColor(hex: value))
+    }
+    
+    @discardableResult
     public func width(_ width: CGFloat) -> Self {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         return self
@@ -210,6 +216,35 @@ extension UIStackView {
         layer.shadowOpacity = config.opacity
         layer.shadowOffset = config.offset
         layer.shadowRadius = config.radius
+    }
+    
+    @discardableResult
+    public func stroke(_ hexColor: String, lineWidth: CGFloat? = 1) -> Self {
+        guard let value = hexColor.hexToUInt32 else { return self }
+        return stroke(UIColor(hex: value), lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func shadow(color: String, opacity: Float, radius: CGFloat, offset: CGSize) -> Self {
+        guard let value = color.hexToUInt32 else { return self }
+        let hexColor = UIColor(hex: value)
+        self.layer.shadowColor = hexColor.cgColor
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = radius
+        self.layer.masksToBounds = false
+        return self
+    }
+    
+    @discardableResult
+    public func stroke(_ state: SBinding<String>, lineWidth: CGFloat = 1.0) -> Self {
+        self.layer.borderWidth = lineWidth
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.layer.borderColor = UIColor(hex: value).cgColor
+        }
+        state.didSet?(state.wrappedValue)
+        return self
     }
     
     @discardableResult
@@ -359,6 +394,16 @@ extension UIStackView {
     }
     
     @discardableResult
+    public func background(_ state: SBinding<String>, opacity: CGFloat = 1.0) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.backgroundColor = UIColor(hex: value).withAlphaComponent(opacity)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func cornerRadius(_ radius: SBinding<CGFloat?>) -> Self {
         radius.didSet = { [weak self] newRadius in
             self?.layer.cornerRadius = newRadius ?? 0
@@ -420,6 +465,22 @@ extension UIStackView {
         self.layer.shadowOffset = offset
         self.layer.shadowRadius = radius
         self.layer.masksToBounds = false
+        return self
+    }
+    
+    @discardableResult
+    public func shadow(color: SBinding<String>, opacity: Float, radius: CGFloat, offset: CGSize) -> Self {
+        color.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.layer.shadowColor = UIColor(hex: value).cgColor
+        }
+        color.didSet?(color.wrappedValue)
+        
+        self.layer.shadowOpacity = opacity
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = radius
+        self.layer.masksToBounds = false
+        
         return self
     }
 }

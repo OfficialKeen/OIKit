@@ -65,7 +65,35 @@ public class LoaderView: UIActivityIndicatorView {
         hex.didSet?(hex.wrappedValue)
         return self
     }
-
+    
+    @discardableResult
+    public func setColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.color = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func setColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.color = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func setColor(_ state: SBinding<String?>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let hex = hex,
+                  let value = hex.hexToUInt32 else { return }
+            self?.color = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
     @discardableResult
     public func setHidesWhenStopped(_ hidesWhenStopped: Bool) -> LoaderView {
         self.hidesWhenStopped = hidesWhenStopped

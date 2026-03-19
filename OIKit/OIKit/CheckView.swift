@@ -88,49 +88,117 @@ public class CheckView: UIControl {
         checkmarkSize = size
         return self
     }
-
+    
     @discardableResult
     public func uncheckedBorderColor(_ color: UIColor) -> CheckView {
         uncheckedBorderColor = color
         return self
     }
-
+    
     @discardableResult
     public func uncheckedBorderColor(_ hex: UInt32) -> CheckView {
         return uncheckedBorderColor(UIColor(hex: hex))
     }
-
+    
+    @discardableResult
+    public func uncheckedBorderColor(_ hex: String) -> CheckView {
+        guard let value = hex.hexToUInt32 else { return self }
+        return uncheckedBorderColor(UIColor(hex: value))
+    }
+    
+    @discardableResult
+    public func uncheckedBorderColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.uncheckedBorderColor = UIColor(hex: value)
+            self?.setNeedsDisplay()
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
     @discardableResult
     public func checkedBorderColor(_ color: UIColor) -> CheckView {
         checkedBorderColor = color
         return self
     }
-
+    
     @discardableResult
     public func checkedBorderColor(_ hex: UInt32) -> CheckView {
         return checkedBorderColor(UIColor(hex: hex))
     }
-
+    
+    @discardableResult
+    public func checkedBorderColor(_ hex: String) -> CheckView {
+        guard let value = hex.hexToUInt32 else { return self }
+        return checkedBorderColor(UIColor(hex: value))
+    }
+    
+    @discardableResult
+    public func checkedBorderColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.checkedBorderColor = UIColor(hex: value)
+            self?.setNeedsDisplay()
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
     @discardableResult
     public func checkmarkColor(_ color: UIColor) -> CheckView {
         checkmarkColor = color
         return self
     }
-
+    
     @discardableResult
     public func checkmarkColor(_ hex: UInt32) -> CheckView {
         return checkmarkColor(UIColor(hex: hex))
     }
-
+    
+    @discardableResult
+    public func checkmarkColor(_ hex: String) -> CheckView {
+        guard let value = hex.hexToUInt32 else { return self }
+        return checkmarkColor(UIColor(hex: value))
+    }
+    
+    @discardableResult
+    public func checkmarkColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.checkmarkColor = UIColor(hex: value)
+            self?.setNeedsDisplay()
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
     @discardableResult
     public func backgroundColor(_ color: UIColor) -> CheckView {
         checkboxBackgroundColor = color
         return self
     }
-
+    
     @discardableResult
     public func backgroundColor(_ hex: UInt32) -> CheckView {
         return backgroundColor(UIColor(hex: hex))
+    }
+    
+    @discardableResult
+    public func backgroundColor(_ hex: String) -> CheckView {
+        guard let value = hex.hexToUInt32 else { return self }
+        return backgroundColor(UIColor(hex: value))
+    }
+    
+    @discardableResult
+    public func backgroundColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.checkboxBackgroundColor = UIColor(hex: value)
+            self?.setNeedsDisplay()
+        }
+        state.didSet?(state.wrappedValue)
+        return self
     }
     
     @discardableResult
@@ -215,7 +283,7 @@ public class CheckView: UIControl {
     }
     
     // MARK: - Drawing
-
+    
     open override func draw(_ rect: CGRect) {
         let newRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
         
@@ -251,7 +319,7 @@ public class CheckView: UIControl {
             }
         }
     }
-
+    
     private func drawCheckMark(frame: CGRect) {
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: frame.minX + 0.26000 * frame.width, y: frame.minY + 0.50000 * frame.height))
@@ -263,7 +331,7 @@ public class CheckView: UIControl {
         checkmarkColor.setFill()
         bezierPath.fill()
     }
-
+    
     private func drawCircle(frame: CGRect) {
         func fastFloor(_ x: CGFloat) -> CGFloat { return floor(x) }
         
@@ -271,7 +339,7 @@ public class CheckView: UIControl {
         checkmarkColor.setFill()
         ovalPath.fill()
     }
-
+    
     private func drawInnerSquare(frame: CGRect) {
         let padding = bounds.width * 0.3
         let innerRect = frame.inset(by: UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding))
@@ -279,7 +347,7 @@ public class CheckView: UIControl {
         checkmarkColor.setFill()
         rectanglePath.fill()
     }
-
+    
     private func drawCross(frame: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         func fastFloor(_ x: CGFloat) -> CGFloat { return floor(x) }
@@ -342,15 +410,15 @@ extension CheckView {
     
     @discardableResult
     public func squareStyle(style: CheckView.Style = .square,
-                             borderWidth: CGFloat = 1.0,
-                             borderColor: UIColor = .clear,
-                             checkColorHex: UInt32 = 0x4D9BFF,
-                             uncheckColorHex: UInt32 = 0x777777,
-                             borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 20.0),
-                             width: CGFloat = 20,
-                             height: CGFloat = 20,
-                             isChecked: Bool = false,
-                             isEnabled: Bool = true) -> CheckView {
+                            borderWidth: CGFloat = 1.0,
+                            borderColor: UIColor = .clear,
+                            checkColorHex: UInt32 = 0x4D9BFF,
+                            uncheckColorHex: UInt32 = 0x777777,
+                            borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 20.0),
+                            width: CGFloat = 20,
+                            height: CGFloat = 20,
+                            isChecked: Bool = false,
+                            isEnabled: Bool = true) -> CheckView {
         let disableColor = UIColor(hex: 0xE0E0E0)
         let checkColor = UIColor(hex: checkColorHex)
         let uncheckColor = UIColor(hex: uncheckColorHex)
@@ -370,15 +438,15 @@ extension CheckView {
     
     @discardableResult
     public func circleStyle(style: CheckView.Style = .circle,
-                             borderWidth: CGFloat = 1.0,
-                             borderColor: UIColor = .clear,
-                             checkColorHex: UInt32 = 0x4D9BFF,
-                             uncheckColorHex: UInt32 = 0x777777,
-                             borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 20.0),
-                             width: CGFloat = 20,
-                             height: CGFloat = 20,
-                             isChecked: Bool = false,
-                             isEnabled: Bool = true) -> CheckView {
+                            borderWidth: CGFloat = 1.0,
+                            borderColor: UIColor = .clear,
+                            checkColorHex: UInt32 = 0x4D9BFF,
+                            uncheckColorHex: UInt32 = 0x777777,
+                            borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 20.0),
+                            width: CGFloat = 20,
+                            height: CGFloat = 20,
+                            isChecked: Bool = false,
+                            isEnabled: Bool = true) -> CheckView {
         let disableColor = UIColor(hex: 0xE0E0E0)
         let checkColor = UIColor(hex: checkColorHex)
         let uncheckColor = UIColor(hex: uncheckColorHex)
@@ -398,15 +466,15 @@ extension CheckView {
     
     @discardableResult
     public func crossStyle(style: CheckView.Style = .cross,
-                             borderWidth: CGFloat = 1.0,
-                             borderColor: UIColor = .clear,
-                             checkColorHex: UInt32 = 0x4D9BFF,
-                             uncheckColorHex: UInt32 = 0x777777,
-                             borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 5.0),
-                             width: CGFloat = 20,
-                             height: CGFloat = 20,
-                             isChecked: Bool = false,
-                             isEnabled: Bool = true) -> CheckView {
+                           borderWidth: CGFloat = 1.0,
+                           borderColor: UIColor = .clear,
+                           checkColorHex: UInt32 = 0x4D9BFF,
+                           uncheckColorHex: UInt32 = 0x777777,
+                           borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 5.0),
+                           width: CGFloat = 20,
+                           height: CGFloat = 20,
+                           isChecked: Bool = false,
+                           isEnabled: Bool = true) -> CheckView {
         let disableColor = UIColor(hex: 0xE0E0E0)
         let checkColor = UIColor(hex: checkColorHex)
         let uncheckColor = UIColor(hex: uncheckColorHex)
@@ -426,15 +494,15 @@ extension CheckView {
     
     @discardableResult
     public func tickStyle(style: CheckView.Style = .tick,
-                             borderWidth: CGFloat = 1.0,
-                             borderColor: UIColor = .clear,
-                             checkColorHex: UInt32 = 0x4D9BFF,
-                             uncheckColorHex: UInt32 = 0x777777,
-                             borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 5.0),
-                             width: CGFloat = 20,
-                             height: CGFloat = 20,
-                             isChecked: Bool = false,
-                             isEnabled: Bool = true) -> CheckView {
+                          borderWidth: CGFloat = 1.0,
+                          borderColor: UIColor = .clear,
+                          checkColorHex: UInt32 = 0x4D9BFF,
+                          uncheckColorHex: UInt32 = 0x777777,
+                          borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 5.0),
+                          width: CGFloat = 20,
+                          height: CGFloat = 20,
+                          isChecked: Bool = false,
+                          isEnabled: Bool = true) -> CheckView {
         let disableColor = UIColor(hex: 0xE0E0E0)
         let checkColor = UIColor(hex: checkColorHex)
         let uncheckColor = UIColor(hex: uncheckColorHex)
@@ -454,15 +522,15 @@ extension CheckView {
     
     @discardableResult
     public func customStyle(style: CheckView.Style = .tick,
-                             borderWidth: CGFloat = 1.0,
-                             borderColor: UIColor = .clear,
-                             checkColorHex: UInt32 = 0x4D9BFF,
-                             uncheckColorHex: UInt32 = 0x777777,
-                             borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 5.0),
-                             width: CGFloat = 20,
-                             height: CGFloat = 20,
-                             isChecked: Bool = false,
-                             isEnabled: Bool = true) -> CheckView {
+                            borderWidth: CGFloat = 1.0,
+                            borderColor: UIColor = .clear,
+                            checkColorHex: UInt32 = 0x4D9BFF,
+                            uncheckColorHex: UInt32 = 0x777777,
+                            borderStyle: CheckView.BorderStyle = .roundedSquare(radius: 5.0),
+                            width: CGFloat = 20,
+                            height: CGFloat = 20,
+                            isChecked: Bool = false,
+                            isEnabled: Bool = true) -> CheckView {
         let disableColor = UIColor(hex: 0xE0E0E0)
         let checkColor = UIColor(hex: checkColorHex)
         let uncheckColor = UIColor(hex: uncheckColorHex)

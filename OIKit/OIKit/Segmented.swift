@@ -125,6 +125,27 @@ public class Segmented: UISegmentedControl {
     }
     
     @discardableResult
+    public func selectedColor(_ hex: String) -> Segmented {
+        guard let value = hex.hexToUInt32 else { return self }
+        if #available(iOS 13.0, *) {
+            selectedSegmentTintColor = UIColor(hex: value)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func selectedColor(_ state: SBinding<String>) -> Segmented {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            if #available(iOS 13.0, *) {
+                self?.selectedSegmentTintColor = UIColor(hex: value)
+            }
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func titleSelectColor(_ hex: UInt) -> Segmented {
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(hex: UInt32(hex))], for: .selected)
         return self
@@ -133,6 +154,29 @@ public class Segmented: UISegmentedControl {
     @discardableResult
     public func titleSelectColor(_ color: UIColor) -> Segmented {
         setTitleTextAttributes([NSAttributedString.Key.foregroundColor: color], for: .selected)
+        return self
+    }
+    
+    @discardableResult
+    public func titleSelectColor(_ hex: String) -> Segmented {
+        guard let value = hex.hexToUInt32 else { return self }
+        setTitleTextAttributes(
+            [.foregroundColor: UIColor(hex: value)],
+            for: .selected
+        )
+        return self
+    }
+    
+    @discardableResult
+    public func titleSelectColor(_ state: SBinding<String>) -> Segmented {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.setTitleTextAttributes(
+                [.foregroundColor: UIColor(hex: value)],
+                for: .selected
+            )
+        }
+        state.didSet?(state.wrappedValue)
         return self
     }
     
@@ -149,6 +193,29 @@ public class Segmented: UISegmentedControl {
     }
     
     @discardableResult
+    public func titleUnselectColor(_ hex: String) -> Segmented {
+        guard let value = hex.hexToUInt32 else { return self }
+        setTitleTextAttributes(
+            [.foregroundColor: UIColor(hex: value)],
+            for: .normal
+        )
+        return self
+    }
+    
+    @discardableResult
+    public func titleUnselectColor(_ state: SBinding<String>) -> Segmented {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.setTitleTextAttributes(
+                [.foregroundColor: UIColor(hex: value)],
+                for: .normal
+            )
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func foregroundColor(_ hex: UInt) -> Segmented {
         tintColor = UIColor(hex: UInt32(hex))
         return self
@@ -157,6 +224,23 @@ public class Segmented: UISegmentedControl {
     @discardableResult
     public func foregroundColor(_ color: UIColor) -> Segmented {
         tintColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ hex: String) -> Segmented {
+        guard let value = hex.hexToUInt32 else { return self }
+        tintColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: SBinding<String>) -> Segmented {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.tintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
         return self
     }
     

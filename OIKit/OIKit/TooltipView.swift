@@ -256,6 +256,13 @@ extension TooltipView {
     }
     
     @discardableResult
+    public func foregroundColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        label.textColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
     public func font(_ size: CGFloat, weight: UIFont.Weight = .regular, design: FontDesign = .default) -> Self {
         let traits: [UIFontDescriptor.TraitKey: Any] = [.weight: weight]
 
@@ -305,6 +312,29 @@ extension TooltipView {
     }
     
     @discardableResult
+    public func background(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        let color = UIColor(hex: value)
+        
+        backgroundColor = color
+        arrowColor = color
+        arrowLayer.fillColor = color.cgColor
+        
+        return self
+    }
+    
+    @discardableResult
+    public func background(_ hex: String, opacity: CGFloat = 1.0) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        let color = UIColor(hex: value).withAlphaComponent(opacity)
+        
+        backgroundColor = color
+        arrowLayer.fillColor = color.cgColor
+        
+        return self
+    }
+    
+    @discardableResult
     public func cornerRadius(_ radius: CGFloat = 10) -> Self {
         layer.cornerRadius = radius
         return self
@@ -320,6 +350,12 @@ extension TooltipView {
     public func stroke(_ hexColor: UInt, lineWidth: CGFloat? = 1) -> Self {
         let color = UIColor(hex: UInt32(hexColor))
         return stroke(color, lineWidth: lineWidth)
+    }
+    
+    @discardableResult
+    public func stroke(_ hexColor: String, lineWidth: CGFloat? = 1) -> Self {
+        guard let value = hexColor.hexToUInt32 else { return self }
+        return stroke(UIColor(hex: value), lineWidth: lineWidth)
     }
     
     @discardableResult
@@ -344,9 +380,34 @@ extension TooltipView {
     }
     
     @discardableResult
+    public func shadow(color: String, radius: CGFloat, opacity: Float, offset: CGSize) -> Self {
+        guard let value = color.hexToUInt32 else { return self }
+        let hexColor = UIColor(hex: value)
+        
+        layer.shadowColor = hexColor.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.masksToBounds = false
+        
+        return self
+    }
+    
+    @discardableResult
     public func arrowColor(_ color: UIColor) -> Self {
         arrowColor = color
         arrowLayer.fillColor = color.cgColor
+        return self
+    }
+    
+    @discardableResult
+    public func arrowColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        let color = UIColor(hex: value)
+        
+        arrowColor = color
+        arrowLayer.fillColor = color.cgColor
+        
         return self
     }
 }

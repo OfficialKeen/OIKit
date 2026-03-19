@@ -64,6 +64,12 @@ public class TextFieldOTP: UIStackView {
     }
     
     @discardableResult
+    public func textColor(hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        return textColor(UIColor(hex: value))
+    }
+    
+    @discardableResult
     public func textSize(_ size: CGFloat) -> Self {
         textFields.forEach {
             $0.font = .systemFont(ofSize: size)
@@ -124,6 +130,18 @@ public class TextFieldOTP: UIStackView {
     }
     
     @discardableResult
+    public func strokeColors(_ from: String,
+                             to: String) -> Self {
+        guard let fromVal = from.hexToUInt32,
+              let toVal = to.hexToUInt32 else { return self }
+        
+        return strokeColors(
+            UIColor(hex: fromVal),
+            to: UIColor(hex: toVal)
+        )
+    }
+    
+    @discardableResult
     public func backgroundColors(_ from: UIColor = .systemGray,
                                  to: UIColor = .systemTeal) -> Self {
         self.emptyBgColor = from
@@ -148,6 +166,18 @@ public class TextFieldOTP: UIStackView {
             alpha: 1
         )
         return backgroundColors(emptyColor, to: filledColor)
+    }
+    
+    @discardableResult
+    public func backgroundColors(_ from: String,
+                                 to: String) -> Self {
+        guard let fromVal = from.hexToUInt32,
+              let toVal = to.hexToUInt32 else { return self }
+        
+        return backgroundColors(
+            UIColor(hex: fromVal),
+            to: UIColor(hex: toVal)
+        )
     }
     
     @discardableResult
@@ -286,6 +316,29 @@ public class TextFieldOTP: UIStackView {
         
         refreshAllVisuals()
         return self
+    }
+    
+    @discardableResult
+    public func stroke(hex: String,
+                       width: CGFloat = 0,
+                       corner: CGFloat = 0,
+                       shadowRadius: CGFloat = 0,
+                       shadowOpacity: Float = 0.15,
+                       shadowOffset: CGSize = CGSize(width: 0, height: 2)) -> Self {
+        
+        guard let value = hex.hexToUInt32 else { return self }
+        let color = UIColor(hex: value)
+        
+        textFields.forEach {
+            $0.layer.borderColor = color.cgColor
+        }
+        
+        return stroke(width: width,
+                      corner: corner,
+                      shadowRadius: shadowRadius,
+                      shadowColor: color,
+                      shadowOpacity: shadowOpacity,
+                      shadowOffset: shadowOffset)
     }
     
     @discardableResult
@@ -435,5 +488,12 @@ extension TextFieldOTP {
         self.mode = mode
         applyMode()
         return self
+    }
+}
+
+extension OTPBorderStyle {
+    static func hex(_ hex: String) -> OTPBorderStyle {
+        guard let value = hex.hexToUInt32 else { return .none }
+        return .hex(value)
     }
 }

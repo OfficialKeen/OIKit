@@ -46,6 +46,23 @@ public class ProgressView: UIProgressView {
     }
     
     @discardableResult
+    public func progressTintColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.progressTintColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func progressTintColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.progressTintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func trackTintColor(_ color: UIColor) -> Self {
         self.trackTintColor = color
         return self
@@ -55,6 +72,23 @@ public class ProgressView: UIProgressView {
     public func trackTintColor(_ hex: UInt) -> Self {
         let color = UIColor(hex: UInt32(hex))
         self.trackTintColor = color
+        return self
+    }
+    
+    @discardableResult
+    public func trackTintColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.trackTintColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
+    public func trackTintColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.trackTintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
         return self
     }
     

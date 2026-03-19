@@ -131,6 +131,14 @@ public class Button: UIButton {
     }
     
     @discardableResult
+    public func foregroundColor(_ hex: String, for state: UIControl.State = .normal) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        let color = UIColor(hex: value)
+        setTitleColor(color, for: state)
+        return self
+    }
+    
+    @discardableResult
     public func title(_ title: String?, for state: UIControl.State = .normal) -> Self {
         setTitle(title, for: state)
         return self
@@ -255,6 +263,18 @@ public class Button: UIButton {
         return self
     }
     
+    @discardableResult
+    public func image(_ name: String, tintColor: String, for state: UIControl.State = .normal) -> Self {
+        guard let value = tintColor.hexToUInt32 else { return self }
+        let color = UIColor(hex: value)
+        
+        if let image = UIImage(named: name)?.withRenderingMode(.alwaysTemplate) {
+            setImage(image, for: state)
+            self.tintColor = color
+        }
+        return self
+    }
+    
     private func positionImage(imagePosition: ImagePosition, spacing: CGFloat = 0) {
         guard let imageView = imageView, let image = imageView.image, let titleLabel = titleLabel else {
             return
@@ -342,6 +362,16 @@ extension Button {
             self?.setTitleColor(color, for: controlState)
         }
         
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func foregroundColor(_ state: SBinding<String>, for controlState: UIControl.State = .normal) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.setTitleColor(UIColor(hex: value), for: controlState)
+        }
         state.didSet?(state.wrappedValue)
         return self
     }
@@ -677,6 +707,22 @@ extension Button {
     }
     
     @discardableResult
+    public func background(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        return background(UIColor(hex: value))
+    }
+    
+    @discardableResult
+    public func background(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.backgroundColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func disable(_ isDisabled: Bool = false) -> Self {
         self.isEnabled = !isDisabled
         return self
@@ -734,6 +780,12 @@ extension Button {
     }
     
     @discardableResult
+    public func stroke(_ hexColor: String, lineWidth: CGFloat? = 1) -> Self {
+        guard let value = hexColor.hexToUInt32 else { return self }
+        return stroke(UIColor(hex: value), lineWidth: lineWidth)
+    }
+    
+    @discardableResult
     public func shadow(color: UIColor, radius: CGFloat, opacity: Float, offset: CGSize) -> Self {
         layer.shadowColor = color.cgColor
         layer.shadowRadius = radius
@@ -746,6 +798,18 @@ extension Button {
     @discardableResult
     public func shadow(color: UInt, radius: CGFloat, opacity: Float, offset: CGSize) -> Self {
         let hexColor = UIColor(hex: UInt32(color))
+        layer.shadowColor = hexColor.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.masksToBounds = false
+        return self
+    }
+    
+    @discardableResult
+    public func shadow(color: String, radius: CGFloat, opacity: Float, offset: CGSize) -> Self {
+        guard let value = color.hexToUInt32 else { return self }
+        let hexColor = UIColor(hex: value)
         layer.shadowColor = hexColor.cgColor
         layer.shadowRadius = radius
         layer.shadowOpacity = opacity

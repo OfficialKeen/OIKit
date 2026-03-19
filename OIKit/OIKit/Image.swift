@@ -44,6 +44,13 @@ public class Image: UIImageView {
     }
     
     @discardableResult
+    public func foregroundColor(_ hex: String) -> Self {
+        guard let value = hex.hexToUInt32 else { return self }
+        self.tintColor = UIColor(hex: value)
+        return self
+    }
+    
+    @discardableResult
     public func resizable() -> Self {
         self.contentMode = .scaleAspectFill
         self.clipsToBounds = true
@@ -257,6 +264,16 @@ extension Image {
     }
     
     @discardableResult
+    public func foregroundColor(_ state: SBinding<String>) -> Self {
+        state.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.tintColor = UIColor(hex: value)
+        }
+        state.didSet?(state.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
     public func image(_ state: SBinding<UIImage?>, renderingModeState: SBinding<UIImage.RenderingMode?> = SBinding<UIImage.RenderingMode?>(wrappedValue: nil)) -> Self {
         state.didSet = { [weak self] newImage in
             self?.image = newImage
@@ -284,6 +301,37 @@ extension Image {
             self?.image = self?.image?.withRenderingMode(renderingMode)
         }
         renderingModeState.didSet?(renderingModeState.wrappedValue)
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ name: String, tintColor: String) -> Self {
+        guard let value = tintColor.hexToUInt32 else { return self }
+        let color = UIColor(hex: value)
+        
+        if let image = UIImage(named: name)?.withRenderingMode(.alwaysTemplate) {
+            self.image = image
+            self.tintColor = color
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func image(_ name: SBinding<String?>, tintColor: SBinding<String>) -> Self {
+        name.didSet = { [weak self] newName in
+            guard let imageName = newName,
+                  let image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate) else { return }
+            self?.image = image
+        }
+        
+        tintColor.didSet = { [weak self] hex in
+            guard let value = hex.hexToUInt32 else { return }
+            self?.tintColor = UIColor(hex: value)
+        }
+        
+        name.didSet?(name.wrappedValue)
+        tintColor.didSet?(tintColor.wrappedValue)
+        
         return self
     }
     

@@ -1,5 +1,5 @@
 //
-//  TextAttribute.swift
+//  TextAttributeView.swift
 //  OIKit
 //
 //  Created by Keen on 08/04/26.
@@ -136,7 +136,7 @@ struct TextAttributeBuilder {
 
 // MARK: - UILabel Engine
 
-class TextAttribute: UILabel {
+class TextAttributeView: UILabel {
     private var linkRanges: [(NSRange, () -> Void)] = []
     init(@TextAttributeBuilder content: () -> [TextAttributeItem]) {
         super.init(frame: .zero)

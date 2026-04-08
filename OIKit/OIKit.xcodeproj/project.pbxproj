@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C4711E02F6C1F6500551EF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C4711DF2F6C1F6500551EF1 /* String.swift */; };
 		1C47264E2F85FF60009E3E09 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47264D2F85FF60009E3E09 /* UIView+Extension.swift */; };
-		1C4726502F85FFA5009E3E09 /* TextAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47264F2F85FFA5009E3E09 /* TextAttribute.swift */; };
+		1C4726502F85FFA5009E3E09 /* TextAttributeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C47264F2F85FFA5009E3E09 /* TextAttributeView.swift */; };
 		EC0AA3822B57A544007B59C5 /* OIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EC0AA3812B57A544007B59C5 /* OIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC0AA3892B57A79C007B59C5 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3882B57A79C007B59C5 /* StackView.swift */; };
 		EC0AA3A92B57B419007B59C5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0AA3A82B57B419007B59C5 /* View.swift */; };
@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		1C4711DF2F6C1F6500551EF1 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		1C47264D2F85FF60009E3E09 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		1C47264F2F85FFA5009E3E09 /* TextAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttribute.swift; sourceTree = "<group>"; };
+		1C47264F2F85FFA5009E3E09 /* TextAttributeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeView.swift; sourceTree = "<group>"; };
 		EC0AA37E2B57A544007B59C5 /* OIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC0AA3812B57A544007B59C5 /* OIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OIKit.h; sourceTree = "<group>"; };
 		EC0AA3882B57A79C007B59C5 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 				EC3F3BD22E5212F000B986FC /* TooltipView.swift */,
 				1C4711DF2F6C1F6500551EF1 /* String.swift */,
 				1C47264D2F85FF60009E3E09 /* UIView+Extension.swift */,
-				1C47264F2F85FFA5009E3E09 /* TextAttribute.swift */,
+				1C47264F2F85FFA5009E3E09 /* TextAttributeView.swift */,
 			);
 			path = OIKit;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 				EC7E086A2B5ECC49006584A6 /* Anchor.swift in Sources */,
 				EC7012012BBCED590068F457 /* Controller.swift in Sources */,
 				EC3A1EA12BBAFB250050D2C9 /* TextView.swift in Sources */,
-				1C4726502F85FFA5009E3E09 /* TextAttribute.swift in Sources */,
+				1C4726502F85FFA5009E3E09 /* TextAttributeView.swift in Sources */,
 				ECA8BD312BB9B2D900EBB673 /* SearchBar.swift in Sources */,
 				EC226B2E2C44FA3000489197 /* LoaderView.swift in Sources */,
 				EC7E08602B5EB48A006584A6 /* Button.swift in Sources */,
